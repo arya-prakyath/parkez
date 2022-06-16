@@ -41,8 +41,7 @@ export default function bottomBar() {
     }
     return (
         <View style={{
-            backgroundColor: "#000",
-            opacity: 0.8,
+            backgroundColor: "#111",
             height: "9%",
             width: "100%",
             flexDirection: "row",
