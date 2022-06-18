@@ -1,5 +1,5 @@
 import { StackActions } from "@react-navigation/native";
-import { Animated, Text, Platform, StatusBar } from "react-native"
+import { Animated, Text, Platform, StatusBar, TouchableOpacity } from "react-native"
 
 interface headerProfileOptions {
     navigation: any,
@@ -34,8 +34,12 @@ export default function HeaderProfileOptions({ navigation, profileOptionsOpacity
             height: "12%",
             transform: [{ translateX: profileOptionsSlide }],
         }}>
-            <Text onPress={openProfile} style={{ color: "#ccc", borderBottomColor: "#ccc", borderBottomWidth: 1, width: "90%", fontSize: 18, marginLeft: 18, paddingBottom: 8 }}>Profile</Text>
-            <Text onPress={logOut} style={{ color: "#ccc", borderBottomColor: "#acccaa", borderBottomWidth: 1, width: "90%", fontSize: 18, marginLeft: 18, paddingBottom: 8 }}>Logout</Text>
+            <TouchableOpacity onPress={openProfile}>
+                <Text style={{ color: "#ccc", borderBottomColor: "#ccc", borderBottomWidth: 1, width: "90%", fontSize: 18, marginLeft: 18, paddingBottom: 8 }}>Profile</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={logOut}>
+                <Text style={{ color: "#ccc", borderBottomColor: "#acccaa", borderBottomWidth: 1, width: "90%", fontSize: 18, marginLeft: 18, paddingBottom: 8 }}>Logout</Text>
+            </TouchableOpacity>
         </Animated.View>
     )
 }

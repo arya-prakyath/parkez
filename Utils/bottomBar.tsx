@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, TouchableHighlight, Text, Image } from "react-native";
+import { View, Text, TouchableOpacity, Image } from "react-native";
 
 export default function bottomBar() {
     const [homeSelected, setHomeSelected] = useState(true);
@@ -51,7 +51,7 @@ export default function bottomBar() {
             bottom: 0,
             paddingVertical: 2,
         }}>
-            <TouchableHighlight onPress={() => setSelected(0)} style={{ height: "100%", width: "20%", justifyContent: "space-evenly", alignItems: "center", }}>
+            <TouchableOpacity onPress={() => setSelected(0)} style={{ height: "100%", width: "20%", justifyContent: "space-evenly", alignItems: "center", }}>
                 {homeSelected ?
                     (
                         <View style={{ alignItems: "center", justifyContent: "center" }}>
@@ -66,9 +66,9 @@ export default function bottomBar() {
                         </View>
                     )
                 }
-            </TouchableHighlight>
+            </TouchableOpacity>
 
-            <TouchableHighlight onPress={() => setSelected(1)} style={{ height: "100%", width: "20%", justifyContent: "space-evenly", alignItems: "center", }}>
+            <TouchableOpacity onPress={() => setSelected(1)} style={{ height: "100%", width: "20%", justifyContent: "space-evenly", alignItems: "center", }}>
                 {exploreSelected ?
                     (
                         <View style={{ alignItems: "center", justifyContent: "center" }}>
@@ -83,9 +83,9 @@ export default function bottomBar() {
                         </View>
                     )
                 }
-            </TouchableHighlight>
+            </TouchableOpacity>
 
-            <TouchableHighlight onPress={() => setSelected(2)} style={{ height: "100%", width: "20%", justifyContent: "space-evenly", alignItems: "center", }}>
+            <TouchableOpacity onPress={() => setSelected(2)} style={{ height: "100%", width: "20%", justifyContent: "space-evenly", alignItems: "center", }}>
                 {addSpotSelected ?
                     (
                         <View style={{ alignItems: "center", justifyContent: "center" }}>
@@ -100,9 +100,9 @@ export default function bottomBar() {
                         </View>
                     )
                 }
-            </TouchableHighlight>
+            </TouchableOpacity>
 
-            <TouchableHighlight onPress={() => setSelected(3)} style={{ height: "100%", width: "20%", justifyContent: "space-evenly", alignItems: "center", }}>
+            <TouchableOpacity onPress={() => setSelected(3)} style={{ height: "100%", width: "20%", justifyContent: "space-evenly", alignItems: "center", }}>
                 {walletSelected ?
                     (
                         <View style={{ alignItems: "center", justifyContent: "center" }}>
@@ -117,7 +117,7 @@ export default function bottomBar() {
                         </View>
                     )
                 }
-            </TouchableHighlight>
+            </TouchableOpacity>
 
         </View >
     )

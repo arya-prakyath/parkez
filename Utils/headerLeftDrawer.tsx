@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, Image, Animated, Platform, StatusBar } from "react-native";
+import { View, Text, Image, Animated, Platform, StatusBar, TouchableOpacity } from "react-native";
 
 interface headerLeftDrawerOptions {
     navigation: any,
@@ -50,7 +50,8 @@ export default function headerLeftDrawer({ navigation, drawerOpacity, drawerSlid
             </View>
 
             <View style={{ height: "35%", justifyContent: "space-evenly" }}>
-                <View style={{ flexDirection: "row", width: "100%", justifyContent: "space-around", alignItems: "center", }}>
+                <TouchableOpacity onPress={() => { clearSelections(); SetMyVehicle(!myVehicle) }}
+                    style={{ flexDirection: "row", width: "100%", justifyContent: "space-around", alignItems: "center", }}>
                     {
                         myVehicle ? (
                             <Image source={require("../assets/drawer-icons/myVehiclesSelected.png")} style={{ flex: 0.35, aspectRatio: 1, }} />
@@ -58,13 +59,11 @@ export default function headerLeftDrawer({ navigation, drawerOpacity, drawerSlid
                             <Image source={require("../assets/drawer-icons/myVehicles.png")} style={{ flex: 0.35, aspectRatio: 1, }} />
                         )
                     }
-                    <Text onPress={() => {
-                        clearSelections();
-                        SetMyVehicle(!myVehicle)
-                    }} style={{ color: "#ccc", width: "75%", fontSize: 18, }}>My Vehicle</Text>
-                </View>
+                    <Text style={{ color: "#ccc", width: "75%", fontSize: 18, }}>My Vehicle</Text>
+                </TouchableOpacity>
 
-                <View style={{ flexDirection: "row", width: "100%", justifyContent: "space-around", alignItems: "center", }}>
+                <TouchableOpacity onPress={() => { clearSelections(); SetFavoriteSpots(!favoriteSpots) }}
+                    style={{ flexDirection: "row", width: "100%", justifyContent: "space-around", alignItems: "center", }}>
                     {
                         favoriteSpots ? (
                             <Image source={require("../assets/drawer-icons/favoriteSelected.png")} style={{ flex: 0.35, aspectRatio: 1, }} />
@@ -72,13 +71,11 @@ export default function headerLeftDrawer({ navigation, drawerOpacity, drawerSlid
                             <Image source={require("../assets/drawer-icons/favorite.png")} style={{ flex: 0.35, aspectRatio: 1, }} />
                         )
                     }
-                    <Text onPress={() => {
-                        clearSelections();
-                        SetFavoriteSpots(!favoriteSpots)
-                    }} style={{ color: "#ccc", width: "75%", fontSize: 18, }}>Favorite Spots</Text>
-                </View>
+                    <Text style={{ color: "#ccc", width: "75%", fontSize: 18, }}>Favorite Spots</Text>
+                </TouchableOpacity>
 
-                <View style={{ flexDirection: "row", width: "100%", justifyContent: "space-around", alignItems: "center", }}>
+                <TouchableOpacity onPress={() => { clearSelections(); SetBookingHistory(!bookingHistory) }}
+                    style={{ flexDirection: "row", width: "100%", justifyContent: "space-around", alignItems: "center", }}>
                     {
                         bookingHistory ? (
                             <Image source={require("../assets/drawer-icons/historySelected.png")} style={{ flex: 0.35, aspectRatio: 1, }} />
@@ -86,15 +83,13 @@ export default function headerLeftDrawer({ navigation, drawerOpacity, drawerSlid
                             <Image source={require("../assets/drawer-icons/history.png")} style={{ flex: 0.35, aspectRatio: 1, }} />
                         )
                     }
-                    <Text onPress={() => {
-                        clearSelections();
-                        SetBookingHistory(!bookingHistory)
-                    }} style={{ color: "#ccc", width: "75%", fontSize: 18, }}>Booking History</Text>
-                </View>
+                    <Text style={{ color: "#ccc", width: "75%", fontSize: 18, }}>Booking History</Text>
+                </TouchableOpacity>
             </View>
 
             <View style={{ height: "35%", marginTop: "20%", justifyContent: "space-evenly" }}>
-                <View style={{ flexDirection: "row", width: "100%", justifyContent: "space-around", alignItems: "center", }}>
+                <TouchableOpacity onPress={() => { clearSelections(); setSupport(!support) }}
+                    style={{ flexDirection: "row", width: "100%", justifyContent: "space-around", alignItems: "center", }}>
                     {
                         support ? (
                             <Image source={require("../assets/drawer-icons/supportSelected.png")} style={{ flex: 0.35, aspectRatio: 1, }} />
@@ -102,13 +97,11 @@ export default function headerLeftDrawer({ navigation, drawerOpacity, drawerSlid
                             <Image source={require("../assets/drawer-icons/support.png")} style={{ flex: 0.35, aspectRatio: 1, }} />
                         )
                     }
-                    <Text onPress={() => {
-                        clearSelections();
-                        setSupport(!support)
-                    }} style={{ color: "#ccc", width: "75%", fontSize: 18, }}>Support</Text>
-                </View>
+                    <Text style={{ color: "#ccc", width: "75%", fontSize: 18, }}>Support</Text>
+                </TouchableOpacity>
 
-                <View style={{ flexDirection: "row", width: "100%", justifyContent: "space-around", alignItems: "center", }}>
+                <TouchableOpacity onPress={() => { clearSelections(); setAboutUs(!aboutUs) }}
+                    style={{ flexDirection: "row", width: "100%", justifyContent: "space-around", alignItems: "center", }}>
                     {
                         aboutUs ? (
                             <Image source={require("../assets/drawer-icons/aboutSelected.png")} style={{ flex: 0.35, aspectRatio: 1, }} />
@@ -116,13 +109,11 @@ export default function headerLeftDrawer({ navigation, drawerOpacity, drawerSlid
                             <Image source={require("../assets/drawer-icons/about.png")} style={{ flex: 0.35, aspectRatio: 1, }} />
                         )
                     }
-                    <Text onPress={() => {
-                        clearSelections();
-                        setAboutUs(!aboutUs)
-                    }} style={{ color: "#ccc", width: "75%", fontSize: 18, }}>About Us</Text>
-                </View>
+                    <Text style={{ color: "#ccc", width: "75%", fontSize: 18, }}>About Us</Text>
+                </TouchableOpacity>
 
-                <View style={{ flexDirection: "row", width: "100%", justifyContent: "space-around", alignItems: "center", }}>
+                <TouchableOpacity onPress={() => { clearSelections(); setSettings(!settings) }}
+                    style={{ flexDirection: "row", width: "100%", justifyContent: "space-around", alignItems: "center", }}>
                     {
                         settings ? (
                             <Image source={require("../assets/drawer-icons/settingsSelected.png")} style={{ flex: 0.35, aspectRatio: 1, }} />
@@ -130,11 +121,8 @@ export default function headerLeftDrawer({ navigation, drawerOpacity, drawerSlid
                             <Image source={require("../assets/drawer-icons/settings.png")} style={{ flex: 0.35, aspectRatio: 1, }} />
                         )
                     }
-                    <Text onPress={() => {
-                        clearSelections();
-                        setSettings(!settings)
-                    }} style={{ color: "#ccc", width: "75%", fontSize: 18, }}>Settings</Text>
-                </View>
+                    <Text style={{ color: "#ccc", width: "75%", fontSize: 18, }}>Settings</Text>
+                </TouchableOpacity>
             </View>
         </Animated.View >
     )
