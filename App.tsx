@@ -2,9 +2,10 @@ import React from "react";
 import { StatusBar } from "expo-status-bar";
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import LoginScreen from "./Components/Login";
-import HomeScreen from "./Components/Home";
 import WelcomeScreen from "./Components/Welcome"
+import LoginScreen from "./Components/Login";
+import MainScreen from "./Components/MainScreen"
+
 const Stack = createNativeStackNavigator();
 
 export default function App() {
@@ -17,8 +18,7 @@ export default function App() {
       }}>
         <Stack.Screen name="Welcome" component={WelcomeScreen} />
         <Stack.Screen name="Login" component={LoginScreen} />
-        <Stack.Screen name="Home" component={HomeScreen} />
-        {/* <Stack.Screen name="Home" component={ProfileScreen} /> */}
+        <Stack.Screen name="Main" component={MainScreen} />
       </Stack.Navigator>
       <StatusBar style="light" />
     </NavigationContainer>

@@ -49,7 +49,7 @@ export default function Login({ navigation, carPosition, textOpacity }: loginPro
             animate(textOpacity, 0, 1000);
             animate(carPosition, 100, 1000, () => animate(carPosition, -width, 800, () => {
                 navigation.dispatch(
-                    StackActions.replace('Home', {
+                    StackActions.replace('Main', {
                         navigation: navigation,
                     })
                 );

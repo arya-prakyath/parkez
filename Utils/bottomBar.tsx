@@ -1,39 +1,53 @@
 import React, { useState } from "react";
 import { View, Text, TouchableOpacity, Image } from "react-native";
 
-export default function bottomBar() {
+interface bottomBarProps {
+    setScreen: React.Dispatch<React.SetStateAction<string>>,
+    setTitle: React.Dispatch<React.SetStateAction<string>>,
+    onClick: () => void;
+}
+export default function bottomBar({setScreen, setTitle, onClick}: bottomBarProps) {
     const [homeSelected, setHomeSelected] = useState(true);
-    const [exploreSelected, setExploreSelected] = useState(false);
+    const [findSpotSelected, setFindSpotSelected] = useState(false);
     const [addSpotSelected, setAddSpotSelected] = useState(false);
     const [walletSelected, setWalletSelected] = useState(false);
 
     const setSelected = (selected: number) => {
+        onClick();
         switch (selected) {
             case 0: {
+                setScreen("Home");
+                setTitle("Home");
                 setHomeSelected(true);
-                exploreSelected && setExploreSelected(false);
+                findSpotSelected && setFindSpotSelected(false);
                 addSpotSelected && setAddSpotSelected(false);
                 walletSelected && setWalletSelected(false);
                 break;
             }
             case 1: {
-                setExploreSelected(true);
+                setScreen("FindSpot");
+                setTitle("Find Spot");
+                setFindSpotSelected(true);
                 homeSelected && setHomeSelected(false);
                 addSpotSelected && setAddSpotSelected(false);
                 walletSelected && setWalletSelected(false);
                 break;
             }
             case 2: {
+                setScreen("AddSpot");
+                setTitle("Add Spot");
                 setAddSpotSelected(true);
                 homeSelected && setHomeSelected(false);
-                exploreSelected && setExploreSelected(false);
+                findSpotSelected && setFindSpotSelected(false);
                 walletSelected && setWalletSelected(false);
                 break;
             }
             case 3: {
+                setScreen("Wallet");
+                setTitle("Wallet");
                 setWalletSelected(true);
                 homeSelected && setHomeSelected(false);
-                exploreSelected && setExploreSelected(false);
+                findSpotSelected && setFindSpotSelected(false);
                 addSpotSelected && setAddSpotSelected(false);
                 break;
             }
@@ -69,16 +83,16 @@ export default function bottomBar() {
             </TouchableOpacity>
 
             <TouchableOpacity onPress={() => setSelected(1)} style={{ height: "100%", width: "20%", justifyContent: "space-evenly", alignItems: "center", }}>
-                {exploreSelected ?
+                {findSpotSelected ?
                     (
                         <View style={{ alignItems: "center", justifyContent: "center" }}>
-                            <Image style={{ aspectRatio: 1, flex: 0.85 }} source={require("../assets/bottom-bar-icons/exploreSelected.png")} />
+                            <Image style={{ aspectRatio: 1, flex: 0.85 }} source={require("../assets/bottom-bar-icons/findSpotSelected.png")} />
                             <Text style={{ color: "#fff", fontSize: 14, }}>Find Spot</Text>
                         </View>
 
                     ) : (
                         <View style={{ alignItems: "center", justifyContent: "center" }}>
-                            <Image style={{ aspectRatio: 1, flex: 0.85 }} source={require("../assets/bottom-bar-icons/explore.png")} />
+                            <Image style={{ aspectRatio: 1, flex: 0.85 }} source={require("../assets/bottom-bar-icons/findSpot.png")} />
                             <Text style={{ color: "#fff", fontSize: 14, }}>Find Spot</Text>
                         </View>
                     )

@@ -8,10 +8,12 @@ import HeaderProfileOptions from "./headerProfileOptions";
 
 interface headerBarProps {
     navigation: any,
-    title: string,
+    setScreen: React.Dispatch<React.SetStateAction<string>>,
 }
 
-export default function HeaderBar({ navigation, title }: headerBarProps) {
+export default function HeaderBar({ navigation, setScreen }: headerBarProps) {
+    const [title, setTitle] = useState("Home");
+
     const width = Dimensions.get('window').width;
     const [carPosition] = useState(new Animated.Value(width));
     const [titleOpacity] = useState(new Animated.Value(0));
@@ -79,7 +81,7 @@ export default function HeaderBar({ navigation, title }: headerBarProps) {
                         animationCompleted ?
                             (
                                 <Animated.View style={{ opacity: titleOpacity, alignSelf: "center" }}>
-                                    <Text style={{ color: "#fff", fontSize: 28, fontWeight: "300", letterSpacing: 3, }}>{title}</Text>
+                                    <Text style={{ color: "#fff", fontSize: 25, fontWeight: "300", letterSpacing: 3, }}>{title}</Text>
                                 </Animated.View>
                             ) : (
                                 <Animated.View style={{ flexDirection: "row", justifyContent: "center", transform: [{ translateX: carPosition }] }} >
@@ -118,17 +120,50 @@ export default function HeaderBar({ navigation, title }: headerBarProps) {
 
             <HeaderProfileOptions
                 navigation={navigation}
+                onClickProfile={() => {
+                    setScreen("Profile");
+                    setTitle("User Profile");
+                    animate(profileOptionsOpacity, 0, 200);
+                    animate(profileOptionsSlide, width, 500);
+                    setProfileOptions(false);
+                }}
                 profileOptionsOpacity={profileOptionsOpacity}
                 profileOptionsSlide={profileOptionsSlide}
+                onClickLogout={() => {
+                    animate(profileOptionsOpacity, 0, 200);
+                    animate(profileOptionsSlide, width, 500);
+                    setProfileOptions(false);
+                }}
             />
 
             <HeaderLeftDrawer
-                navigation={navigation}
+                setScreen={setScreen}
+                setTitle={setTitle}
+                onClick={() => {
+                    animate(drawerOpacity, 0, 200);
+                    animate(drawerSlide, -width, 500);
+                    setDrawerOpen(false);
+                }}
                 drawerOpacity={drawerOpacity}
                 drawerSlide={drawerSlide}
             />
 
-            <BottomBar />
+            <BottomBar
+                setScreen={setScreen}
+                setTitle={setTitle}
+                onClick={() => {
+                    if (profileOptions) {
+                        animate(profileOptionsOpacity, 0, 200);
+                        animate(profileOptionsSlide, width, 500);
+                        setProfileOptions(false);
+                    }
+                    if (drawerOpen) {
+                        animate(drawerOpacity, 0, 200);
+                        animate(drawerSlide, -width, 500);
+                        setDrawerOpen(false);
+                    }
+                }}
+            />
         </>
     )
 }

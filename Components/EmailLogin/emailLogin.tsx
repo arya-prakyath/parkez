@@ -9,6 +9,7 @@ import {
     TouchableHighlight,
     Animated,
     Dimensions,
+    Keyboard,
 } from "react-native";
 import animate from "../../Animations/animate";
 import usersList from "../../Models/usersList";
@@ -32,6 +33,7 @@ export default function Login({ navigation, carPosition, textOpacity }: loginPro
     const [resetPassword, setResetPassword] = useState(false);
 
     const login = () => {
+        Keyboard.dismiss();
         for (let user of usersList) {
             if (mail === user.username && password !== user.password) {
                 setWrongPassword(true);
@@ -42,7 +44,7 @@ export default function Login({ navigation, carPosition, textOpacity }: loginPro
                 animate(textOpacity, 0, 1000);
                 animate(carPosition, 100, 1000, () => animate(carPosition, -width, 800, () => {
                     navigation.dispatch(
-                        StackActions.replace('Home', {
+                        StackActions.replace('Main', {
                             navigation: navigation,
                         })
                     );
