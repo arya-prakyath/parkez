@@ -4,18 +4,28 @@ import { View, Text, Image, Animated, Platform, StatusBar, TouchableOpacity } fr
 interface headerLeftDrawerOptions {
     setScreen: React.Dispatch<React.SetStateAction<string>>,
     setTitle: React.Dispatch<React.SetStateAction<string>>,
+    currentBlock: string,
     onClick: () => void;
     drawerOpacity: Animated.Value,
     drawerSlide: Animated.Value,
 }
 
-export default function headerLeftDrawer({ setScreen, setTitle, onClick, drawerOpacity, drawerSlide }: headerLeftDrawerOptions) {
+export default function headerLeftDrawer({ setScreen, setTitle, currentBlock, onClick, drawerOpacity, drawerSlide }: headerLeftDrawerOptions) {
     const [myVehicle, setMyVehicle] = useState(false);
     const [favoriteSpots, setFavoriteSpots] = useState(false);
     const [bookingHistory, setBookingHistory] = useState(false);
     const [support, setSupport] = useState(false);
     const [aboutUs, setAboutUs] = useState(false);
     const [settings, setSettings] = useState(false);
+
+    if (currentBlock !== "left") {
+        myVehicle && setMyVehicle(false);
+        favoriteSpots && setFavoriteSpots(false);
+        bookingHistory && setBookingHistory(false);
+        support && setSupport(false);
+        aboutUs && setAboutUs(false);
+        settings && setSettings(false);
+    }
 
     const setSelected = (selected: number) => {
         onClick();

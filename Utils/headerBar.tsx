@@ -3,8 +3,8 @@ import React, { useState } from "react";
 import { View, Image, Text, Platform, StatusBar, TouchableOpacity, Animated, Dimensions } from "react-native";
 import animate from "../Animations/animate";
 import BottomBar from "./bottomBar";
-import HeaderLeftDrawer from "./headerLeftDrawer";
-import HeaderProfileOptions from "./headerProfileOptions";
+import LeftDrawer from "./leftDrawer";
+import ProfileBar from "./ProfileBar";
 
 interface headerBarProps {
     navigation: any,
@@ -13,6 +13,7 @@ interface headerBarProps {
 
 export default function HeaderBar({ navigation, setScreen }: headerBarProps) {
     const [title, setTitle] = useState("Home");
+    const [currentBlock, setCurrentBlock] = useState("bottom");
 
     const width = Dimensions.get('window').width;
     const [carPosition] = useState(new Animated.Value(width));
@@ -117,15 +118,15 @@ export default function HeaderBar({ navigation, setScreen }: headerBarProps) {
                 </TouchableOpacity>
             </View >
 
-
-            <HeaderProfileOptions
+            <ProfileBar
                 navigation={navigation}
                 onClickProfile={() => {
-                    setScreen("Profile");
+                    setScreen("UserProfile");
                     setTitle("User Profile");
                     animate(profileOptionsOpacity, 0, 200);
                     animate(profileOptionsSlide, width, 500);
                     setProfileOptions(false);
+                    setCurrentBlock("profile");
                 }}
                 profileOptionsOpacity={profileOptionsOpacity}
                 profileOptionsSlide={profileOptionsSlide}
@@ -136,13 +137,15 @@ export default function HeaderBar({ navigation, setScreen }: headerBarProps) {
                 }}
             />
 
-            <HeaderLeftDrawer
+            <LeftDrawer
                 setScreen={setScreen}
                 setTitle={setTitle}
+                currentBlock={currentBlock}
                 onClick={() => {
                     animate(drawerOpacity, 0, 200);
                     animate(drawerSlide, -width, 500);
                     setDrawerOpen(false);
+                    setCurrentBlock("left");
                 }}
                 drawerOpacity={drawerOpacity}
                 drawerSlide={drawerSlide}
@@ -151,6 +154,7 @@ export default function HeaderBar({ navigation, setScreen }: headerBarProps) {
             <BottomBar
                 setScreen={setScreen}
                 setTitle={setTitle}
+                currentBlock={currentBlock}
                 onClick={() => {
                     if (profileOptions) {
                         animate(profileOptionsOpacity, 0, 200);
@@ -162,6 +166,7 @@ export default function HeaderBar({ navigation, setScreen }: headerBarProps) {
                         animate(drawerSlide, -width, 500);
                         setDrawerOpen(false);
                     }
+                    setCurrentBlock("bottom");
                 }}
             />
         </>

@@ -4,13 +4,21 @@ import { View, Text, TouchableOpacity, Image } from "react-native";
 interface bottomBarProps {
     setScreen: React.Dispatch<React.SetStateAction<string>>,
     setTitle: React.Dispatch<React.SetStateAction<string>>,
+    currentBlock: string,
     onClick: () => void;
 }
-export default function bottomBar({setScreen, setTitle, onClick}: bottomBarProps) {
+export default function bottomBar({ setScreen, setTitle, currentBlock, onClick }: bottomBarProps) {
     const [homeSelected, setHomeSelected] = useState(true);
     const [findSpotSelected, setFindSpotSelected] = useState(false);
     const [addSpotSelected, setAddSpotSelected] = useState(false);
     const [walletSelected, setWalletSelected] = useState(false);
+
+    if (currentBlock !== "bottom") {
+        homeSelected && setHomeSelected(false);
+        findSpotSelected && setFindSpotSelected(false);
+        addSpotSelected && setAddSpotSelected(false);
+        walletSelected && setWalletSelected(false);
+    }
 
     const setSelected = (selected: number) => {
         onClick();

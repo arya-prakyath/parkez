@@ -42,7 +42,7 @@ export default function Home({ navigation }: mainScreenProps) {
             {screen === "Support" && <SupportScreen />}
             {screen === "AboutUs" && <AboutUsScreen />}
             {screen === "Settings" && <SettingsScreen />}
-            {screen === "Profile" && <UserProfileScreen />}
+            {screen === "UserProfile" && <UserProfileScreen />}
 
             <HeaderBar navigation={navigation} setScreen={setScreen} />
         </ImageBackground>
