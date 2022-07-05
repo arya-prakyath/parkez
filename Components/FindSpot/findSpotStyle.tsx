@@ -55,7 +55,6 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRightWidth: 3,
     borderBottomWidth: 3,
-    borderBottomRightRadius: 10,
     borderRadius: 10,
   },
   spotspressed: {
