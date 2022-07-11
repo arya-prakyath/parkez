@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
   },
   spots: {
     alignSelf: "center",
-    backgroundColor: "#000",
+    backgroundColor: "rgba(0 ,0 , 0, 0.8)",
     width: "100%",
     padding: "5%",
     marginBottom: "5%",

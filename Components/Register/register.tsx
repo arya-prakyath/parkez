@@ -18,7 +18,7 @@ export default function Register({ setRegisterNow, parentElementFade }: register
         animate(carPosition, 0, 1500);
     }
     const moveText = () => {
-        animate(textOpacity, 1, 1000, () => animate(textOpacity, 0, 100 , () => animate(textOpacity, 1, 100 , () => animate(textOpacity, 0, 100, () => animate(textOpacity, 1, 100, () => animate(textOpacity, 0, 100, () => animate(textOpacity, 1, 100)))))));
+        animate(textOpacity, 1, 1000, () => animate(textOpacity, 0, 100, () => animate(textOpacity, 1, 100, () => animate(textOpacity, 0, 100, () => animate(textOpacity, 1, 100, () => animate(textOpacity, 0, 100, () => animate(textOpacity, 1, 100)))))));
     }
     const [fadeElement] = useState(new Animated.Value(0));
     React.useEffect(() => {
@@ -44,25 +44,25 @@ export default function Register({ setRegisterNow, parentElementFade }: register
     const onSubmit = () => {
         let err = false;
 
-        if (name.length < 3){
+        if (name.length < 3) {
             err = true;
             setNameError("The name must be atleast three characters long");
         }
-        if (!/[a-zA-Z]*/.test(name)){
+        if (!/[a-zA-Z]*/.test(name)) {
             err = true;
             setNameError("The name must contain alphabets only");
         }
 
-        if (phone.length !== 10 || ! /\d/.test(phone)){
+        if (phone.length !== 10 || ! /\d/.test(phone)) {
             err = true;
             setPhoneError("Enter a valid phone number");
         }
-        else if (phoneList.includes(phone)){
+        else if (phoneList.includes(phone)) {
             setPhoneError("This phone is already registered");
             return;
         }
 
-        if (! /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(mail)){
+        if (! /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(mail)) {
             err = true;
             setMailError("Enter a valid Email");
         }
@@ -75,24 +75,24 @@ export default function Register({ setRegisterNow, parentElementFade }: register
             }
         }
 
-        if (password.length < 6){
+        if (password.length < 6) {
             err = true;
             setPasswordError("The password must be atleast six characters long");
         }
-        else if (! /\d/.test(password)){
+        else if (! /\d/.test(password)) {
             err = true;
             setPasswordError("The password must contain atleast one Number");
         }
-        else if (! /[a-zA-Z]/.test(password)){
+        else if (! /[a-zA-Z]/.test(password)) {
             err = true;
             setPasswordError("The password must contain atleast one Alphabet");
         }
-        else if (! /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/.test(password)){
+        else if (! /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/.test(password)) {
             err = true;
             setPasswordError("The password must contain atleast one Special Character");
         }
 
-        if (!err){
+        if (!err) {
             showAlert({
                 title: "Registered!",
                 message: "Your account is successfully registered.\n\nHappy Parking!",
@@ -174,11 +174,15 @@ export default function Register({ setRegisterNow, parentElementFade }: register
                     <TextInput
                         style={styles.credential}
                         onChangeText={(value) => {
-                            setPhone(value.replace(" ", ''));
+                            value = value.replace(' ', '');
+                            value = value.replace('-', '');
+                            value = value.replace(',', '');
+                            value = value.replace('.', '');
+                            setPhone(value);
                             if (phoneError)
                                 setPhoneError("");
                         }}
-                        value={phone.length > 5 ? phone.substring(0, 5) + " " + phone.substring(5,) : phone}
+                        value={phone.length > 5 ? `${phone.substring(0, 5)} ${phone.substring(5,)}` : phone}
                         placeholder="Phone"
                         placeholderTextColor={"#bbb"}
                         maxLength={11}

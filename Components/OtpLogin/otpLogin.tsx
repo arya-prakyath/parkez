@@ -71,11 +71,15 @@ export default function Login({ navigation, carPosition, textOpacity }: loginPro
                     <TextInput
                         style={styles.phone}
                         onChangeText={(value) => {
-                            setPhone(value.replace(" ", ''));
+                            value = value.replace(' ', '');
+                            value = value.replace('-', '');
+                            value = value.replace(',', '');
+                            value = value.replace('.', '');
+                            setPhone(value);
                             if (wrongPhone)
                                 setWrongPhone(false);
                         }}
-                        value={phone.length > 5 ? phone.substring(0, 5) + " " + phone.substring(5,) : phone}
+                        value={phone.length > 5 ? `${phone.substring(0, 5)} ${phone.substring(5,)}` : phone}
                         placeholder="Phone"
                         placeholderTextColor={"#bbb"}
                         maxLength={11}

@@ -104,6 +104,8 @@ export default function headerLeftDrawer({ setScreen, setTitle, currentBlock, on
             opacity: drawerOpacity,
             marginTop: Platform.OS === 'ios' ? "15%" : StatusBar.currentHeight + "5%",
             backgroundColor: "#111",
+            borderColor: "#555",
+            borderRightWidth: 1,
             borderTopRightRadius: 40,
             position: "absolute",
             marginBottom: 15,

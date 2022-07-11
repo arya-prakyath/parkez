@@ -1,11 +1,145 @@
-import React from "react";
-import { View, Text } from "react-native";
+import React, { useState } from "react";
+import { View, Text, TextInput, TouchableHighlight, Image, TouchableOpacity, ToastAndroid } from "react-native";
 import styles from "./addSpotStyle";
+import ConfirmAddSpot from "./confirmAddSpot";
+import SpotCostPlan from "./spotCostPlan";
+import SpotDetails from "./spotDetails";
+import SpotOwner from "./spotOwner";
+import SpotTermsAndConditions from "./spotTermsAndConditions";
 
-export default function addSpot (){
+interface spotCostProps {
+    id: number,
+    cost: string,
+    interval: string,
+}
+
+export default function AddSpot() {
+    const [hasSpots, setHasSpots] = useState(false);
+
+    const [progressTracker, setProgressTracker] = useState(0);
+
+    const [spotName, setSpotName] = useState('');
+    const [spotAddress, setSpotAddress] = useState('');
+    const [building, setBuilding] = useState('');
+    const [street, setStreet] = useState('');
+    const [landmark, setLandmark] = useState('');
+    const [city, setCity] = useState('Bengaluru');
+    const [pincode, setPincode] = useState('');
+
+    const [spotOwnerName, setSpotOwnerName] = useState('');
+    const [spotOwnerPhone, setSpotOwnerPhone] = useState('');
+    const [ownerAndInchargeSame, setOwnerAndInchargeSame] = useState(false);
+    const [spotInchargeName, setSpotInchargeName] = useState('');
+    const [spotInchargePhone, setSpotInchargePhone] = useState('');
+
+    const [spotCostPlans, setSpotCostPlans] = useState<spotCostProps[]>([{ id: 0, cost: '', interval: '' }]);
+
+    const [termsAgreed, setTermsAgreed] = useState(false);
+
+    const handleOnSetAddress = (building: string, street: string, landmark: string, city: string, pincode: string): void => {
+        const address = `${building.replace(/,*$/, '')}, ${street.replace(/,*$/, '')}, ${landmark.replace(/,*$/, '')}, ${city.replace(/,*$/, '')}, Karnataka, India - ${pincode}`;
+        setSpotAddress(address);
+    }
+
     return (
-        <View style={styles.container}>
-            <Text style={styles.text}>Add Spot Screen Here</Text>
-        </View>
+        hasSpots ? (
+            <View>
+                <Text>TODO: Has Spots</Text>
+            </View >
+        ) : (
+            <View style={styles.container}>
+                {progressTracker === 0 && (
+                    <View style={[styles.credentialParentContainer, styles.infoTextContainer]}>
+                        <Text style={styles.infoText}>
+                            <Text style={{ fontStyle: "italic", fontWeight: "200" }}>Step 1 </Text>- Fill In The Spot Details
+                        </Text>
+                        <Text style={styles.infoText}>
+                            <Text style={{ fontStyle: "italic", fontWeight: "200" }}>Step 2 </Text>- Fill In The Spot Owner Details
+                        </Text>
+                        <Text style={styles.infoText}>
+                            <Text style={{ fontStyle: "italic", fontWeight: "200" }}>Step 3 </Text>- Choose Cost Plans
+                        </Text>
+                        <Text style={styles.infoText}>
+                            <Text style={{ fontStyle: "italic", fontWeight: "200" }}>Step 4 </Text>- Agree To Terms & Conditions
+                        </Text>
+                        <Text style={styles.infoText}>
+                            <Text style={{ fontStyle: "italic", fontWeight: "200" }}>Step 5 </Text>- Start Earning
+                        </Text>
+                        <View style={styles.nextBackButtonContainer}>
+                            <TouchableOpacity style={styles.addSpotButton} onPress={() => setProgressTracker(1)}>
+                                <Text style={styles.addSpotButtonText}>Add Spot</Text>
+                            </TouchableOpacity>
+                        </View >
+                    </View>
+                )
+                }
+
+                {progressTracker === 1 && (
+                    <SpotDetails
+                        spotName={spotName}
+                        setSpotName={setSpotName}
+                        setSpotAddress={handleOnSetAddress}
+                        building={building}
+                        setBuilding={setBuilding}
+                        street={street}
+                        setStreet={setStreet}
+                        landmark={landmark}
+                        setLandmark={setLandmark}
+                        city={city}
+                        setCity={setCity}
+                        pincode={pincode}
+                        setPincode={setPincode}
+                        setProgressTracker={setProgressTracker}
+                    />
+                )
+                }
+
+                {progressTracker === 2 && (
+                    <SpotOwner
+                        spotOwnerName={spotOwnerName}
+                        setSpotOwnerName={setSpotOwnerName}
+                        spotOwnerPhone={spotOwnerPhone}
+                        setSpotOwnerPhone={setSpotOwnerPhone}
+                        setOwnerAndInchargeSame={setOwnerAndInchargeSame}
+                        ownerAndInchargeSame={ownerAndInchargeSame}
+                        spotInchargeName={spotInchargeName}
+                        setSpotInchargeName={setSpotInchargeName}
+                        spotInchargePhone={spotInchargePhone}
+                        setSpotInchargePhone={setSpotInchargePhone}
+                        setProgressTracker={setProgressTracker}
+                    />
+                )}
+
+                {progressTracker === 3 && (
+                    <SpotCostPlan
+                        spotCostPlans={spotCostPlans}
+                        setSpotCostPlans={setSpotCostPlans}
+                        setProgressTracker={setProgressTracker}
+                    />
+                )}
+
+                {progressTracker === 4 && (
+                    <SpotTermsAndConditions
+                        termsAgreed={termsAgreed}
+                        setTermsAgreed={setTermsAgreed}
+                        setProgressTracker={setProgressTracker}
+                    />
+                )}
+
+                {progressTracker === 5 && (
+                    <ConfirmAddSpot
+                        spotName={spotName}
+                        spotAddress={spotAddress}
+                        spotOwnerName={spotOwnerName}
+                        spotOwnerPhone={spotOwnerPhone}
+                        spotInchargeName={spotInchargeName}
+                        spotInchargePhone={spotInchargePhone}
+                        spotCostPlans={spotCostPlans}
+                        termsAgreed={termsAgreed}
+                        setProgressTracker={setProgressTracker}
+                    />
+                )}
+            </View >
+        )
     )
 }

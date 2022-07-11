@@ -10,6 +10,7 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "@freakycoder/react-native-bounceable": "^0.2.5",
     "@react-navigation/bottom-tabs": "^6.3.1",
     "@react-navigation/native": "^6.0.10",
     "@react-navigation/native-stack": "^6.6.2",
@@ -22,6 +23,8 @@
     "react-arc-progress": "^1.0.2",
     "react-dom": "17.0.2",
     "react-native": "0.68.2",
+    "react-native-bouncy-checkbox": "^2.1.10",
+    "react-native-element-dropdown": "^2.0.0",
     "react-native-otp-textinput": "0.0.9",
     "react-native-paper": "^4.12.1",
     "react-native-safe-area-context": "4.2.4",

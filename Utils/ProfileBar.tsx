@@ -1,12 +1,8 @@
 import { StackActions } from "@react-navigation/native";
-import { Animated, Text, Platform, StatusBar, TouchableOpacity, Dimensions, Alert } from "react-native"
-import { Title } from "react-native-paper";
-import animate from "../Animations/animate";
-import showAlert from "./alertBox";
-import alertBox from "./alertBox";
+import { Animated, Text, Platform, StatusBar, TouchableOpacity, Dimensions, Alert } from "react-native";
 
 interface headerProfileOptions {
-    navigation: any,
+    navigation: any;
     onClickProfile: () => void;
     onClickLogout: () => void;
     profileOptionsOpacity: Animated.Value;
@@ -45,6 +41,8 @@ export default function HeaderProfileOptions({ navigation, onClickProfile, onCli
             opacity: profileOptionsOpacity,
             marginTop: Platform.OS === 'ios' ? "15%" : StatusBar.currentHeight + "5%",
             backgroundColor: "#111",
+            borderColor: "#555",
+            borderWidth: 1,
             borderTopLeftRadius: 45,
             position: "absolute",
             marginBottom: 15,
