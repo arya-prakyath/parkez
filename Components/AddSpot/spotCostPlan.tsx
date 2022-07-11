@@ -71,7 +71,6 @@ export default function SpotCostPlan({
                     style={[styles.dropdown, isFocus && { borderColor: 'lightblue' }]}
                     placeholderStyle={styles.placeholderStyle}
                     selectedTextStyle={styles.selectedTextStyle}
-                    inputSearchStyle={styles.inputSearchStyle}
                     iconStyle={styles.iconStyle}
                     data={intervals}
                     maxHeight={250}

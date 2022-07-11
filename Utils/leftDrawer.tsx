@@ -32,7 +32,7 @@ export default function headerLeftDrawer({ setScreen, setTitle, currentBlock, on
         switch (selected) {
             case 0: {
                 setScreen("MyVehicle");
-                setTitle("My Vehicle");
+                setTitle("My Vehicles");
                 setMyVehicle(true);
                 favoriteSpots && setFavoriteSpots(false);
                 bookingHistory && setBookingHistory(false);
@@ -129,7 +129,7 @@ export default function headerLeftDrawer({ setScreen, setTitle, currentBlock, on
                             <Image source={require("../assets/drawer-icons/myVehicles.png")} style={{ flex: 0.35, aspectRatio: 1, }} />
                         )
                     }
-                    <Text style={{ color: "#ccc", width: "75%", fontSize: 18, }}>My Vehicle</Text>
+                    <Text style={{ color: "#ccc", width: "75%", fontSize: 18, }}>My Vehicles</Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity onPress={() => setSelected(1)} style={{ flexDirection: "row", width: "100%", justifyContent: "space-around", alignItems: "center", }}>

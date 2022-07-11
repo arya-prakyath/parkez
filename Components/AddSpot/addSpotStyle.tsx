@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
   },
 
   credentialParentContainer: {
-    backgroundColor: "rgba(0 ,0 , 0, 0.8)",
+    backgroundColor: "rgba(0, 0, 0, 0.8)",
     height: "65%",
     width: "95%",
     alignItems: "center",
@@ -221,10 +221,6 @@ const styles = StyleSheet.create({
   iconStyle: {
     width: 25,
     height: 25,
-  },
-  inputSearchStyle: {
-    height: 40,
-    fontSize: 15,
   },
   removeCostPlanButtonContainer: {
     width: "1%",
