@@ -1,11 +1,7 @@
 import React, { useState } from "react";
-import {
-    Text,
-    ImageBackground,
-    View,
-} from "react-native";
-import HeaderBar from "../../Utils/headerBar";
+import { ImageBackground } from "react-native";
 import styles from "./mainScreenStyle";
+import HeaderBar from "../../Utils/headerBar";
 import HomeScreen from "../Home";
 import FindSpotScreen from "../FindSpot";
 import AddSpotScreen from "../AddSpot";
