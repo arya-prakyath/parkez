@@ -1,5 +1,4 @@
 import { Platform, StatusBar, StyleSheet } from "react-native";
-import { black } from "react-native-paper/lib/typescript/styles/colors";
 
 const styles = StyleSheet.create({
   container: {
@@ -16,8 +15,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "#fff",
     borderRadius: 50,
-    width: "95%",
+    width: "92%",
     height: "7%",
+    marginBottom: 10,
   },
   searchText: {
     color: "#000",
@@ -41,14 +41,14 @@ const styles = StyleSheet.create({
 
   spotsContainer: {
     alignSelf: "center",
-    height: "68%",
-    width: "92%",
-    marginTop: "5%",
+    height: "70%",
+    width: "100%",
+    paddingRight: 10,
   },
   spots: {
     alignSelf: "center",
     backgroundColor: "rgba(0, 0, 0, 0.8)",
-    width: "100%",
+    width: "92%",
     padding: "5%",
     marginBottom: "5%",
     borderColor: "#555",

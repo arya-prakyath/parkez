@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { View, Text, Image, TouchableOpacity, ToastAndroid, ScrollView, TouchableWithoutFeedback } from "react-native";
 import AddEditVehicle from "./addEditVehicle";
-import styles from "./myVehicleStyle";
+import MyVehiclesList from "./myVehiclesList";
+import styles from "./myVehiclesStyle";
 
 interface vehicleType {
     vehiclePlateNumber: string,
@@ -14,7 +15,7 @@ export default function myVehicle() {
     const [addEditVehicle, setAddEditVehicle] = useState(false);
     const [selectedVehicle, setSelectedVehicle] = useState<vehicleType>();
 
-    const vehicles: vehicleType[] = [
+    const vehiclesList: vehicleType[] = [
         {
             vehicleName: "My VW",
             vehiclePlateNumber: "KA 02 JH 2354",
@@ -65,28 +66,11 @@ export default function myVehicle() {
                             <Text style={styles.addNewVehicleButtonText}>Add New Vehicle</Text>
                         </TouchableOpacity>
 
-                        <ScrollView showsVerticalScrollIndicator={true} persistentScrollbar={true}>
-                            {
-                                vehicles.map((vehicle) => (
-                                    <TouchableWithoutFeedback onPress={() => {
-                                        setSelectedVehicle(vehicle);
-                                        setAddEditVehicle(true);
-                                    }}>
-                                        <View style={styles.MyVehicleContainer}>
-                                            <Text style={styles.infoText}>
-                                                <Text style={{ fontStyle: "italic", fontWeight: "300" }}>Vehicle Name </Text>- {vehicle.vehicleName}
-                                            </Text>
-                                            <Text style={styles.infoText}>
-                                                <Text style={{ fontStyle: "italic", fontWeight: "300" }}>Vehicle Number </Text>- {vehicle.vehiclePlateNumber}
-                                            </Text>
-                                            <Text style={styles.infoText}>
-                                                <Text style={{ fontStyle: "italic", fontWeight: "300" }}>Vehicle Type </Text>- {vehicle.vehicleType}
-                                            </Text>
-                                        </View>
-                                    </TouchableWithoutFeedback>
-                                ))
-                            }
-                        </ScrollView>
+                        <MyVehiclesList
+                            vehiclesList={vehiclesList}
+                            setSelectedVehicle={setSelectedVehicle}
+                            setAddEditVehicle={setAddEditVehicle}
+                        />
                     </View>
                 ) : (
                     <View style={[styles.MyVehicleContainer, styles.addVehicleContainer]}>

@@ -62,7 +62,7 @@ export default function favoriteSpots() {
                         setSearchText(value);
                     }}
                     value={searchText}
-                    placeholder="Search location"
+                    placeholder="Search Favorite Location"
                     placeholderTextColor={"#666"}
                 />
                 {

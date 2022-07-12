@@ -16,8 +16,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "#fff",
     borderRadius: 50,
-    width: "95%",
+    width: "92%",
     height: "7%",
+    marginBottom: 10,
   },
   searchText: {
     color: "#000",

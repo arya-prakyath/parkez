@@ -17,8 +17,8 @@ const styles = StyleSheet.create({
     borderRadius: 150,
     width: "50%",
     height: 50,
-    marginHorizontal: 25,
-    marginVertical: 15,
+    marginHorizontal: 20,
+    marginVertical: 3,
   },
   addNewVehicleButton: {
     flex: 0.3,
@@ -31,16 +31,23 @@ const styles = StyleSheet.create({
   },
 
   MyVehiclesContainer: {
-    height: "75%",
-    width: "99%",
+    width: "100%",
+    height: "100%",
+    paddingRight: 10
+  },
+  MyVehiclesList: {
+    alignSelf: "center",
+    height: "68%",
+    width: "100%",
   },
   MyVehicleContainer: {
     backgroundColor: "rgba(0, 0, 0, 0.8)",
-    width: "90%",
+    width: "92%",
     height: 125,
     alignSelf: "center",
     justifyContent: "center",
     paddingLeft: 20,
+    marginRight: 5,
     margin: 5,
     borderColor: "#555",
     borderWidth: 1,

@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { View, Text, TextInput, Image, TouchableOpacity } from "react-native";
 import { Dropdown } from "react-native-element-dropdown";
 import showAlert from "../../Utils/alertBox";
-import styles from "./myVehicleStyle";
+import styles from "./myVehiclesStyle";
 
 interface vehicleType {
     vehiclePlateNumber: string,

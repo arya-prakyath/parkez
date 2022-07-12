@@ -31,7 +31,7 @@ export default function headerLeftDrawer({ setScreen, setTitle, currentBlock, on
         onClick();
         switch (selected) {
             case 0: {
-                setScreen("MyVehicle");
+                setScreen("MyVehicles");
                 setTitle("My Vehicles");
                 setMyVehicle(true);
                 favoriteSpots && setFavoriteSpots(false);

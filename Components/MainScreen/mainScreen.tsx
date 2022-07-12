@@ -6,7 +6,7 @@ import HomeScreen from "../Home";
 import FindSpotScreen from "../FindSpot";
 import AddSpotScreen from "../AddSpot";
 import WalletScreen from "../Wallet";
-import MyVehicleScreen from "../MyVehicle";
+import MyVehicleScreen from "../MyVehicles";
 import FavoriteSpotsScreen from "../FavoriteSpots";
 import BookingHistoryScreen from "../BookingHistory";
 import AboutUsScreen from "../AboutUs";
@@ -32,7 +32,7 @@ export default function Home({ navigation }: mainScreenProps) {
             {screen === "FindSpot" && <FindSpotScreen />}
             {screen === "AddSpot" && <AddSpotScreen />}
             {screen === "Wallet" && <WalletScreen />}
-            {screen === "MyVehicle" && <MyVehicleScreen />}
+            {screen === "MyVehicles" && <MyVehicleScreen />}
             {screen === "FavoriteSpots" && <FavoriteSpotsScreen />}
             {screen === "BookingHistory" && <BookingHistoryScreen />}
             {screen === "Support" && <SupportScreen />}
