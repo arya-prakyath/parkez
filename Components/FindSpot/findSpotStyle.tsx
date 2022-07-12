@@ -75,14 +75,29 @@ const styles = StyleSheet.create({
     fontSize: 15,
     fontWeight: "800",
   },
+  spotsAddressAndFavorite: {
+    flexDirection: "row",
+    justifyContent: "space-between"
+  },
   spotAddress: {
     color: "#fff",
+    width: "88%",
+    alignSelf: "center",
     fontSize: 15,
     fontWeight: "300",
     fontStyle: "italic",
     marginTop: 10,
   },
-
+  favoriteButtonContainer: {
+    height: 50,
+    width: 50,
+    padding: 15,
+    alignSelf: "center",
+  },
+  favoriteButton: {
+    flex: 1,
+    aspectRatio: 1,
+  },
   noresults: {
     color: "#fff",
     fontSize: 15,

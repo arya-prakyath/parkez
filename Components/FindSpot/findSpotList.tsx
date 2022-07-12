@@ -3,22 +3,24 @@ import { View, Text, FlatList } from "react-native";
 import FindSpotItem from "./findSpotItem";
 import styles from "./findSpotStyle";
 
-interface spotsListProps {
+interface spotsListType {
     id: string;
     title: string;
     address: string;
     cost: string;
+    isFavorite: boolean;
 }
-interface spotsListPropsType {
-    spotsList: (spotsListProps | undefined)[];
+interface spotsListProps {
+    spotsList: (spotsListType | undefined)[];
 }
 
-export default function FindSpotList({ spotsList }: spotsListPropsType) {
+export default function FindSpotList({ spotsList }: spotsListProps) {
     const renderItem = ({ item }: any) => (
         item && <FindSpotItem
             name={item.title}
             address={item.address}
             cost={item.cost}
+            isFavorite={item.isFavorite}
         />
     );
 

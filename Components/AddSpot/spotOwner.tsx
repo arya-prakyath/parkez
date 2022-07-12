@@ -222,8 +222,10 @@ export default function SpotOwner({
                 </TouchableOpacity>
                 <TouchableOpacity style={[styles.nextButton, validate() && { backgroundColor: "#888" }]} disabled={validate()}
                     onPress={() => {
-                        ownerAndInchargeSame && setSpotInchargeName(spotOwnerName);
-                        ownerAndInchargeSame && setSpotInchargePhone(spotOwnerPhone);
+                        if (ownerAndInchargeSame) {
+                            setSpotInchargeName(spotOwnerName);
+                            setSpotInchargePhone(spotOwnerPhone);
+                        }
                         if (!spotOwnerName.match(/^[a-z A-Z]+$/)) {
                             setOwnerNameError(true);
                             return;
@@ -236,7 +238,7 @@ export default function SpotOwner({
                             setInchargeNameError(true);
                             return;
                         }
-                        if (!ownerAndInchargeSame && spotInchargePhone.length !== 10 || !spotInchargePhone.match(/^[0-9]+$/)) {
+                        if (!ownerAndInchargeSame && (spotInchargePhone.length !== 10 || !spotInchargePhone.match(/^[0-9]+$/))) {
                             setInchargePhoneError(true);
                             return;
                         }
