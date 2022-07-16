@@ -22,7 +22,7 @@ export default function FindSpotItem({ name, address, cost, isFavorite }: spotPr
                 ToastAndroid.BOTTOM,
             )
         }}>
-            <View style={pressed ? [styles.spots, styles.spotspressed] : styles.spots}>
+            <View style={pressed ? [styles.spots, styles.spotsPressed] : styles.spots}>
                 <View style={styles.spotsNameAndCost}>
                     <Text style={styles.spotName}>{name}</Text>
                     <Text style={styles.spotCost}>{cost}</Text>

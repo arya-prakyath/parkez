@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
     width: "50%",
     height: 50,
     marginHorizontal: 20,
-    marginVertical: 3,
+    marginVertical: 5,
   },
   addNewVehicleButton: {
     flex: 0.3,
@@ -31,24 +31,26 @@ const styles = StyleSheet.create({
   },
 
   MyVehiclesContainer: {
+    alignSelf: "center",
     width: "100%",
     height: "100%",
-    paddingRight: 10
+    paddingRight: 5,
   },
   MyVehiclesList: {
     alignSelf: "center",
-    height: "68%",
+    height: "70%",
     width: "100%",
   },
   MyVehicleContainer: {
     backgroundColor: "rgba(0, 0, 0, 0.8)",
     width: "92%",
-    height: 125,
+    height: 120,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-around",
     alignSelf: "center",
-    justifyContent: "center",
-    paddingLeft: 20,
-    marginRight: 5,
-    margin: 5,
+    marginBottom: "5%",
+    paddingHorizontal: 10,
     borderColor: "#555",
     borderWidth: 1,
     borderRightWidth: 3,
@@ -60,6 +62,16 @@ const styles = StyleSheet.create({
     fontSize: 17,
     fontWeight: "400",
     letterSpacing: 0.5,
+  },
+  gotoItemContainer: {
+    alignItems: "flex-end",
+    justifyContent: "center",
+    width: "15%",
+    height: 30,
+  },
+  gotoItemIcon: {
+    flex: 1,
+    aspectRatio: 1,
   },
 
   addVehicleContainer: {

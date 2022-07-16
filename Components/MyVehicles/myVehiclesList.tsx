@@ -8,13 +8,13 @@ interface vehicleType {
     vehicleName: string,
     vehicleType: string,
 }
-interface vehiclesListListProps {
+interface vehiclesListProps {
     vehiclesList: (vehicleType | undefined)[];
     setSelectedVehicle: React.Dispatch<React.SetStateAction<vehicleType | undefined>>,
     setAddEditVehicle: React.Dispatch<React.SetStateAction<boolean>>,
 }
 
-export default function FindSpotList({ vehiclesList, setSelectedVehicle, setAddEditVehicle }: vehiclesListListProps) {
+export default function FindSpotList({ vehiclesList, setSelectedVehicle, setAddEditVehicle }: vehiclesListProps) {
     const renderItem = ({ item }: any) => (
         item && <MyVehiclesItem
             vehicle={item}
@@ -24,7 +24,6 @@ export default function FindSpotList({ vehiclesList, setSelectedVehicle, setAddE
     );
 
     return (
-
         <View style={styles.MyVehiclesList}>
             <FlatList
                 data={vehiclesList}

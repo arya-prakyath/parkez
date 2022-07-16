@@ -15,11 +15,8 @@ interface vehicleProps {
 
 export default function MyVehiclesItem({ vehicle, setSelectedVehicle, setAddEditVehicle }: vehicleProps) {
     return (
-        <TouchableWithoutFeedback onPress={() => {
-            setSelectedVehicle(vehicle);
-            setAddEditVehicle(true);
-        }}>
-            <View style={styles.MyVehicleContainer}>
+        <View style={styles.MyVehicleContainer}>
+            <View>
                 <Text style={styles.infoText}>
                     <Text style={{ fontStyle: "italic", fontWeight: "300" }}>Vehicle Name </Text>- {vehicle.vehicleName}
                 </Text>
@@ -30,6 +27,16 @@ export default function MyVehiclesItem({ vehicle, setSelectedVehicle, setAddEdit
                     <Text style={{ fontStyle: "italic", fontWeight: "300" }}>Vehicle Type </Text>- {vehicle.vehicleType}
                 </Text>
             </View>
-        </TouchableWithoutFeedback>
+
+            <TouchableOpacity style={styles.gotoItemContainer} onPress={() => {
+                setSelectedVehicle(vehicle);
+                setAddEditVehicle(true);
+            }}>
+                <Image
+                    source={require("../../assets/buttons/openItemButton.png")}
+                    style={styles.gotoItemIcon}
+                />
+            </TouchableOpacity>
+        </View >
     )
 }

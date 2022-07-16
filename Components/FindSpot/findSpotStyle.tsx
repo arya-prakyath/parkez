@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     height: "70%",
     width: "100%",
-    paddingRight: 10,
+    paddingRight: 5,
   },
   spots: {
     alignSelf: "center",
@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 3,
     borderRadius: 10,
   },
-  spotspressed: {
+  spotsPressed: {
     opacity: 0.3,
   },
   spotsNameAndCost: {
