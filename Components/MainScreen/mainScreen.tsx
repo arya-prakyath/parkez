@@ -20,6 +20,7 @@ interface mainScreenProps {
 
 export default function Home({ navigation }: mainScreenProps) {
     const [screen, setScreen] = useState('Home');
+    const [title, setTitle] = useState("Home");
 
     return (
         <ImageBackground
@@ -38,9 +39,13 @@ export default function Home({ navigation }: mainScreenProps) {
             {screen === "Support" && <SupportScreen />}
             {screen === "AboutUs" && <AboutUsScreen />}
             {screen === "Settings" && <SettingsScreen />}
-            {screen === "UserProfile" && <UserProfileScreen />}
+            {screen === "UserProfile" && <UserProfileScreen setTitle={setTitle} setScreen={setScreen} />}
 
-            <HeaderBar navigation={navigation} setScreen={setScreen} />
+            <HeaderBar
+                navigation={navigation}
+                title={title}
+                setTitle={setTitle}
+                setScreen={setScreen} />
         </ImageBackground>
     );
 }

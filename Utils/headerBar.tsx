@@ -8,11 +8,12 @@ import ProfileBar from "./ProfileBar";
 
 interface headerBarProps {
     navigation: any,
+    title: string,
+    setTitle: React.Dispatch<React.SetStateAction<string>>,
     setScreen: React.Dispatch<React.SetStateAction<string>>,
 }
 
-export default function HeaderBar({ navigation, setScreen }: headerBarProps) {
-    const [title, setTitle] = useState("Home");
+export default function HeaderBar({ navigation, title, setTitle, setScreen }: headerBarProps) {
     const [currentBlock, setCurrentBlock] = useState("bottom");
 
     const width = Dimensions.get('window').width;

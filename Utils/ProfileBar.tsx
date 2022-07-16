@@ -19,7 +19,7 @@ export default function HeaderProfileOptions({ navigation, onClickProfile, onCli
                 {
                     text: "Logout",
                     onPress: () => navigation.dispatch(
-                            StackActions.replace('Login', {
+                            StackActions.replace('Home', {
                                 navigation: navigation,
                             })),
                     style: "default",
