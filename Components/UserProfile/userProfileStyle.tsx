@@ -23,6 +23,49 @@ const styles = StyleSheet.create({
     aspectRatio: 1,
   },
 
+  editDeleteImageOptionsContainer: {
+    backgroundColor: "#000",
+    position: "absolute",
+    right: "1%",
+    top: "8%",
+    width: "40%",
+    height: 85,
+    paddingVertical: 5,
+    borderColor: "#555",
+    borderWidth: 1,
+    borderTopRightRadius: 15,
+    borderBottomRightRadius: 15,
+    borderBottomLeftRadius: 30,
+  },
+  editDeleteImageOptions: {
+    alignSelf: "flex-start",
+    flexDirection: "row",
+    alignItems: "center",
+    width: "100%",
+    height: "45%",
+    marginLeft: 20,
+  },
+  editDeleteImageOptionsText: {
+    color: "#fff",
+    fontSize: 18,
+    letterSpacing: 1,
+    fontWeight: "300",
+    marginLeft: 15,
+  },
+  editDeleteImageOptionsIcon: {
+    flex: 0.2,
+    aspectRatio: 1,
+  },
+  deleteImageIcon: {
+    flex: 0.25,
+  },
+  seperator: {
+    borderBottomColor: "#fff",
+    borderBottomWidth: 1,
+    marginHorizontal: 10,
+    marginVertical: 3,
+  },
+  
   profileContainer: {
     backgroundColor: "rgba(0, 0, 0, 0.8)",
     height: "58%",
