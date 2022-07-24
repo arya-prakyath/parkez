@@ -1,6 +1,6 @@
 interface spotsListType {
     id: string;
-    title: string;
+    name: string;
     address: string;
     cost: string;
     spotsTotalCount: number,
@@ -15,7 +15,7 @@ interface spotsListType {
 const spotsList: spotsListType[] = [
     {
         id: "10",
-        title: "Orion Mall",
+        name: "Orion Mall",
         address: "Dr Rajkumar Rd, Rajajinagar, Bengaluru, Karnataka 560055",
         cost: "25 INR/ Hour",
         spotsTotalCount: 500,
@@ -28,7 +28,7 @@ const spotsList: spotsListType[] = [
     },
     {
         id: "20",
-        title: "Jetlag Restobar",
+        name: "Jetlag Restobar",
         address: "Industrial Suburb, 3, Dr Rajkumar Rd, opp. to Sherton Hotel, Rajajinagar, Bengaluru, Karnataka 560010",
         cost: "10 INR/ Hour",
         spotsTotalCount: 50,
@@ -41,7 +41,7 @@ const spotsList: spotsListType[] = [
     },
     {
         id: "30",
-        title: "Iskcon Temple",
+        name: "Iskcon Temple",
         address: "Hare Krishna Hill, Chord Rd, Rajajinagar, Bengaluru, Karnataka 560010",
         cost: "20 INR/ Hour",
         spotsTotalCount: 200,
@@ -54,7 +54,7 @@ const spotsList: spotsListType[] = [
     },
     {
         id: "40",
-        title: "Rajajinagar Metro",
+        name: "Rajajinagar Metro",
         address: "Chord Road West of Chord Road 2nd Stage Nagapura Bengaluru, Arisinakunte, Karnataka 560086",
         cost: "20 INR/ Hour",
         spotsTotalCount: 50,
@@ -67,7 +67,7 @@ const spotsList: spotsListType[] = [
     },
     {
         id: "50",
-        title: "District 6 - Pub and Brewery",
+        name: "District 6 - Pub and Brewery",
         address: "G-03, G-04, G-05 26/1, Dr Rajkumar Road, Malleshwaram, Rajajinagar, Bengaluru, Karnataka 560055",
         cost: "30 INR/ Hour",
         spotsTotalCount: 100,
@@ -80,7 +80,7 @@ const spotsList: spotsListType[] = [
     },
     {
         id: "60",
-        title: "Old Big Bazar",
+        name: "Old Big Bazar",
         address: "5&6, Chord Rd, near Iskon Temple, Yeshwanthpur Industrial Suburb, Rajajinagar, Bengaluru, Karnataka 560086",
         cost: "30 INR/ Hour",
         spotsTotalCount: 200,
@@ -93,7 +93,7 @@ const spotsList: spotsListType[] = [
     },
     {
         id: "70",
-        title: "Phoenix One Bangalore West",
+        name: "Phoenix One Bangalore West",
         address: "1, Dr Rajkumar Rd, opp. Vivekananda College, Rajajinagar, Bengaluru, Karnataka 560010",
         cost: "20 INR/ Hour",
         spotsTotalCount: 500,
@@ -106,7 +106,7 @@ const spotsList: spotsListType[] = [
     },
     {
         id: "80",
-        title: "Sheraton Grand Hotel",
+        name: "Sheraton Grand Hotel",
         address: "26/1 Dr. Rajkumar Road Malleswaram, Rajajinagar, Bengaluru, Karnataka 560055",
         cost: "40 INR/ Hour",
         spotsTotalCount: 500,
@@ -119,7 +119,7 @@ const spotsList: spotsListType[] = [
     },
     {
         id: "90",
-        title: "Balaji Residency",
+        name: "Balaji Residency",
         address: "15th Cross, 8th Main, Rajajinagar, 1st Block, Bangalore, Karnataka 5600055",
         cost: "10 INR/ Hour",
         spotsTotalCount: 3,
@@ -132,7 +132,7 @@ const spotsList: spotsListType[] = [
     },
     {
         id: "100",
-        title: "18th Cross Road",
+        name: "18th Cross Road",
         address: "18th cross road, Matha Medicals Building, Rajajinagar, Bangalore, Karnataka 5600055",
         cost: "10 INR/ Hour",
         spotsTotalCount: 1,

@@ -6,7 +6,7 @@ import styles from "./favoriteSpotsStyle";
 
 interface spotsListType {
     id: string;
-    title: string;
+    name: string;
     address: string;
     cost: string;
     spotsTotalCount: number,

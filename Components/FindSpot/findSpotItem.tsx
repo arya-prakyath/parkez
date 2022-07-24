@@ -3,13 +3,32 @@ import { View, Text, ToastAndroid, TouchableWithoutFeedback, Image, TouchableOpa
 import styles from "./findSpotStyle";
 
 interface spotProps {
+    id: string;
     name: string;
     address: string;
     cost: string;
+    spotsTotalCount: number,
+    spotsAvaliableCount: number,
+    spotsConsumedCount: number,
+    extraNotes?: string | undefined,
+    longitute: string,
+    latitude: string,
     isFavorite: boolean;
 }
 
-export default function FindSpotItem({ name, address, cost, isFavorite }: spotProps) {
+export default function FindSpotItem({
+    id,
+    name,
+    address,
+    cost,
+    spotsTotalCount,
+    spotsAvaliableCount,
+    spotsConsumedCount,
+    extraNotes,
+    longitute,
+    latitude,
+    isFavorite,
+}: spotProps) {
     const [pressed, setPressed] = useState(false);
     const [favorite, setFavorite] = useState(isFavorite);
 

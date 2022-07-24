@@ -6,7 +6,7 @@ import styles from "./findSpotStyle";
 
 interface spotsListType {
     id: string;
-    title: string;
+    name: string;
     address: string;
     cost: string;
     spotsTotalCount: number,
@@ -24,7 +24,7 @@ export default function FindSpot() {
     let spotsList: (spotsListType | undefined)[] = spotsListData;
     if (searchText.length > 0) {
         spotsList = spotsList.map((spot) => {
-            if (spot?.title.toLowerCase().includes(searchText.toLowerCase()) || spot?.address.toLowerCase().includes(searchText.toLowerCase()))
+            if (spot?.name.toLowerCase().includes(searchText.toLowerCase()) || spot?.address.toLowerCase().includes(searchText.toLowerCase()))
                 return spot;
         });
     }
