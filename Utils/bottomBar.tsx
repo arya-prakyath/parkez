@@ -13,7 +13,13 @@ export default function bottomBar({ setScreen, setTitle, currentBlock, onClick }
     const [addSpotSelected, setAddSpotSelected] = useState(false);
     const [walletSelected, setWalletSelected] = useState(false);
 
-    if (currentBlock !== "bottom") {
+    if (currentBlock === "home"){
+        !homeSelected && setHomeSelected(true);
+        findSpotSelected && setFindSpotSelected(false);
+        addSpotSelected && setAddSpotSelected(false);
+        walletSelected && setWalletSelected(false);
+    }
+    else if (currentBlock !== "bottom") {
         homeSelected && setHomeSelected(false);
         findSpotSelected && setFindSpotSelected(false);
         addSpotSelected && setAddSpotSelected(false);
@@ -61,6 +67,7 @@ export default function bottomBar({ setScreen, setTitle, currentBlock, onClick }
             }
         }
     }
+
     return (
         <View style={{
             backgroundColor: "#111",

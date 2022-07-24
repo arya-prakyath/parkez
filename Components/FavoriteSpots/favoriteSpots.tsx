@@ -24,7 +24,7 @@ export default function favoriteSpots() {
     let spotsList: (spotsListType | undefined)[] = spotsListData.filter(spot => spot.isFavorite ? true : false);
     if (searchText.length > 0) {
         spotsList = spotsList.map((spot) => {
-            if (spot?.title.toLowerCase().includes(searchText.toLowerCase()) || spot?.address.toLowerCase().includes(searchText.toLowerCase()))
+            if (spot?.name.toLowerCase().includes(searchText.toLowerCase()) || spot?.address.toLowerCase().includes(searchText.toLowerCase()))
                 return spot;
         });
     }

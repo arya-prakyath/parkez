@@ -6,11 +6,12 @@ import styles from "./userProfileStyle";
 const imageFileTypes: string[] = ['jpg', 'jpeg', 'png'];
 
 interface userProfileProps {
-    setScreen: React.Dispatch<React.SetStateAction<string>>,
     setTitle: React.Dispatch<React.SetStateAction<string>>,
+    setScreen: React.Dispatch<React.SetStateAction<string>>,
+    setCurrentBlock: React.Dispatch<React.SetStateAction<string>>,
 }
 
-export default function userProfile({ setTitle, setScreen }: userProfileProps) {
+export default function userProfile({ setTitle, setScreen, setCurrentBlock }: userProfileProps) {
     const [editMode, setEditMode] = useState(false);
     const [clickedOnImage, setClickedOnImage] = useState(false);
 
@@ -171,6 +172,7 @@ export default function userProfile({ setTitle, setScreen }: userProfileProps) {
                         <View style={styles.buttonContainer}>
                             <TouchableOpacity style={styles.homeButton}
                                 onPress={() => {
+                                    setCurrentBlock('home');
                                     setTitle('Home');
                                     setScreen('Home');
                                 }}>

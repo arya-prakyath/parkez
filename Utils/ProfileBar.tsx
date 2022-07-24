@@ -1,5 +1,6 @@
 import { StackActions } from "@react-navigation/native";
 import { Animated, Text, Platform, StatusBar, TouchableOpacity, Alert } from "react-native";
+import showAlert from "./alertBox";
 
 interface headerProfileOptions {
     navigation: any;
@@ -12,28 +13,17 @@ interface headerProfileOptions {
 export default function HeaderProfileOptions({ navigation, onClickProfile, onClickLogout, profileOptionsOpacity, profileOptionsSlide }: headerProfileOptions) {
     const logOut = () => {
         onClickLogout();
-        Alert.alert(
-            "",
-            "Are you sure you want to logout?",
-            [
-                {
-                    text: "Logout",
-                    onPress: () => navigation.dispatch(
-                            StackActions.replace('Home', {
-                                navigation: navigation,
-                            })),
-                    style: "default",
-                },
-                {
-                    text: "Cancel",
-                    onPress: () => {},
-                    style: "cancel",
-                }
-            ],
-            {
-                cancelable: true,
-            }
-        )
+        showAlert({
+            title: "",
+            message: "Are you sure you want to logout?",
+            buttonText: "Logout",
+            onPressButton: () => navigation.dispatch(
+                StackActions.replace('Login', {
+                    navigation: navigation,
+                })),
+            cancelButtonText: "Cancel",
+            onPressCancelButton: () => { },
+        });
     }
 
     return (

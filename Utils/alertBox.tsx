@@ -5,28 +5,53 @@ interface alertBoxProps {
     message: string,
     buttonText: string,
     onPressButton: () => void,
+    cancelButtonText?: string,
+    onPressCancelButton?: () => void,
 }
 
-const showAlert = ({ 
-    title, 
-    message, 
+const showAlert = ({
+    title,
+    message,
     buttonText,
-    onPressButton 
+    onPressButton,
+    cancelButtonText,
+    onPressCancelButton,
 }: alertBoxProps) => {
-    Alert.alert(
-        title,
-        message,
-        [
+    cancelButtonText ?
+        Alert.alert(
+            title,
+            message,
+            [
+                {
+                    text: buttonText,
+                    onPress: onPressButton,
+                    style: "default",
+                },
+                {
+                    text: cancelButtonText,
+                    onPress: onPressCancelButton,
+                    style: "cancel",
+                },
+            ],
             {
-                text: buttonText,
-                onPress: onPressButton,
-                style: "cancel",
-            },
-        ],
-        {
-            cancelable: true,
-        }
-    )
+                cancelable: true,
+            }
+        )
+        :
+        Alert.alert(
+            title,
+            message,
+            [
+                {
+                    text: buttonText,
+                    onPress: onPressButton,
+                    style: "cancel",
+                },
+            ],
+            {
+                cancelable: true,
+            }
+        )
 }
 
 export default showAlert;

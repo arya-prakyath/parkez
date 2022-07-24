@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ImageBackground } from "react-native";
+import { BackHandler, ImageBackground } from "react-native";
 import HeaderBar from "../../Utils/headerBar";
 import UserProfileScreen from "../UserProfile";
 import HomeScreen from "../Home";
@@ -12,6 +12,7 @@ import BookingHistoryScreen from "../BookingHistory";
 import AboutUsScreen from "../AboutUs";
 import SupportScreen from "../Support";
 import SettingsScreen from "../Settings";
+import showAlert from "../../Utils/alertBox";
 import styles from "./mainScreenStyle";
 
 interface mainScreenProps {
@@ -19,8 +20,29 @@ interface mainScreenProps {
 }
 
 export default function Home({ navigation }: mainScreenProps) {
-    const [screen, setScreen] = useState('Home');
+    const [screen, setScreen] = useState("Home");
     const [title, setTitle] = useState("Home");
+    const [currentBlock, setCurrentBlock] = useState("bottom");
+
+    const onClickBackButton = () => {
+            if (screen === "Home" && title == "Home") {
+                showAlert({
+                    title: "",
+                    message: "Do you want to close and exit this application?",
+                    buttonText: "Exit",
+                    onPressButton: () => BackHandler.exitApp(),
+                    cancelButtonText: "Cancel",
+                    onPressCancelButton: () => { },
+                })
+                return true;
+            }
+            setCurrentBlock("home");
+            setScreen("Home");
+            setTitle("Home");
+            return true;
+        }
+
+    BackHandler.addEventListener("hardwareBackPress", onClickBackButton);
 
     return (
         <ImageBackground
@@ -39,13 +61,16 @@ export default function Home({ navigation }: mainScreenProps) {
             {screen === "Support" && <SupportScreen />}
             {screen === "AboutUs" && <AboutUsScreen />}
             {screen === "Settings" && <SettingsScreen />}
-            {screen === "UserProfile" && <UserProfileScreen setTitle={setTitle} setScreen={setScreen} />}
+            {screen === "UserProfile" && <UserProfileScreen setTitle={setTitle} setScreen={setScreen} setCurrentBlock={setCurrentBlock} />}
 
             <HeaderBar
                 navigation={navigation}
                 title={title}
                 setTitle={setTitle}
-                setScreen={setScreen} />
+                setScreen={setScreen}
+                currentBlock={currentBlock}
+                setCurrentBlock={setCurrentBlock}
+            />
         </ImageBackground>
     );
 }
