@@ -199,12 +199,13 @@ export default function userProfile({ setTitle, setScreen }: userProfileProps) {
                         onPress={() => {
                             setProfileImageData(undefined);
                             setClickedOnImage(false);
+                            ToastAndroid.show("Profile picture removed", 100);
                         }}>
                         <Image
                             source={require("../../assets/buttons/delete.png")}
                             style={[styles.editDeleteImageOptionsIcon, styles.deleteImageIcon]}
                         />
-                        <Text style={styles.editDeleteImageOptionsText}>Delete</Text>
+                        <Text style={styles.editDeleteImageOptionsText}>Remove</Text>
                     </TouchableOpacity>
                     <View style={styles.seperator}></View>
                     <TouchableOpacity style={styles.editDeleteImageOptions}
