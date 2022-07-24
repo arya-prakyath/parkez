@@ -1,6 +1,5 @@
-import { validatePathConfig } from "@react-navigation/native";
 import React, { useState } from "react";
-import { View, Text, TextInput, TouchableHighlight, Image, TouchableOpacity, ToastAndroid } from "react-native";
+import { View, Text, TextInput, TouchableHighlight, Image, TouchableOpacity, } from "react-native";
 import styles from "./addSpotStyle";
 
 interface spotDetailsProps {

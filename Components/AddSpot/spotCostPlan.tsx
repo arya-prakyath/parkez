@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, TextInput, TouchableHighlight, Image, Button, TouchableOpacity, ScrollView, ToastAndroid } from "react-native";
+import { View, Text, TextInput, Image, TouchableOpacity, ScrollView, ToastAndroid } from "react-native";
 import { Dropdown } from 'react-native-element-dropdown';
 import costIntervals from "../../Models/costIntervals";
 import styles from "./addSpotStyle";

@@ -1,4 +1,4 @@
-import { Dimensions, Platform, StatusBar, StyleSheet } from "react-native";
+import { Dimensions, StyleSheet } from "react-native";
 const btnColor: string = "#ddd";
 
 const styles = StyleSheet.create({

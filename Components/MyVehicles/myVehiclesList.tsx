@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { View, Text, Image, FlatList, TouchableOpacity } from "react-native";
+import React from "react";
+import { View, FlatList } from "react-native";
 import MyVehiclesItem from "./myVehiclesItem";
 import styles from "./myVehiclesStyle";
 

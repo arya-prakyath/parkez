@@ -13,8 +13,8 @@ import {
 } from "react-native";
 import animate from "../../Animations/animate";
 import usersList from "../../Models/usersList";
-import styles from "./emailLoginStyle";
 import ForgotPassword from "./forgotPassword";
+import styles from "./emailLoginStyle";
 
 interface loginProps {
     navigation: any,

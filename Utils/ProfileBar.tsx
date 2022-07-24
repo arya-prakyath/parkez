@@ -1,5 +1,5 @@
 import { StackActions } from "@react-navigation/native";
-import { Animated, Text, Platform, StatusBar, TouchableOpacity, Dimensions, Alert } from "react-native";
+import { Animated, Text, Platform, StatusBar, TouchableOpacity, Alert } from "react-native";
 
 interface headerProfileOptions {
     navigation: any;

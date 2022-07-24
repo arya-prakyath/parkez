@@ -1,25 +1,12 @@
 import React from "react";
 import {
   Text,
-  ImageBackground,
   View,
 } from "react-native";
-import HeaderBar from "../../Utils/headerBar";
 import styles from "./homeStyle";
-
-interface homeProps {
-  // navigation: any,
-  screen: string,
-}
 
 export default function Home() {
   return (
-    // <ImageBackground
-    //   source={require("../../assets/Home-Bg.png")}
-    //   
-    //   imageStyle={{ opacity: 0.5 }}
-    //   blurRadius={1}
-    // >
     <View style={styles.container}>
       <View style={styles.appGuide} >
         <Text style={styles.text}>App Guide</Text>

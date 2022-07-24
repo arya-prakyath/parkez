@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { View, Text, TextInput, TouchableHighlight, Image, TouchableOpacity, ToastAndroid } from "react-native";
-import styles from "./addSpotStyle";
+import { View, Text, TouchableOpacity } from "react-native";
 import ConfirmAddSpot from "./confirmAddSpot";
 import SpotCostPlan from "./spotCostPlan";
 import SpotDetails from "./spotDetails";
 import SpotOwner from "./spotOwner";
 import SpotTermsAndConditions from "./spotTermsAndConditions";
+import styles from "./addSpotStyle";
 
 interface spotCostProps {
     id: number,

@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-import { View, Text, Image, TouchableOpacity, ToastAndroid, ScrollView, TouchableWithoutFeedback } from "react-native";
+import { View, Text, } from "react-native";
 import BookingHistoryList from "./bookingHistoryList";
 import BookingHistoryDetails from "./bookingHistoryDetails";
 import BookingHistoryListData from "../../Models/bookingHistoryList";
-
 import styles from "./bookingHistoryStyle";
 
 interface historyType {

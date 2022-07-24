@@ -1,6 +1,5 @@
-import React, { useState } from "react";
-import { View, Text, TextInput, Image, TouchableOpacity, ScrollView, ToastAndroid } from "react-native";
-import showAlert from "../../Utils/alertBox";
+import React from "react";
+import { View, Text, Image, TouchableOpacity, ScrollView, ToastAndroid } from "react-native";
 import styles from "./bookingHistoryStyle";
 
 interface historyType {

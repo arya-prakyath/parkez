@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, TextInput, TouchableHighlight, Image, Button, TouchableOpacity, ScrollView, ToastAndroid } from "react-native";
-import { Item } from "react-native-paper/lib/typescript/components/List/List";
+import { View, Text, Image, TouchableOpacity, ScrollView, } from "react-native";
 import styles from "./addSpotStyle";
 
 interface spotCostProps {

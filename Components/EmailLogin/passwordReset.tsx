@@ -5,10 +5,8 @@ import {
     Image,
     TextInput,
     TouchableHighlight,
-    ToastAndroid,
     TouchableOpacity,
 } from "react-native";
-import usersList from "../../Models/usersList";
 import styles from "./emailLoginStyle";
 
 interface passwordResetProps {

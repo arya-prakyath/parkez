@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Animated, Text, View, Image, TouchableOpacity, Dimensions, TextInput, TouchableHighlight } from "react-native";
+import { Animated, Text, View, Image, TouchableOpacity, TextInput, TouchableHighlight } from "react-native";
 import animate from "../../Animations/animate";
 import phoneList from "../../Models/phoneList";
 import usersList from "../../Models/usersList";

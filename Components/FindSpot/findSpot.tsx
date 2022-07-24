@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { View, Image, TextInput, Text, TouchableOpacity, FlatList, SafeAreaView } from "react-native";
+import { View, Image, TextInput, TouchableOpacity, } from "react-native";
 import FindSpotList from "./findSpotList";
-import spotsListData from "../../Models/spotsList"
+import spotsListData from "../../Models/spotsList";
 import styles from "./findSpotStyle";
 
 interface spotsListType {

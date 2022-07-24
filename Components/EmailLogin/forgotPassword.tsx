@@ -5,13 +5,12 @@ import {
     Image,
     TextInput,
     TouchableHighlight,
-    ToastAndroid,
     TouchableOpacity,
 } from "react-native";
 import usersList from "../../Models/usersList";
 import showAlert from "../../Utils/alertBox";
-import styles from "./emailLoginStyle";
 import PasswordReset from "./passwordReset";
+import styles from "./emailLoginStyle";
 
 interface forgotPasswordProps {
     parentMail: string,

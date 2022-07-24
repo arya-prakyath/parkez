@@ -1,4 +1,3 @@
-import { validatePathConfig } from "@react-navigation/native";
 import React, { useState } from "react";
 import { View, Text, TextInput, Image, TouchableOpacity } from "react-native";
 import { Dropdown } from "react-native-element-dropdown";

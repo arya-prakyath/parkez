@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { ImageBackground } from "react-native";
-import styles from "./mainScreenStyle";
 import HeaderBar from "../../Utils/headerBar";
+import UserProfileScreen from "../UserProfile";
 import HomeScreen from "../Home";
 import FindSpotScreen from "../FindSpot";
 import AddSpotScreen from "../AddSpot";
@@ -12,7 +12,7 @@ import BookingHistoryScreen from "../BookingHistory";
 import AboutUsScreen from "../AboutUs";
 import SupportScreen from "../Support";
 import SettingsScreen from "../Settings";
-import UserProfileScreen from "../UserProfile";
+import styles from "./mainScreenStyle";
 
 interface mainScreenProps {
     navigation: any,

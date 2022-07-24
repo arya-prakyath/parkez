@@ -1,4 +1,3 @@
-import { StackActions } from "@react-navigation/native";
 import React, { useState } from "react";
 import { View, Image, Text, Platform, StatusBar, TouchableOpacity, Animated, Dimensions } from "react-native";
 import animate from "../Animations/animate";

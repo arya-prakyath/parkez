@@ -1,6 +1,5 @@
-import React, { useState } from "react";
-import { View, Text, TextInput, TouchableHighlight, Image, Button, TouchableOpacity, ScrollView, ToastAndroid, Alert } from "react-native";
-import { Item } from "react-native-paper/lib/typescript/components/List/List";
+import React from "react";
+import { View, Text, Image, TouchableOpacity, ScrollView, } from "react-native";
 import showAlert from "../../Utils/alertBox";
 import styles from "./addSpotStyle";
 
