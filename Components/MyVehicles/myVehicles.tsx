@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, Image, TouchableOpacity, } from "react-native";
+import { View, Text, Image, TouchableOpacity, BackHandler, } from "react-native";
 import AddEditVehicle from "./addEditVehicle";
 import MyVehiclesList from "./myVehiclesList";
 import vehiclesListData from "../../Models/vehiclesListData";
@@ -11,7 +11,11 @@ interface vehicleType {
     vehicleType: string,
 }
 
-export default function myVehicle() {
+interface myVehiclesProps {
+    onClickBackButton: (toScreen: string) => boolean;
+}
+
+export default function myVehicle({ onClickBackButton }: myVehiclesProps) {
     const [hasVehicles, setHasVehicles] = useState(true);
     const [addEditVehicle, setAddEditVehicle] = useState(false);
     const [selectedVehicle, setSelectedVehicle] = useState<vehicleType>();
@@ -25,6 +29,7 @@ export default function myVehicle() {
             selectedVehicle={selectedVehicle}
         />
 
+    BackHandler.addEventListener("hardwareBackPress", () => onClickBackButton("Home"));
     return (
         <View style={styles.container}>
             {

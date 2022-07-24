@@ -24,7 +24,7 @@ export default function Home({ navigation }: mainScreenProps) {
     const [title, setTitle] = useState("Home");
     const [currentBlock, setCurrentBlock] = useState("bottom");
 
-    const onClickBackButton = () => {
+    const onClickBackButton = (toScreen: string) => {
             if (screen === "Home" && title == "Home") {
                 showAlert({
                     title: "",
@@ -36,13 +36,13 @@ export default function Home({ navigation }: mainScreenProps) {
                 })
                 return true;
             }
-            setCurrentBlock("home");
-            setScreen("Home");
-            setTitle("Home");
-            return true;
+            else{
+                setScreen(toScreen);
+                setTitle(toScreen);
+                toScreen === "Home" && setCurrentBlock("home");
+                return true;
+            }
         }
-
-    BackHandler.addEventListener("hardwareBackPress", onClickBackButton);
 
     return (
         <ImageBackground
@@ -51,17 +51,17 @@ export default function Home({ navigation }: mainScreenProps) {
             imageStyle={{ opacity: 0.5 }}
             blurRadius={1}
         >
-            {screen === "Home" && <HomeScreen />}
-            {screen === "FindSpot" && <FindSpotScreen />}
-            {screen === "AddSpot" && <AddSpotScreen />}
-            {screen === "Wallet" && <WalletScreen />}
-            {screen === "MyVehicles" && <MyVehicleScreen />}
-            {screen === "FavoriteSpots" && <FavoriteSpotsScreen />}
-            {screen === "BookingHistory" && <BookingHistoryScreen />}
-            {screen === "Support" && <SupportScreen />}
-            {screen === "AboutUs" && <AboutUsScreen />}
-            {screen === "Settings" && <SettingsScreen />}
-            {screen === "UserProfile" && <UserProfileScreen setTitle={setTitle} setScreen={setScreen} setCurrentBlock={setCurrentBlock} />}
+            {screen === "Home" && <HomeScreen onClickBackButton={onClickBackButton}/>}
+            {screen === "FindSpot" && <FindSpotScreen onClickBackButton={onClickBackButton}/>}
+            {screen === "AddSpot" && <AddSpotScreen onClickBackButton={onClickBackButton}/>}
+            {screen === "Wallet" && <WalletScreen onClickBackButton={onClickBackButton}/>}
+            {screen === "MyVehicles" && <MyVehicleScreen onClickBackButton={onClickBackButton}/>}
+            {screen === "FavoriteSpots" && <FavoriteSpotsScreen onClickBackButton={onClickBackButton}/>}
+            {screen === "BookingHistory" && <BookingHistoryScreen onClickBackButton={onClickBackButton}/>}
+            {screen === "Support" && <SupportScreen onClickBackButton={onClickBackButton}/>}
+            {screen === "AboutUs" && <AboutUsScreen onClickBackButton={onClickBackButton}/>}
+            {screen === "Settings" && <SettingsScreen onClickBackButton={onClickBackButton}/>}
+            {screen === "UserProfile" && <UserProfileScreen onClickBackButton={onClickBackButton}/>}
 
             <HeaderBar
                 navigation={navigation}

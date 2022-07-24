@@ -1,11 +1,17 @@
 import React from "react";
 import {
+  BackHandler,
   Text,
   View,
 } from "react-native";
 import styles from "./homeStyle";
 
-export default function Home() {
+interface homeProps{
+  onClickBackButton: (toScreen: string) => boolean;
+}
+
+export default function Home({onClickBackButton}: homeProps) {
+  BackHandler.addEventListener("hardwareBackPress", () => onClickBackButton("Home"));
   return (
     <View style={styles.container}>
       <View style={styles.appGuide} >

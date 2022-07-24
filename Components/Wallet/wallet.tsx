@@ -1,8 +1,13 @@
 import React from "react";
-import { View, Text, TouchableOpacity, ToastAndroid } from "react-native";
+import { View, Text, TouchableOpacity, ToastAndroid, BackHandler } from "react-native";
 import styles from "./walletStyle";
 
-export default function Wallet() {
+interface walletProps {
+    onClickBackButton: (toScreen: string) => boolean;
+}
+
+export default function Wallet({onClickBackButton}: walletProps) {
+    BackHandler.addEventListener("hardwareBackPress", () => onClickBackButton("Home"));
     return (
         <View style={styles.container}>
             <View style={styles.paymentMethodContainer}>

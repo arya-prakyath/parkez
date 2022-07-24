@@ -1,17 +1,15 @@
 import React, { useState } from "react";
-import { View, Image, TouchableOpacity, Text, TextInput, ToastAndroid } from "react-native";
+import { View, Image, TouchableOpacity, Text, TextInput, ToastAndroid, BackHandler } from "react-native";
 import * as DocumentPicker from 'expo-document-picker';
 import styles from "./userProfileStyle";
 
 const imageFileTypes: string[] = ['jpg', 'jpeg', 'png'];
 
 interface userProfileProps {
-    setTitle: React.Dispatch<React.SetStateAction<string>>,
-    setScreen: React.Dispatch<React.SetStateAction<string>>,
-    setCurrentBlock: React.Dispatch<React.SetStateAction<string>>,
+    onClickBackButton: (toScreen: string) => boolean;
 }
 
-export default function userProfile({ setTitle, setScreen, setCurrentBlock }: userProfileProps) {
+export default function userProfile({ onClickBackButton }: userProfileProps) {
     const [editMode, setEditMode] = useState(false);
     const [clickedOnImage, setClickedOnImage] = useState(false);
 
@@ -36,6 +34,11 @@ export default function userProfile({ setTitle, setScreen, setCurrentBlock }: us
         });
     }
 
+    {
+        editMode ? BackHandler.addEventListener("hardwareBackPress", () => {
+            setEditMode(false); return true;
+        }) : BackHandler.addEventListener("hardwareBackPress", () => onClickBackButton("Home"))
+    }
     return (
         <View style={styles.container}>
             {editMode ? (
@@ -170,12 +173,7 @@ export default function userProfile({ setTitle, setScreen, setCurrentBlock }: us
                         </View>
                     ) : (
                         <View style={styles.buttonContainer}>
-                            <TouchableOpacity style={styles.homeButton}
-                                onPress={() => {
-                                    setCurrentBlock('home');
-                                    setTitle('Home');
-                                    setScreen('Home');
-                                }}>
+                            <TouchableOpacity style={styles.homeButton} onPress={() => onClickBackButton("Home")}>
                                 <Image
                                     source={require("../../assets/buttons/backButton.png")}
                                     style={styles.homeButtonIcon}

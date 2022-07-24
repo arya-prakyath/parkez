@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, Image, TouchableOpacity, ScrollView, ToastAndroid } from "react-native";
+import { View, Text, Image, TouchableOpacity, ScrollView, ToastAndroid, BackHandler } from "react-native";
 import styles from "./bookingHistoryStyle";
 
 interface historyType {
@@ -23,14 +23,16 @@ export default function bookingHistoryDetails({ selectedHistory, setSelectedHist
     const ownerName = "Owner's Name";
     const inchargeName = "Incharge's Kumar";
 
+    const clearState = () => {
+        setSelectedHistory(undefined);
+        setShowHistoryDetails(false);
+    }
+
+    BackHandler.addEventListener("hardwareBackPress", () => {clearState(); return true});
     return (
         <View style={styles.container}>
             <View style={[styles.histortDetailsContainer, styles.backButtonContainer]}>
-                <TouchableOpacity style={styles.backButton}
-                    onPress={() => {
-                        setSelectedHistory(undefined);
-                        setShowHistoryDetails(false);
-                    }}>
+                <TouchableOpacity style={styles.backButton} onPress={() => clearState()}>
                     <Image
                         source={require("../../assets/buttons/backButton.png")}
                         style={styles.backButtonIcon}

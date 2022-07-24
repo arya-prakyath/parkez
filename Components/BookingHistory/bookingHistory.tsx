@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, } from "react-native";
+import { View, Text, BackHandler, } from "react-native";
 import BookingHistoryList from "./bookingHistoryList";
 import BookingHistoryDetails from "./bookingHistoryDetails";
 import BookingHistoryListData from "../../Models/bookingHistoryListData";
@@ -17,7 +17,11 @@ interface historyType {
     toDateTime: string,
 }
 
-export default function BookingHistory() {
+interface bookinghistoryProps {
+    onClickBackButton: (toScreen: string) => boolean;
+}
+
+export default function BookingHistory({ onClickBackButton }: bookinghistoryProps) {
     const [hasHistory, setHasHistory] = useState(true);
     const [selectedHistory, setSelectedHistory] = useState<historyType>();
     const [showHistoryDetails, setShowHistoryDetails] = useState(false);
@@ -31,6 +35,7 @@ export default function BookingHistory() {
             setSelectedHistory={setSelectedHistory}
         />
 
+    BackHandler.addEventListener("hardwareBackPress", () => onClickBackButton("Home"));
     return (
         <View style={styles.container}>
             {

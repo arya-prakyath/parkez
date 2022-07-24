@@ -8,6 +8,7 @@ import {
     Linking,
     Animated,
     Dimensions,
+    BackHandler,
 } from "react-native";
 import animate from "../../Animations/animate";
 import EmailLogin from "../EmailLogin";
@@ -39,6 +40,7 @@ export default function Login({ navigation }: { navigation: any }) {
         setTimeout(() => setRegisterNow(true), 500);
     };
 
+    BackHandler.addEventListener("hardwareBackPress", () => {BackHandler.exitApp(); return true;})
     return (
         <ImageBackground
             source={require("../../assets/Home-Bg.png")}

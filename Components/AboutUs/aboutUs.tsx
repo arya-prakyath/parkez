@@ -1,8 +1,13 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { View, Text, BackHandler } from "react-native";
 import styles from "./aboutUsStyle";
 
-export default function aboutUs (){
+interface aboutUsProps {
+    onClickBackButton: (toScreen: string) => boolean;
+}
+
+export default function aboutUs({ onClickBackButton }: aboutUsProps) {
+    BackHandler.addEventListener("hardwareBackPress", () => onClickBackButton("Home"))
     return (
         <View style={styles.container}>
             <Text style={styles.text}>About Screen Here</Text>

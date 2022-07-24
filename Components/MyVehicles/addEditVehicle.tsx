@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, TextInput, Image, TouchableOpacity } from "react-native";
+import { View, Text, TextInput, Image, TouchableOpacity, BackHandler } from "react-native";
 import { Dropdown } from "react-native-element-dropdown";
 import showAlert from "../../Utils/alertBox";
 import styles from "./myVehiclesStyle";
@@ -35,6 +35,11 @@ export default function addEditVehicle({
     const [vehiclePlateNumber, setVehiclePlateNumber] = useState(selectedVehicle?.vehiclePlateNumber ?? '');
     const [vehicleType, setVehicleType] = useState(selectedVehicle?.vehicleType ?? '');
 
+    const clearState = () => {
+        setSelectedVehicle(undefined);
+        setAddEditVehicle(false);
+    }
+
     const validate = () => {
         if (vehicleName.length < 1)
             return true
@@ -43,6 +48,8 @@ export default function addEditVehicle({
         if (!vehicleType)
             return true
     }
+
+    BackHandler.addEventListener("hardwareBackPress", () => { clearState(); return true });
     return (
         <View style={styles.addEditVehicleConatiner}>
             <View style={styles.vehicleInfoItem}>
@@ -91,10 +98,7 @@ export default function addEditVehicle({
             </View>
 
             <View style={styles.addCancelButtonContainer}>
-                <TouchableOpacity style={styles.cancelButton} onPress={() => {
-                    setSelectedVehicle(undefined);
-                    setAddEditVehicle(false);
-                }}>
+                <TouchableOpacity style={styles.cancelButton} onPress={() => clearState()}>
                     <Image
                         source={require("../../assets/buttons/backButton.png")}
                         style={styles.addCancelButtonIcon}
@@ -108,10 +112,7 @@ export default function addEditVehicle({
                             title: selectedVehicle ? "Vehicle updated !" : "Vehicle Added !",
                             message: selectedVehicle ? "Your vehicle details has been updated successfully." : "Your vehicle details has been added successfully.\n\nYou can edit it at any time.",
                             buttonText: "Okay",
-                            onPressButton: () => {
-                                setSelectedVehicle(undefined);
-                                setAddEditVehicle(false);
-                            }
+                            onPressButton: () => clearState(),
                         })
                     }}>
                     <Text style={[styles.addButtonText, { marginLeft: 10, }]}>{selectedVehicle ? "Update" : "Add Vehicle"}</Text>

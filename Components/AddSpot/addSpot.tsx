@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, TouchableOpacity } from "react-native";
+import { View, Text, TouchableOpacity, BackHandler } from "react-native";
 import ConfirmAddSpot from "./confirmAddSpot";
 import SpotCostPlan from "./spotCostPlan";
 import SpotDetails from "./spotDetails";
@@ -13,7 +13,11 @@ interface spotCostProps {
     interval: string,
 }
 
-export default function AddSpot() {
+interface addSpotProps {
+    onClickBackButton: (toScreen: string) => boolean;
+}
+
+export default function AddSpot({ onClickBackButton }: addSpotProps) {
     const [hasSpots, setHasSpots] = useState(false);
 
     const [progressTracker, setProgressTracker] = useState(0);
@@ -41,6 +45,14 @@ export default function AddSpot() {
         setSpotAddress(address);
     }
 
+    BackHandler.addEventListener("hardwareBackPress", () => {
+        if (progressTracker === 0)
+            onClickBackButton("Home");
+        else{
+            setProgressTracker(progressTracker - 1);
+            return true;
+        }
+    });
     return (
         hasSpots ? (
             <View>

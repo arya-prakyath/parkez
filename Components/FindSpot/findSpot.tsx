@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Image, TextInput, TouchableOpacity, } from "react-native";
+import { View, Image, TextInput, TouchableOpacity, BackHandler, } from "react-native";
 import FindSpotList from "./findSpotList";
 import spotsListData from "../../Models/spotsListData";
 import styles from "./findSpotStyle";
@@ -18,7 +18,11 @@ interface spotsListType {
     isFavorite: boolean;
 }
 
-export default function FindSpot() {
+interface findSpotProps {
+    onClickBackButton: (toScreen: string) => boolean;
+}
+
+export default function FindSpot({ onClickBackButton }: findSpotProps) {
     const [searchText, setSearchText] = useState("");
 
     let spotsList: (spotsListType | undefined)[] = spotsListData;
@@ -29,6 +33,7 @@ export default function FindSpot() {
         });
     }
 
+    BackHandler.addEventListener("hardwareBackPress", () => onClickBackButton("Home"));
     return (
         <View style={styles.container}>
             <View style={styles.searchBar}>
