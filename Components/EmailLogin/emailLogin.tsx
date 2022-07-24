@@ -12,7 +12,7 @@ import {
     Keyboard,
 } from "react-native";
 import animate from "../../Animations/animate";
-import usersList from "../../Models/usersList";
+import usersList from "../../Models/usersListData";
 import ForgotPassword from "./forgotPassword";
 import styles from "./emailLoginStyle";
 

@@ -12,7 +12,7 @@ import {
 } from "react-native";
 import { StackActions } from '@react-navigation/native';
 import animate from "../../Animations/animate";
-import phoneList from "../../Models/phoneList";
+import phoneList from "../../Models/phoneListData";
 import showAlert from "../../Utils/alertBox";
 import styles from "./otpLoginStyle";
 

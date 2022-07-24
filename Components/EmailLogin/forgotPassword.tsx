@@ -7,7 +7,7 @@ import {
     TouchableHighlight,
     TouchableOpacity,
 } from "react-native";
-import usersList from "../../Models/usersList";
+import usersList from "../../Models/usersListData";
 import showAlert from "../../Utils/alertBox";
 import PasswordReset from "./passwordReset";
 import styles from "./emailLoginStyle";

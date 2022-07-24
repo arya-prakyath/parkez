@@ -9,7 +9,7 @@ import {
   Linking,
   ToastAndroid,
 } from "react-native";
-import usersList from "../../Models/usersList";
+import usersList from "../../Models/usersListData";
 import styles from "./login2Style";
 
 export default function Login({ navigation }: { navigation: any }) {

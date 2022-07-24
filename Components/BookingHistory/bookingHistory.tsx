@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { View, Text, } from "react-native";
 import BookingHistoryList from "./bookingHistoryList";
 import BookingHistoryDetails from "./bookingHistoryDetails";
-import BookingHistoryListData from "../../Models/bookingHistoryList";
+import BookingHistoryListData from "../../Models/bookingHistoryListData";
 import styles from "./bookingHistoryStyle";
 
 interface historyType {

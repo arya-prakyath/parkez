@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Animated, Text, View, Image, TouchableOpacity, TextInput, TouchableHighlight } from "react-native";
 import animate from "../../Animations/animate";
-import phoneList from "../../Models/phoneList";
-import usersList from "../../Models/usersList";
+import phoneList from "../../Models/phoneListData";
+import usersList from "../../Models/usersListData";
 import showAlert from "../../Utils/alertBox";
 import styles from "./registerStyle";
 

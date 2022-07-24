@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { View, Text, Image, TouchableOpacity, } from "react-native";
 import AddEditVehicle from "./addEditVehicle";
 import MyVehiclesList from "./myVehiclesList";
-import vehiclesListData from "../../Models/vehiclesList";
+import vehiclesListData from "../../Models/vehiclesListData";
 import styles from "./myVehiclesStyle";
 
 interface vehicleType {
