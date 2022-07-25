@@ -57,9 +57,6 @@ const styles = StyleSheet.create({
     borderBottomWidth: 3,
     borderRadius: 10,
   },
-  spotsPressed: {
-    opacity: 0.3,
-  },
   spotsNameAndCost: {
     flexDirection: "row",
     justifyContent: "space-between",

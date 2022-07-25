@@ -3,7 +3,7 @@ import { View, Text, Image, TouchableOpacity, ScrollView, } from "react-native";
 import showAlert from "../../Utils/alertBox";
 import styles from "./addSpotStyle";
 
-interface spotCostProps {
+interface spotCostType {
     id: number,
     cost: string,
     interval: string,
@@ -16,7 +16,7 @@ interface confirmAddSpotProps {
     spotOwnerPhone: string;
     spotInchargeName: string;
     spotInchargePhone: string;
-    spotCostPlans: spotCostProps[];
+    spotCostPlans: spotCostType[];
     termsAgreed: boolean;
     setProgressTracker: React.Dispatch<React.SetStateAction<number>>;
 }

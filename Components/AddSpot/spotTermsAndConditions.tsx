@@ -2,12 +2,6 @@ import React, { useState } from "react";
 import { View, Text, Image, TouchableOpacity, ScrollView, } from "react-native";
 import styles from "./addSpotStyle";
 
-interface spotCostProps {
-    id: number,
-    cost: string,
-    interval: string,
-}
-
 interface spotTermsAndConditionsProps {
     termsAgreed: boolean;
     setTermsAgreed: React.Dispatch<React.SetStateAction<boolean>>;

@@ -3,38 +3,38 @@ import { View, Text, FlatList } from "react-native";
 import FindSpotItem from "./findSpotItem";
 import styles from "./findSpotStyle";
 
-interface spotsListType {
+interface spotCostType {
+    id: number,
+    cost: string,
+    interval: string,
+}
+
+interface spotItemType {
     id: string;
     name: string;
     address: string;
-    cost: string;
-    spotsTotalCount: number,
-    spotsAvaliableCount: number,
-    spotsConsumedCount: number,
-    extraNotes?: string | undefined,
-    longitute: string,
-    latitude: string,
+    cost: spotCostType[];
+    spotsTotalCount: number;
+    spotsAvailableCount: number;
+    spotsConsumedCount: number;
+    extraNotes?: string | undefined;
+    longitute: string;
+    latitude: string;
     isFavorite: boolean;
 }
 
 interface spotsListProps {
-    spotsList: (spotsListType | undefined)[];
+    spotsList: (spotItemType | undefined)[];
+    setSelectedSpot: React.Dispatch<React.SetStateAction<spotItemType | undefined>>;
+    setOpenSpotDetails: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export default function FindSpotList({ spotsList }: spotsListProps) {
+export default function FindSpotList({ spotsList, setSelectedSpot, setOpenSpotDetails }: spotsListProps) {
     const renderItem = ({ item }: any) => (
         item && <FindSpotItem
-            id={item.id}
-            name={item.name}
-            address={item.address}
-            cost={item.cost}
-            spotsTotalCount={item.spotsTotalCount}
-            spotsAvaliableCount={item.spotsAvaliableCount}
-            spotsConsumedCount={item.spotsConsumedCount}
-            extraNotes={item.extraNotes}
-            longitute={item.longitute}
-            latitude={item.latitude}
-            isFavorite={item.isFavorite}
+            spotItem={item}
+            setOpenSpotDetails={setOpenSpotDetails}
+            setSelectedSpot={setSelectedSpot}
         />
     );
 

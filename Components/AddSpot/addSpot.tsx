@@ -7,7 +7,7 @@ import SpotOwner from "./spotOwner";
 import SpotTermsAndConditions from "./spotTermsAndConditions";
 import styles from "./addSpotStyle";
 
-interface spotCostProps {
+interface spotCostType {
     id: number,
     cost: string,
     interval: string,
@@ -36,7 +36,7 @@ export default function AddSpot({ onClickBackButton }: addSpotProps) {
     const [spotInchargeName, setSpotInchargeName] = useState('');
     const [spotInchargePhone, setSpotInchargePhone] = useState('');
 
-    const [spotCostPlans, setSpotCostPlans] = useState<spotCostProps[]>([{ id: 0, cost: '', interval: '' }]);
+    const [spotCostPlans, setSpotCostPlans] = useState<spotCostType[]>([{ id: 0, cost: '', interval: '' }]);
 
     const [termsAgreed, setTermsAgreed] = useState(false);
 

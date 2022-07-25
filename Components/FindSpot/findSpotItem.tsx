@@ -2,52 +2,51 @@ import React, { useState } from "react";
 import { View, Text, ToastAndroid, TouchableWithoutFeedback, Image, TouchableOpacity } from "react-native";
 import styles from "./findSpotStyle";
 
-interface spotProps {
+interface spotCostType {
+    id: number,
+    cost: string,
+    interval: string,
+}
+
+interface spotItemType {
     id: string;
     name: string;
     address: string;
-    cost: string;
-    spotsTotalCount: number,
-    spotsAvaliableCount: number,
-    spotsConsumedCount: number,
-    extraNotes?: string | undefined,
-    longitute: string,
-    latitude: string,
+    cost: spotCostType[];
+    spotsTotalCount: number;
+    spotsAvailableCount: number;
+    spotsConsumedCount: number;
+    extraNotes?: string | undefined;
+    longitute: string;
+    latitude: string;
     isFavorite: boolean;
 }
 
+interface findSpotItemProps {
+    spotItem: spotItemType;
+    setSelectedSpot: React.Dispatch<React.SetStateAction<spotItemType | undefined>>;
+    setOpenSpotDetails: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
 export default function FindSpotItem({
-    id,
-    name,
-    address,
-    cost,
-    spotsTotalCount,
-    spotsAvaliableCount,
-    spotsConsumedCount,
-    extraNotes,
-    longitute,
-    latitude,
-    isFavorite,
-}: spotProps) {
-    const [pressed, setPressed] = useState(false);
-    const [favorite, setFavorite] = useState(isFavorite);
+    spotItem,
+    setSelectedSpot,
+    setOpenSpotDetails,
+}: findSpotItemProps) {
+    const [favorite, setFavorite] = useState(spotItem.isFavorite);
 
     return (
         <TouchableWithoutFeedback onPress={() => {
-            setPressed(true);
-            ToastAndroid.showWithGravity(
-                name,
-                ToastAndroid.SHORT,
-                ToastAndroid.BOTTOM,
-            )
+            setSelectedSpot(spotItem);
+            setOpenSpotDetails(true);
         }}>
-            <View style={pressed ? [styles.spots, styles.spotsPressed] : styles.spots}>
+            <View style={styles.spots}>
                 <View style={styles.spotsNameAndCost}>
-                    <Text style={styles.spotName}>{name}</Text>
-                    <Text style={styles.spotCost}>{cost}</Text>
+                    <Text style={styles.spotName}>{spotItem.name}</Text>
+                    <Text style={styles.spotCost}>{`₹ ${spotItem.cost[0].cost} / ${spotItem.cost[0].interval}`}</Text>
                 </View>
                 <View style={styles.spotsAddressAndFavorite}>
-                    <Text style={styles.spotAddress}>{address}</Text>
+                    <Text style={styles.spotAddress}>{spotItem.address}</Text>
                     <TouchableOpacity style={styles.favoriteButtonContainer} onPress={() => {
                         setFavorite(!favorite);
                         ToastAndroid.showWithGravity(

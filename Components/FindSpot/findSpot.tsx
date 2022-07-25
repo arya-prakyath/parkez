@@ -3,18 +3,25 @@ import { View, Image, TextInput, TouchableOpacity, BackHandler, } from "react-na
 import FindSpotList from "./findSpotList";
 import spotsListData from "../../Models/spotsListData";
 import styles from "./findSpotStyle";
+import FindSpotDetails from "./findSpotDetails";
 
-interface spotsListType {
+interface spotCostType {
+    id: number,
+    cost: string,
+    interval: string,
+}
+
+interface spotItemType {
     id: string;
     name: string;
     address: string;
-    cost: string;
-    spotsTotalCount: number,
-    spotsAvaliableCount: number,
-    spotsConsumedCount: number,
-    extraNotes?: string | undefined,
-    longitute: string,
-    latitude: string,
+    cost: spotCostType[];
+    spotsTotalCount: number;
+    spotsAvailableCount: number;
+    spotsConsumedCount: number;
+    extraNotes?: string | undefined;
+    longitute: string;
+    latitude: string;
     isFavorite: boolean;
 }
 
@@ -24,8 +31,17 @@ interface findSpotProps {
 
 export default function FindSpot({ onClickBackButton }: findSpotProps) {
     const [searchText, setSearchText] = useState("");
+    const [openSpotDetails, setOpenSpotDetails] = useState(false);
+    const [selectedSpot, setSelectedSpot] = useState<spotItemType>();
 
-    let spotsList: (spotsListType | undefined)[] = spotsListData;
+    if (openSpotDetails)
+        return <FindSpotDetails
+            selectedSpot={selectedSpot}
+            setOpenSpotDetails={setOpenSpotDetails}
+            setSelectedSpot={setSelectedSpot}
+        />
+
+    let spotsList: (spotItemType | undefined)[] = spotsListData;
     if (searchText.length > 0) {
         spotsList = spotsList.map((spot) => {
             if (spot?.name.toLowerCase().includes(searchText.toLowerCase()) || spot?.address.toLowerCase().includes(searchText.toLowerCase()))
@@ -64,7 +80,11 @@ export default function FindSpot({ onClickBackButton }: findSpotProps) {
                 }
             </View>
 
-            <FindSpotList spotsList={spotsList} />
+            <FindSpotList
+                spotsList={spotsList}
+                setOpenSpotDetails={setOpenSpotDetails}
+                setSelectedSpot={setSelectedSpot}
+            />
         </View>
     )
 }

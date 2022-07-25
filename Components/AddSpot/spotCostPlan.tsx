@@ -4,7 +4,7 @@ import { Dropdown } from 'react-native-element-dropdown';
 import costIntervals from "../../Models/costIntervalsData";
 import styles from "./addSpotStyle";
 
-interface spotCostProps {
+interface spotCostType {
     id: number,
     cost: string,
     interval: string,
@@ -16,8 +16,8 @@ interface costIntervalsType{
 }
 
 interface spotCostPlanProps {
-    spotCostPlans: spotCostProps[];
-    setSpotCostPlans: React.Dispatch<React.SetStateAction<spotCostProps[]>>;
+    spotCostPlans: spotCostType[];
+    setSpotCostPlans: React.Dispatch<React.SetStateAction<spotCostType[]>>;
     setProgressTracker: React.Dispatch<React.SetStateAction<number>>;
 }
 
