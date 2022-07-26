@@ -5,7 +5,7 @@ const styles = StyleSheet.create({
         justifyContent: "flex-start",
         width: "100%",
         height: "100%",
-        marginTop: Platform.OS === 'ios' ? "15%" : StatusBar.currentHeight + "10%",
+        marginTop: (Platform.OS === 'ios') ? 80 : (StatusBar.currentHeight ? (StatusBar.currentHeight + 80) : 80),
     },
     detailsContainer: {
         backgroundColor: "rgba(0, 0, 0, 0.8)",
@@ -53,8 +53,23 @@ const styles = StyleSheet.create({
     seperator: {
         borderColor: "#fff",
         borderWidth: 0.5,
-        width: "90%",
+        width: "95%",
         marginVertical: 10,
+    },
+    halfSeperatorContainer: {
+        flexDirection: "row",
+        justifyContent: "space-between",
+        alignItems: "center",
+        margin: 5,
+    },
+    halfSeperator: {
+        width: "45%",
+    },
+    halfSeperatorText: {
+        color: "#fff",
+        fontWeight: "300",
+        letterSpacing: 1,
+        marginHorizontal: 5,
     },
 
     spotCountContainer: {
@@ -123,6 +138,119 @@ const styles = StyleSheet.create({
         fontWeight: "400",
         fontStyle: "italic",
         margin: 3,
+    },
+
+    vehicleInfoContainer: {
+        width: "90%",
+    },
+    vehicleInfoHeader: {
+        color: "#fff",
+        fontSize: 18,
+        fontWeight: "400",
+        letterSpacing: 0.5,
+    },
+    vehicleInfoItem: {
+        alignSelf: "center",
+        width: "95%",
+        marginVertical: 5,
+    },
+    vehicleInfoData: {
+        height: 42,
+        borderColor: "#888",
+        borderWidth: 1,
+        borderRadius: 5,
+        color: "#fff",
+        fontSize: 18,
+        fontWeight: "300",
+        letterSpacing: 1,
+        paddingLeft: 10,
+    },
+    dropdown: {
+        height: 45,
+        borderColor: '#888',
+        borderWidth: 1,
+        borderRadius: 10,
+        marginTop: 3,
+        paddingLeft: 10,
+    },
+    placeholderStyle: {
+        color: "#fff",
+        fontSize: 16,
+        fontWeight: "300",
+    },
+    selectedTextStyle: {
+        fontSize: 16,
+    },
+    iconStyle: {
+        width: 30,
+        height: 30,
+    },
+
+    dateTimeContainer: {
+        alignItems: "center",
+        justifyContent: "center",
+    },
+    dateTimeHead: {
+        color: "#fff",
+        alignSelf: "flex-start",
+        fontSize: 18,
+        fontWeight: "300",
+        marginHorizontal: 15,
+    },
+    dateTimeItem: {
+        flexDirection: "row",
+        marginVertical: 15,
+    },
+    dateTimeBox: {
+        backgroundColor: "#333",
+        width: 150,
+        height: 50,
+        borderColor: "#fff",
+        borderWidth: 1,
+        borderRadius: 25,
+        alignItems: "center",
+        justifyContent: "center",
+        marginHorizontal: 3,
+    },
+    dateTimeText: {
+        color: "#fff",
+        fontSize: 16,
+        fontWeight: "300",
+        textAlign: "center",
+        width: 125,
+        borderBottomColor: "#fff",
+        borderBottomWidth: 1,
+        padding: 3,
+    },
+    leftBox:{
+        borderTopRightRadius: 0,
+        borderBottomRightRadius: 0,
+    },
+    rightBox:{
+        borderTopLeftRadius: 0,
+        borderBottomLeftRadius: 0,
+    },
+
+    confirmationTitle: {
+        color: "#fff",
+        fontSize: 18,
+        fontWeight: "300",
+        margin: 10,
+    },
+    confirmationItem: {
+        width: "90%",
+    },
+    confirmationHead: {
+        color: "#fff",
+        fontSize: 15,
+        fontWeight: "200",
+        letterSpacing: 0.5,
+        fontStyle: "italic",
+    },
+    confirmationData: {
+        color: "#fff",
+        fontSize: 15,
+        fontWeight: "400",
     },
 
     nextBackButtonContainer: {

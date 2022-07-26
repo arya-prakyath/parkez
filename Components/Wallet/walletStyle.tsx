@@ -5,7 +5,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     height: "100%",
     width: "100%",
-    marginTop: Platform.OS === 'ios' ? "15%" : StatusBar.currentHeight + "10%",
+    marginTop: (Platform.OS === 'ios') ? 80 : (StatusBar.currentHeight ? (StatusBar.currentHeight + 80) : 80),
   },
   paymentMethodContainer: {
     backgroundColor: "#000",

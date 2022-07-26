@@ -3,18 +3,26 @@ import { View, Image, TextInput, TouchableOpacity, BackHandler, } from "react-na
 import FindSpotList from "../FindSpot/findSpotList";
 import spotsListData from "../../Models/spotsListData";
 import styles from "./favoriteSpotsStyle";
+import NoResults from "../../Utils/NoResults";
+import FindSpotDetails from "../FindSpot/findSpotDetails";
 
-interface spotsListType {
+interface spotCostType {
+    id: number,
+    cost: string,
+    interval: string,
+}
+
+interface spotItemType {
     id: string;
     name: string;
     address: string;
-    cost: string;
-    spotsTotalCount: number,
-    spotsAvaliableCount: number,
-    spotsConsumedCount: number,
-    extraNotes?: string | undefined,
-    longitute: string,
-    latitude: string,
+    cost: spotCostType[];
+    spotsTotalCount: number;
+    spotsAvailableCount: number;
+    spotsConsumedCount: number;
+    extraNotes?: string | undefined;
+    longitute: string;
+    latitude: string;
     isFavorite: boolean;
 }
 
@@ -25,11 +33,21 @@ interface favoriteSpotsProps {
 export default function favoriteSpots({ onClickBackButton }: favoriteSpotsProps) {
     const [searchText, setSearchText] = useState("");
 
-    let spotsList: (spotsListType | undefined)[] = spotsListData.filter(spot => spot.isFavorite ? true : false);
+    const [openSpotDetails, setOpenSpotDetails] = useState(false);
+    const [selectedSpot, setSelectedSpot] = useState<spotItemType>();
+
+    if (openSpotDetails)
+        return <FindSpotDetails
+            selectedSpot={selectedSpot}
+            setOpenSpotDetails={setOpenSpotDetails}
+            setSelectedSpot={setSelectedSpot}
+        />
+
+    let spotsList: (spotItemType | undefined)[] = spotsListData.filter(spot => spot.isFavorite ? true : false);
     if (searchText.length > 0) {
-        spotsList = spotsList.map((spot) => {
+        spotsList = spotsList.filter((spot) => {
             if (spot?.name.toLowerCase().includes(searchText.toLowerCase()) || spot?.address.toLowerCase().includes(searchText.toLowerCase()))
-                return spot;
+                return true;
         });
     }
 
@@ -64,7 +82,17 @@ export default function favoriteSpots({ onClickBackButton }: favoriteSpotsProps)
                 }
             </View>
 
-            <FindSpotList spotsList={spotsList} />
+            {spotsList.length > 0 ?
+                (
+                    <FindSpotList
+                        spotsList={spotsList}
+                        setOpenSpotDetails={setOpenSpotDetails}
+                        setSelectedSpot={setSelectedSpot}
+                    />
+                ) : (
+                    <NoResults />
+                )
+            }
         </View>
     )
 }

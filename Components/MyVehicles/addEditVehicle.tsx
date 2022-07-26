@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { View, Text, TextInput, Image, TouchableOpacity, BackHandler } from "react-native";
 import { Dropdown } from "react-native-element-dropdown";
+import vehicleTypesData from "../../Models/vehicleTypesData";
 import showAlert from "../../Utils/alertBox";
 import styles from "./myVehiclesStyle";
 
@@ -8,6 +9,7 @@ interface vehicleType {
     vehiclePlateNumber: string,
     vehicleName: string,
     vehicleType: string,
+    phoneNumber: string,
 }
 
 interface addEditVehicleProps {
@@ -22,18 +24,12 @@ export default function addEditVehicle({
     selectedVehicle,
 }: addEditVehicleProps) {
     const [isFocus, setIsFocus] = useState(false);
-    let vehicleTypes = [
-        { label: '2 Wheeler', value: '1' },
-        { label: '3 Wheeler', value: '2' },
-        { label: '4 Wheeler', value: '3' },
-        { label: 'Cycle', value: '4' },
-        { label: 'Truck', value: '5' },
-        { label: 'Multi Axle', value: '6' },
-    ];
+    const vehicleTypes = vehicleTypesData;
 
     const [vehicleName, setVehicleName] = useState(selectedVehicle?.vehicleName ?? '');
     const [vehiclePlateNumber, setVehiclePlateNumber] = useState(selectedVehicle?.vehiclePlateNumber ?? '');
     const [vehicleType, setVehicleType] = useState(selectedVehicle?.vehicleType ?? '');
+    const [vehicleOwnerPhone, setVehicleOwnerPhone] = useState(selectedVehicle?.phoneNumber ?? '');
 
     const clearState = () => {
         setSelectedVehicle(undefined);
@@ -47,16 +43,20 @@ export default function addEditVehicle({
             return true
         if (!vehicleType)
             return true
+        if (vehicleOwnerPhone.length !== 10)
+            return true
+        if (!vehicleOwnerPhone.match(/^[0-9]+$/))
+            return true
     }
 
     BackHandler.addEventListener("hardwareBackPress", () => { clearState(); return true });
     return (
-        <View style={styles.addEditVehicleConatiner}>
+        <View style={styles.addEditVehicleContainer}>
             <View style={styles.vehicleInfoItem}>
                 <Text style={styles.vehicleInfoHeader}>Vehicle Name</Text>
                 <TextInput
                     style={styles.vehicleInfoData}
-                    placeholder="Vehicle Name"
+                    placeholder="Enter Vehicle Name"
                     placeholderTextColor={"#555"}
                     value={vehicleName}
                     onChangeText={(value) => setVehicleName(value)}
@@ -67,7 +67,7 @@ export default function addEditVehicle({
                 <Text style={styles.vehicleInfoHeader}>Vehicle Number</Text>
                 <TextInput
                     style={styles.vehicleInfoData}
-                    placeholder="Vehicle Number Plate"
+                    placeholder="Enter Vehicle Number Plate"
                     placeholderTextColor={"#555"}
                     value={vehiclePlateNumber}
                     onChangeText={(value) => setVehiclePlateNumber(value)}
@@ -94,6 +94,17 @@ export default function addEditVehicle({
                         setVehicleType(item.label);
                         setIsFocus(false);
                     }}
+                />
+            </View>
+
+            <View style={styles.vehicleInfoItem}>
+                <Text style={styles.vehicleInfoHeader}>Vehicle Owner Phone</Text>
+                <TextInput
+                    style={styles.vehicleInfoData}
+                    placeholder="Enter Vehicle Owner's Phone"
+                    placeholderTextColor={"#555"}
+                    value={vehicleOwnerPhone}
+                    onChangeText={(value) => setVehicleOwnerPhone(value)}
                 />
             </View>
 

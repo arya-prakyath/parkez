@@ -7,6 +7,7 @@ interface vehicleType {
     vehiclePlateNumber: string,
     vehicleName: string,
     vehicleType: string,
+    phoneNumber: string,
 }
 interface vehiclesListProps {
     vehiclesList: (vehicleType | undefined)[];

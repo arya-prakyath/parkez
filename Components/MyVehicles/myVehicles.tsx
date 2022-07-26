@@ -9,6 +9,7 @@ interface vehicleType {
     vehiclePlateNumber: string,
     vehicleName: string,
     vehicleType: string,
+    phoneNumber: string,
 }
 
 interface myVehiclesProps {
@@ -16,7 +17,6 @@ interface myVehiclesProps {
 }
 
 export default function myVehicle({ onClickBackButton }: myVehiclesProps) {
-    const [hasVehicles, setHasVehicles] = useState(true);
     const [addEditVehicle, setAddEditVehicle] = useState(false);
     const [selectedVehicle, setSelectedVehicle] = useState<vehicleType>();
 
@@ -33,7 +33,7 @@ export default function myVehicle({ onClickBackButton }: myVehiclesProps) {
     return (
         <View style={styles.container}>
             {
-                hasVehicles ? (
+                vehiclesList.length > 0 ? (
                     <View style={styles.MyVehiclesContainer}>
                         <TouchableOpacity style={styles.addNewVehicleButtonConatiner} onPress={() => {
                             setSelectedVehicle(undefined);

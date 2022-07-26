@@ -1,5 +1,10 @@
 import React, { useState } from "react";
-import { View, Text, ToastAndroid, TouchableWithoutFeedback, Image, TouchableOpacity, ScrollView } from "react-native";
+import { View, Text, Image, TouchableOpacity, ScrollView, BackHandler, ToastAndroid } from "react-native";
+import showAlert from "../../../Utils/alertBox";
+import AddDateAndTime from "./addDateTime";
+import AddTheSpot from "./addTheSpot";
+import AddVehicleInfo from "./addVehicleInfo";
+import Confirmation from "./confirmation";
 import styles from "./findSpotDetailsStyle";
 
 interface spotCostType {
@@ -35,6 +40,23 @@ export default function FindSpotDetails({
 }: findSpotDetailsProps) {
     const [progressTracker, setProgressTracker] = useState(0);
 
+    const [vehicleNumberToBook, setVehicleNumberToBook] = useState("");
+    const [phoneNumberToBook, setPhoneNumberToBook] = useState("");
+    const [vehicleTypeToBook, setVehicleTypeToBook] = useState("");
+
+    const [fromDateTime, setFromDateTime] = useState<Date>();
+    const [toDateTime, setToDateTime] = useState<Date>();
+
+    BackHandler.addEventListener("hardwareBackPress", () => {
+        if (progressTracker === 0) {
+            setOpenSpotDetails(false);
+            setSelectedSpot(undefined);
+        }
+        else {
+            setProgressTracker(progressTracker - 1);
+            return true;
+        }
+    });
     return (
         <View style={styles.container}>
             {progressTracker === 0 && (
@@ -55,21 +77,21 @@ export default function FindSpotDetails({
                             <View style={styles.spotCountBox}>
                                 <Text style={styles.spotCountText}>{selectedSpot?.spotsTotalCount}</Text>
                             </View>
-                            <Text style={styles.spotCountHeadText}>Total Spots Count</Text>
+                            <Text style={styles.spotCountHeadText}>Total Number of Spots</Text>
                         </View>
 
                         <View style={styles.spotCountItem}>
                             <View style={[styles.spotCountBox, styles.availableBox]}>
                                 <Text style={styles.spotCountTextDark}>{selectedSpot?.spotsAvailableCount}</Text>
                             </View>
-                            <Text style={styles.spotCountHeadText}>Available Spots Count</Text>
+                            <Text style={styles.spotCountHeadText}>Available{'\n'}Spots</Text>
                         </View>
 
                         <View style={styles.spotCountItem}>
                             <View style={[styles.spotCountBox, styles.consumedBox]}>
                                 <Text style={styles.spotCountTextDark}>{selectedSpot?.spotsConsumedCount}</Text>
                             </View>
-                            <Text style={styles.spotCountHeadText}>Consumed Spots Count</Text>
+                            <Text style={styles.spotCountHeadText}>Consumed Spots</Text>
                         </View>
                     </View>
                     <View style={styles.seperator}></View>
@@ -105,6 +127,51 @@ export default function FindSpotDetails({
                     </View >
                 </View >
             )}
+
+            {progressTracker === 1 && (
+                <AddVehicleInfo
+                    spotName={selectedSpot ? selectedSpot.name : ""}
+                    spotsTotalCount={selectedSpot ? selectedSpot.spotsTotalCount : 0}
+                    spotsAvailableCount={selectedSpot ? selectedSpot.spotsAvailableCount : 0}
+                    spotsConsumedCount={selectedSpot ? selectedSpot.spotsConsumedCount : 0}
+                    setProgressTracker={setProgressTracker}
+                    vehicleNumberToBook={vehicleNumberToBook}
+                    setVehicleNumberToBook={setVehicleNumberToBook}
+                    phoneNumberToBook={phoneNumberToBook}
+                    setPhoneNumberToBook={setPhoneNumberToBook}
+                    vehicleTypeToBook={vehicleTypeToBook}
+                    setVehicleTypeToBook={setVehicleTypeToBook}
+                />
+            )}
+
+            {progressTracker === 2 && (
+                <AddDateAndTime
+                    spotName={selectedSpot ? selectedSpot.name : ""}
+                    spotsTotalCount={selectedSpot ? selectedSpot.spotsTotalCount : 0}
+                    spotsAvailableCount={selectedSpot ? selectedSpot.spotsAvailableCount : 0}
+                    spotsConsumedCount={selectedSpot ? selectedSpot.spotsConsumedCount : 0}
+                    setProgressTracker={setProgressTracker}
+                    fromDateTime={fromDateTime}
+                    setFromDateTime={setFromDateTime}
+                    toDateTime={toDateTime}
+                    setToDateTime={setToDateTime}
+                />
+            )}
+
+            {progressTracker === 3 &&
+                <Confirmation 
+                setProgressTracker={setProgressTracker}
+                spotName={selectedSpot?.name ?? ""}
+                spotAddress={selectedSpot?.address ?? ""}
+                vehicleNumber={vehicleNumberToBook}
+                vehicleType={vehicleTypeToBook}
+                ownersPhone={phoneNumberToBook}
+                fromDateTime={fromDateTime ?? new Date()}
+                toDateTime={toDateTime ?? new Date()}
+                />
+            }
+
+            {progressTracker === 4}
         </View >
     )
 }

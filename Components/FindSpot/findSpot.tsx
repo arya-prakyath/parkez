@@ -4,6 +4,7 @@ import FindSpotList from "./findSpotList";
 import spotsListData from "../../Models/spotsListData";
 import styles from "./findSpotStyle";
 import FindSpotDetails from "./findSpotDetails";
+import NoResults from "../../Utils/NoResults";
 
 interface spotCostType {
     id: number,
@@ -43,11 +44,13 @@ export default function FindSpot({ onClickBackButton }: findSpotProps) {
 
     let spotsList: (spotItemType | undefined)[] = spotsListData;
     if (searchText.length > 0) {
-        spotsList = spotsList.map((spot) => {
+        spotsList = spotsList.filter((spot) => {
             if (spot?.name.toLowerCase().includes(searchText.toLowerCase()) || spot?.address.toLowerCase().includes(searchText.toLowerCase()))
-                return spot;
+                return true;
         });
     }
+
+
 
     BackHandler.addEventListener("hardwareBackPress", () => onClickBackButton("Home"));
     return (
@@ -80,11 +83,17 @@ export default function FindSpot({ onClickBackButton }: findSpotProps) {
                 }
             </View>
 
-            <FindSpotList
-                spotsList={spotsList}
-                setOpenSpotDetails={setOpenSpotDetails}
-                setSelectedSpot={setSelectedSpot}
-            />
+            {spotsList.length > 0 ?
+                (
+                    <FindSpotList
+                        spotsList={spotsList}
+                        setOpenSpotDetails={setOpenSpotDetails}
+                        setSelectedSpot={setSelectedSpot}
+                    />
+                ) : (
+                    <NoResults />
+                )
+            }
         </View>
     )
 }

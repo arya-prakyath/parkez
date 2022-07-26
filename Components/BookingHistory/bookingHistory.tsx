@@ -4,6 +4,7 @@ import BookingHistoryList from "./bookingHistoryList";
 import BookingHistoryDetails from "./bookingHistoryDetails";
 import BookingHistoryListData from "../../Models/bookingHistoryListData";
 import styles from "./bookingHistoryStyle";
+import NoResults from "../../Utils/NoResults";
 
 interface historyType {
     vehiclePlateNumber: string,
@@ -39,7 +40,7 @@ export default function BookingHistory({ onClickBackButton }: bookinghistoryProp
     return (
         <View style={styles.container}>
             {
-                hasHistory ? (
+                bookingHistoryList.length > 0 ? (
                     <View style={styles.historyContainer}>
                         <BookingHistoryList
                             bookingHistoryList={bookingHistoryList}
@@ -48,9 +49,7 @@ export default function BookingHistory({ onClickBackButton }: bookinghistoryProp
                         />
                     </View>
                 ) : (
-                    <View style={styles.historyContainer} >
-                        <Text style={styles.infoText}>You have not booked any parking spot. Head to Find Spot screen to book a spot now!</Text>
-                    </View>
+                    <NoResults />
                 )
             }
         </View >

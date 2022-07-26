@@ -102,7 +102,7 @@ export default function headerLeftDrawer({ setScreen, setTitle, currentBlock, on
     return (
         <Animated.View style={{
             opacity: drawerOpacity,
-            marginTop: Platform.OS === 'ios' ? "15%" : StatusBar.currentHeight + "5%",
+            marginTop: (Platform.OS === 'ios') ? 80 : (StatusBar.currentHeight ? (StatusBar.currentHeight + 80) : 80),
             backgroundColor: "#111",
             borderColor: "#555",
             borderRightWidth: 1,

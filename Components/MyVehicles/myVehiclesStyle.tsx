@@ -5,7 +5,7 @@ const styles = StyleSheet.create({
     justifyContent: "flex-start",
     width: "100%",
     height: "100%",
-    marginTop: Platform.OS === 'ios' ? "15%" : StatusBar.currentHeight + "10%",
+    marginTop: (Platform.OS === 'ios') ? 80 : (StatusBar.currentHeight ? (StatusBar.currentHeight + 80) : 80),
   },
 
   addNewVehicleButtonConatiner: {
@@ -75,7 +75,8 @@ const styles = StyleSheet.create({
   },
 
   addVehicleContainer: {
-    marginTop: 50,
+    marginTop: 25,
+    flexDirection: "column",
     justifyContent: "space-evenly",
     alignItems: "center",
     height: 225,
@@ -93,13 +94,13 @@ const styles = StyleSheet.create({
     fontSize: 18,
   },
 
-  addEditVehicleConatiner: {
+  addEditVehicleContainer: {
     backgroundColor: "rgba(0, 0, 0, 0.8)",
-    height: "65%",
+    height: "68%",
     width: "95%",
     alignSelf: "center",
     justifyContent: "center",
-    marginTop: Platform.OS === 'ios' ? "15%" : StatusBar.currentHeight + "10%",
+    marginTop: (Platform.OS === 'ios') ? 80 : (StatusBar.currentHeight ? (StatusBar.currentHeight + 80) : 80),
     borderColor: "#555",
     borderWidth: 3,
     borderTopLeftRadius: 0,
@@ -110,24 +111,23 @@ const styles = StyleSheet.create({
 
   vehicleInfoItem: {
     marginHorizontal: 20,
-    width: "75%",
+    width: "85%",
   },
   vehicleInfoHeader: {
     color: "#fff",
-    fontSize: 20,
-    fontStyle: "italic",
+    fontSize: 18,
     fontWeight: "200",
-    marginBottom: 5,
     paddingLeft: 10,
+    marginBottom: 3,
   },
   vehicleInfoData: {
     height: 40,
     color: "#fff",
-    fontSize: 20,
+    fontSize: 18,
     borderColor: "#fff",
     borderBottomWidth: 1,
-    marginBottom: 25,
-    paddingLeft: 10,
+    marginBottom: 10,
+    marginLeft: 10,
   },
   dropdown: {
     height: 45,
@@ -136,6 +136,8 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     marginLeft: 10,
     paddingLeft: 10,
+    marginTop: 5,
+    marginBottom: 10,
   },
   placeholderStyle: {
     color: "#fff",
@@ -156,7 +158,6 @@ const styles = StyleSheet.create({
     width: "100%",
     height: "15%",
     paddingHorizontal: "5%",
-    marginTop: 30,
   },
   cancelButton: {
     width: "45%",

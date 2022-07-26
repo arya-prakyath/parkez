@@ -1,5 +1,6 @@
 import React from "react";
 import { View, FlatList } from "react-native";
+import NoResults from "../../Utils/NoResults";
 import BookingHistoryItem from "./bookingHistoryItem";
 import styles from "./bookingHistoryStyle";
 
@@ -34,6 +35,7 @@ export default function BookingHistoryList({ bookingHistoryList, setSelectedHist
 
         <View style={styles.historyList}>
             <FlatList
+                ListEmptyComponent={NoResults}
                 data={bookingHistoryList}
                 renderItem={renderItem}
             />

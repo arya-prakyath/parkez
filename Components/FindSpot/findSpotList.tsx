@@ -1,5 +1,6 @@
 import React from "react";
-import { View, Text, FlatList } from "react-native";
+import { View, Text, FlatList, } from "react-native";
+import NoResults from "../../Utils/NoResults";
 import FindSpotItem from "./findSpotItem";
 import styles from "./findSpotStyle";
 
@@ -40,16 +41,10 @@ export default function FindSpotList({ spotsList, setSelectedSpot, setOpenSpotDe
 
     return (
         <View style={styles.spotsContainer}>
-            {spotsList.length > 0 ?
-                (
-                    <FlatList
-                        data={spotsList}
-                        renderItem={renderItem}
-                    />
-                ) : (
-                    <Text style={styles.noresults}>No Parking Spots Found</Text>
-                )
-            }
+            <FlatList
+                data={spotsList}
+                renderItem={renderItem}
+            />
         </View>
     )
 }

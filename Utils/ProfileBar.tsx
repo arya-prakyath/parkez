@@ -29,7 +29,7 @@ export default function HeaderProfileOptions({ navigation, onClickProfile, onCli
     return (
         <Animated.View style={{
             opacity: profileOptionsOpacity,
-            marginTop: Platform.OS === 'ios' ? "15%" : StatusBar.currentHeight + "5%",
+            marginTop: (Platform.OS === 'ios') ? 80 : (StatusBar.currentHeight ? (StatusBar.currentHeight + 80) : 80),
             backgroundColor: "#111",
             borderColor: "#555",
             borderWidth: 1,
