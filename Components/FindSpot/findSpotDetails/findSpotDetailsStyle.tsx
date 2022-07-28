@@ -222,11 +222,11 @@ const styles = StyleSheet.create({
         borderBottomWidth: 1,
         padding: 3,
     },
-    leftBox:{
+    leftBox: {
         borderTopRightRadius: 0,
         borderBottomRightRadius: 0,
     },
-    rightBox:{
+    rightBox: {
         borderTopLeftRadius: 0,
         borderBottomLeftRadius: 0,
     },
@@ -236,10 +236,20 @@ const styles = StyleSheet.create({
         fontSize: 18,
         fontWeight: "300",
         width: "90%",
-        marginBottom: 15,
+    },
+    confirmationContainer: {
+        width: "90%",
+        height: "75%",
+        alignSelf: "center",
+        paddingHorizontal: 10,
+        paddingVertical: 5,
+        marginTop: 15,
+        borderColor: "#555",
+        borderWidth: 1,
+        borderRadius: 15,
     },
     confirmationItem: {
-        width: "90%",
+        marginVertical: 5,
     },
     confirmationHead: {
         color: "#fff",
@@ -247,6 +257,7 @@ const styles = StyleSheet.create({
         fontWeight: "200",
         letterSpacing: 0.5,
         fontStyle: "italic",
+        marginBottom: 1.5,
     },
     confirmationData: {
         color: "#fff",

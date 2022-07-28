@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { View, Text, TouchableOpacity, Image } from "react-native";
+import { View, Text, TouchableOpacity, Image, ScrollView } from "react-native";
+import showAlert from "../../../Utils/alertBox";
 import styles from "./findSpotDetailsStyle";
 
 interface confirmationProps {
@@ -11,6 +12,7 @@ interface confirmationProps {
     ownersPhone: string;
     fromDateTime: Date;
     toDateTime: Date;
+    onClickConfirm: () => {};
 }
 export default function Confirmation({
     setProgressTracker,
@@ -21,45 +23,52 @@ export default function Confirmation({
     ownersPhone,
     fromDateTime,
     toDateTime,
+    onClickConfirm,
 }: confirmationProps) {
     return (
         <View style={styles.detailsContainer}>
             <Text allowFontScaling={false} style={styles.confirmationTitle}>Confirm to Book the Selected Spot </Text>
-            <View style={styles.confirmationItem}>
-                <Text allowFontScaling={false} style={styles.confirmationHead}>Spot Name</Text>
-                <Text allowFontScaling={false} style={styles.confirmationData}>{spotName}</Text>
-            </View>
+            <View style={styles.confirmationContainer}>
+                <ScrollView showsVerticalScrollIndicator={true} persistentScrollbar={true}>
+                    <View style={styles.seperator}></View>
+                    <View style={styles.confirmationItem}>
+                        <Text allowFontScaling={false} style={styles.confirmationHead}>Spot Name</Text>
+                        <Text allowFontScaling={false} style={styles.confirmationData}>{spotName}</Text>
+                    </View>
 
-            <View style={styles.confirmationItem}>
-                <Text allowFontScaling={false} style={styles.confirmationHead}>Spot Address</Text>
-                <Text allowFontScaling={false} style={styles.confirmationData}>{spotAddress}</Text>
-            </View>
-            <View style={styles.seperator}></View>
+                    <View style={styles.confirmationItem}>
+                        <Text allowFontScaling={false} style={styles.confirmationHead}>Spot Address</Text>
+                        <Text allowFontScaling={false} style={styles.confirmationData}>{spotAddress}</Text>
+                    </View>
+                    <View style={styles.seperator}></View>
 
-            <View style={styles.confirmationItem}>
-                <Text allowFontScaling={false} style={styles.confirmationHead}>Vehicle Plate Number</Text>
-                <Text allowFontScaling={false} style={styles.confirmationData}>{vehicleNumber}</Text>
-            </View>
+                    <View style={styles.confirmationItem}>
+                        <Text allowFontScaling={false} style={styles.confirmationHead}>Vehicle Plate Number</Text>
+                        <Text allowFontScaling={false} style={styles.confirmationData}>{vehicleNumber}</Text>
+                    </View>
 
-            <View style={styles.confirmationItem}>
-                <Text allowFontScaling={false} style={styles.confirmationHead}>Vehicle Type</Text>
-                <Text allowFontScaling={false} style={styles.confirmationData}>{vehicleType}</Text>
-            </View>
+                    <View style={styles.confirmationItem}>
+                        <Text allowFontScaling={false} style={styles.confirmationHead}>Vehicle Type</Text>
+                        <Text allowFontScaling={false} style={styles.confirmationData}>{vehicleType}</Text>
+                    </View>
 
-            <View style={styles.confirmationItem}>
-                <Text allowFontScaling={false} style={styles.confirmationHead}>Vehicle Owner's Phone</Text>
-                <Text allowFontScaling={false} style={styles.confirmationData}>{ownersPhone}</Text>
-            </View>
-            <View style={styles.seperator}></View>
+                    <View style={styles.confirmationItem}>
+                        <Text allowFontScaling={false} style={styles.confirmationHead}>Vehicle Owner's Phone</Text>
+                        <Text allowFontScaling={false} style={styles.confirmationData}>{ownersPhone.substring(0, 5)} {ownersPhone.substring(5,)}</Text>
+                    </View>
+                    <View style={styles.seperator}></View>
 
-            <View style={styles.confirmationItem}>
-                <Text allowFontScaling={false} style={styles.confirmationHead}>Spot Entry On</Text>
-                <Text allowFontScaling={false} style={styles.confirmationData}>{fromDateTime.toString().split("GMT")[0]}</Text>
-            </View>
+                    <View style={styles.confirmationItem}>
+                        <Text allowFontScaling={false} style={styles.confirmationHead}>Spot Entry On</Text>
+                        <Text allowFontScaling={false} style={styles.confirmationData}>{fromDateTime.toString().split("GMT")[0]}</Text>
+                    </View>
 
-            <View style={styles.confirmationItem}>
-                <Text allowFontScaling={false} style={styles.confirmationHead}>Spot Exit On</Text>
-                <Text allowFontScaling={false} style={styles.confirmationData}>{toDateTime.toString().split("GMT")[0]}</Text>
+                    <View style={styles.confirmationItem}>
+                        <Text allowFontScaling={false} style={styles.confirmationHead}>Spot Exit On</Text>
+                        <Text allowFontScaling={false} style={styles.confirmationData}>{toDateTime.toString().split("GMT")[0]}</Text>
+                    </View>
+                    <View style={styles.seperator}></View>
+                </ScrollView>
             </View>
 
             <View style={styles.nextBackButtonContainer}>
@@ -71,7 +80,14 @@ export default function Confirmation({
                     <Text allowFontScaling={false} style={styles.backButtonText}>Back</Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={styles.nextButton} onPress={() => { }}>
+                <TouchableOpacity style={styles.nextButton} onPress={() => {
+                    showAlert({
+                        title: "Booking Successful !",
+                        message: `The selected spot is booked for you from ${fromDateTime.toString().split("GMT")[0]} to ${toDateTime.toString().split("GMT")[0]}\n\nGoto home page to generate the QR code for verification on arrival.`,
+                        buttonText: "Goto Home",
+                        onPressButton: () => { onClickConfirm() }
+                    })
+                }}>
                     <Text allowFontScaling={false} style={styles.nextButtonText}>Book</Text>
                     <Image
                         source={require("../../../assets/buttons/nextButton.png")}
@@ -79,6 +95,6 @@ export default function Confirmation({
                     />
                 </TouchableOpacity>
             </View >
-        </View>
+        </View >
     )
 }

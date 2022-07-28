@@ -31,12 +31,14 @@ interface findSpotDetailsProps {
     selectedSpot: spotItemType | undefined;
     setSelectedSpot: React.Dispatch<React.SetStateAction<spotItemType | undefined>>;
     setOpenSpotDetails: React.Dispatch<React.SetStateAction<boolean>>;
+    onClickConfirm: () => {};
 }
 
 export default function FindSpotDetails({
     selectedSpot,
     setSelectedSpot,
     setOpenSpotDetails,
+    onClickConfirm,
 }: findSpotDetailsProps) {
     const [progressTracker, setProgressTracker] = useState(0);
 
@@ -168,6 +170,7 @@ export default function FindSpotDetails({
                 ownersPhone={phoneNumberToBook}
                 fromDateTime={fromDateTime ?? new Date()}
                 toDateTime={toDateTime ?? new Date()}
+                onClickConfirm={onClickConfirm}
                 />
             }
 

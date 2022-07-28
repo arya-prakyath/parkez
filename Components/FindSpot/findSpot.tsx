@@ -40,6 +40,7 @@ export default function FindSpot({ onClickBackButton }: findSpotProps) {
             selectedSpot={selectedSpot}
             setOpenSpotDetails={setOpenSpotDetails}
             setSelectedSpot={setSelectedSpot}
+            onClickConfirm={() => onClickBackButton("Home")}
         />
 
     let spotsList: (spotItemType | undefined)[] = spotsListData;
