@@ -41,7 +41,7 @@ export default function AddSpot({ onClickBackButton }: addSpotProps) {
     const [termsAgreed, setTermsAgreed] = useState(false);
 
     const handleOnSetAddress = (building: string, street: string, landmark: string, city: string, pincode: string): void => {
-        const address = `${building.replace(/,*$/, '')}, ${street.replace(/,*$/, '')}, ${landmark.replace(/,*$/, '')}, ${city.replace(/,*$/, '')}, Karnataka, India - ${pincode}`;
+        const address = `${building.replace(/,*$/, '')}, ${street.replace(/,*$/, '')}, ${landmark.replace(/,*$/, '')}, ${city.replace(/,*$/, '')}, Karnataka, India - ${pincode.substring(0, 3)} ${pincode.substring(3,)}`;
         setSpotAddress(address);
     }
 

@@ -57,33 +57,50 @@ export default function ConfirmAddSpot({
     }
 
     return (
-        <View style={[styles.credentialParentContainer, {paddingRight: "3%",}]}>
-            <View style={[styles.scrollBarContainer, {height: "80%", width: 15,}]}></View>
-            <ScrollView showsVerticalScrollIndicator={true} persistentScrollbar={true} contentContainerStyle={styles.detailsContainer}>
-                <Text allowFontScaling={false} style={[styles.infoText, { fontSize: 16, }]}>
-                    <Text allowFontScaling={false} style={{ fontStyle: "italic", fontWeight: "200" }}>Spot Name </Text>- {spotName}
-                </Text>
-                <Text allowFontScaling={false} style={[styles.infoText, { fontSize: 16, }]}>
-                    <Text allowFontScaling={false} style={{ fontStyle: "italic", fontWeight: "200" }}>Spot Address </Text>- {spotAddress}
-                </Text>
-                <Text allowFontScaling={false} style={[styles.infoText, { fontSize: 16, }]}>
-                    <Text allowFontScaling={false} style={{ fontStyle: "italic", fontWeight: "200" }}>Owner's Name </Text>- {spotOwnerName}
-                </Text>
-                <Text allowFontScaling={false} style={[styles.infoText, { fontSize: 16, }]}>
-                    <Text allowFontScaling={false} style={{ fontStyle: "italic", fontWeight: "200" }}>Owner's Phone </Text>- {spotOwnerPhone}
-                </Text>
-                <Text allowFontScaling={false} style={[styles.infoText, { fontSize: 16, }]}>
-                    <Text allowFontScaling={false} style={{ fontStyle: "italic", fontWeight: "200" }}>Incharge's Name </Text>- {spotInchargeName}
-                </Text>
-                <Text allowFontScaling={false} style={[styles.infoText, { fontSize: 16, }]}>
-                    <Text allowFontScaling={false} style={{ fontStyle: "italic", fontWeight: "200" }}>Incharge's Phone </Text>- {spotInchargePhone}
-                </Text>
-                <Text allowFontScaling={false} style={[styles.infoText, { fontSize: 16, }]}>
-                    <Text allowFontScaling={false} style={{ fontStyle: "italic", fontWeight: "200" }}>Cost Plans -{'\n'}</Text>{spotCostPlans.map(costPlan =>
-                        `₹ ${costPlan.cost} /- ${getintervalName(parseInt(costPlan.interval))}\n`
-                    )}
-                </Text>
-            </ScrollView>
+        <View style={[styles.credentialParentContainer, { paddingRight: "3%", }]}>
+            <Text allowFontScaling={false} style={styles.confirmationTitle}>Confirm to Add the new Spot </Text>
+            <View style={styles.confirmationContainer}>
+                <ScrollView showsVerticalScrollIndicator={true} persistentScrollbar={true}>
+                    <View style={styles.seperator}></View>
+                    <View style={styles.confirmationItem}>
+                        <Text allowFontScaling={false} style={styles.confirmationHead}>Spot Name</Text>
+                        <Text allowFontScaling={false} style={styles.confirmationData}>{spotName}</Text>
+                    </View>
+                    <View style={styles.confirmationItem}>
+                        <Text allowFontScaling={false} style={styles.confirmationHead}>Spot Address</Text>
+                        <Text allowFontScaling={false} style={styles.confirmationData}>{spotAddress}</Text>
+                    </View>
+                    <View style={styles.seperator}></View>
+
+                    <View style={styles.confirmationItem}>
+                        <Text allowFontScaling={false} style={styles.confirmationHead}>Owner's Name</Text>
+                        <Text allowFontScaling={false} style={styles.confirmationData}>{spotOwnerName}</Text>
+                    </View>
+                    <View style={styles.confirmationItem}>
+                        <Text allowFontScaling={false} style={styles.confirmationHead}>Owner's Phone</Text>
+                        <Text allowFontScaling={false} style={styles.confirmationData}>{spotOwnerPhone.substring(0, 5)} {spotOwnerPhone.substring(5,)}</Text>
+                    </View>
+                    <View style={styles.confirmationItem}>
+                        <Text allowFontScaling={false} style={styles.confirmationHead}>Incharge's Name</Text>
+                        <Text allowFontScaling={false} style={styles.confirmationData}>{spotInchargeName}</Text>
+                    </View>
+                    <View style={styles.confirmationItem}>
+                        <Text allowFontScaling={false} style={styles.confirmationHead}>Incharge's phone</Text>
+                        <Text allowFontScaling={false} style={styles.confirmationData}>{spotInchargePhone.substring(0, 5)} {spotInchargePhone.substring(5,)}</Text>
+                    </View>
+                    <View style={styles.seperator}></View>
+
+                    <View style={styles.confirmationItem}>
+                        <Text allowFontScaling={false} style={styles.confirmationHead}>Cost Plans</Text>
+                        <Text allowFontScaling={false} style={styles.confirmationData}>
+                            {spotCostPlans.map(costPlan =>
+                                `₹ ${costPlan.cost} /- ${getintervalName(parseInt(costPlan.interval))}\n`
+                            )}
+                        </Text>
+                    </View>
+                    <View style={styles.seperator}></View>
+                </ScrollView>
+            </View>
 
             <View style={styles.nextBackButtonContainer}>
                 <TouchableOpacity style={styles.backButton} onPress={() => setProgressTracker(4)}>
