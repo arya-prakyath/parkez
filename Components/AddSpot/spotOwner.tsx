@@ -49,7 +49,7 @@ export default function SpotOwner({
 
     return (
         <View style={styles.credentialParentContainer}>
-            <Text allowFontScaling={false} style={styles.headerText}>Enter the Owner and Incharge information </Text>
+            <Text allowFontScaling={false} style={styles.headerText}>Enter the Spot Owner and Incharge information </Text>
 
             <View style={styles.credentialContainer}>
                 <TextInput allowFontScaling={false}

@@ -5,7 +5,7 @@ const styles = StyleSheet.create({
         justifyContent: "flex-start",
         width: "100%",
         height: "100%",
-        marginTop: (Platform.OS === 'ios') ? 80 : (StatusBar.currentHeight ? (StatusBar.currentHeight + 80) : 80),
+        marginTop: (Platform.OS === 'ios') ? 80 : (StatusBar.currentHeight ? (StatusBar.currentHeight + 85) : 85),
     },
     detailsContainer: {
         backgroundColor: "rgba(0, 0, 0, 0.8)",

@@ -57,8 +57,8 @@ export default function ConfirmAddSpot({
     }
 
     return (
-        <View style={[styles.credentialParentContainer, { paddingRight: "3%", }]}>
-            <Text allowFontScaling={false} style={styles.confirmationTitle}>Confirm to Add the new Spot </Text>
+        <View style={styles.credentialParentContainer}>
+            <Text allowFontScaling={false} style={styles.headerText}>Confirm to Add the new Spot </Text>
             <View style={styles.confirmationContainer}>
                 <ScrollView showsVerticalScrollIndicator={true} persistentScrollbar={true}>
                     <View style={styles.seperator}></View>
@@ -94,7 +94,7 @@ export default function ConfirmAddSpot({
                         <Text allowFontScaling={false} style={styles.confirmationHead}>Cost Plans</Text>
                         <Text allowFontScaling={false} style={styles.confirmationData}>
                             {spotCostPlans.map(costPlan =>
-                                `₹ ${costPlan.cost} /- ${getintervalName(parseInt(costPlan.interval))}\n`
+                                `₹ ${costPlan.cost}/-  Per  ${getintervalName(parseInt(costPlan.interval))}\n`
                             )}
                         </Text>
                     </View>

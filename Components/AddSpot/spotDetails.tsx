@@ -52,7 +52,7 @@ export default function SpotDetails({
 
 
     return (
-        <View style={[styles.credentialParentContainer, , styles.credentialParentContainerLg]}>
+        <View style={styles.credentialParentContainer}>
             <Text allowFontScaling={false} style={styles.headerText}>Enter the Name and Address of your Parking Spot to rent</Text>
 
             <View style={styles.credentialContainer}>
@@ -149,7 +149,7 @@ export default function SpotDetails({
 
             <View style={styles.credentialContainer}>
                 <TextInput allowFontScaling={false}
-                    style={styles.credential}
+                    style={[styles.credential, {color: "#888"}]}
                     value={city}
                     placeholder="City"
                     placeholderTextColor={"#bbb"}

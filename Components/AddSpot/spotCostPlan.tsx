@@ -109,7 +109,7 @@ export default function SpotCostPlan({
 
     return (
         <View style={[styles.credentialParentContainer, { justifyContent: "space-evenly" }]}>
-            <TouchableOpacity style={styles.addCostPlanButtonConatiner} onPress={() => {
+            <TouchableOpacity style={styles.addCostPlanButtonContainer} onPress={() => {
                 if (costListCount === 9) {
                     ToastAndroid.showWithGravity(
                         "You can add atmost 8 Cost plans",
