@@ -49,10 +49,10 @@ export default function SpotOwner({
 
     return (
         <View style={styles.credentialParentContainer}>
-            <Text style={styles.headerText}>Enter the Owner and Incharge information </Text>
+            <Text allowFontScaling={false} style={styles.headerText}>Enter the Owner and Incharge information </Text>
 
             <View style={styles.credentialContainer}>
-                <TextInput
+                <TextInput allowFontScaling={false}
                     style={styles.credential}
                     onChangeText={(value) => {
                         if (ownerNameError)
@@ -80,10 +80,10 @@ export default function SpotOwner({
                     )
                 }
             </View>
-            <Text style={styles.warningText}>{ownerNameError ? "Enter a Valid Name" : ""}</Text>
+            <Text allowFontScaling={false} style={styles.warningText}>{ownerNameError ? "Enter a Valid Name" : ""}</Text>
 
             <View style={styles.credentialContainer}>
-                <TextInput
+                <TextInput allowFontScaling={false}
                     style={styles.credential}
                     onChangeText={(value) => {
                         if (ownerPhoneError)
@@ -117,7 +117,7 @@ export default function SpotOwner({
                     )
                 }
             </View>
-            <Text style={styles.warningText}>{ownerPhoneError ? "Enter a Valid 10 Digit Phone Number " : ""}</Text>
+            <Text allowFontScaling={false} style={styles.warningText}>{ownerPhoneError ? "Enter a Valid 10 Digit Phone Number " : ""}</Text>
 
             <View style={styles.checkBoxContainer}>
                 <BouncyCheckbox
@@ -136,13 +136,13 @@ export default function SpotOwner({
                     }}
                 />
                 <RNBounceable onPress={() => bouncyCheckboxRef?.onPress()} style={styles.checkBox}>
-                    <Text style={styles.checkBoxText}>Incharge same as Owner ?</Text>
+                    <Text allowFontScaling={false} style={styles.checkBoxText}>Incharge same as Owner ?</Text>
                 </RNBounceable>
             </View>
 
             {!ownerAndInchargeSame && (
                 <View style={styles.credentialContainer}>
-                    <TextInput
+                    <TextInput allowFontScaling={false}
                         style={styles.credential}
                         onChangeText={(value) => {
                             if (inchargeNameError)
@@ -171,11 +171,11 @@ export default function SpotOwner({
                     }
                 </View>
             )}
-            <Text style={styles.warningText}>{inchargeNameError ? "Enter a Valid Name" : ""}</Text>
+            <Text allowFontScaling={false} style={styles.warningText}>{inchargeNameError ? "Enter a Valid Name" : ""}</Text>
 
             {!ownerAndInchargeSame && (
                 <View style={styles.credentialContainer}>
-                    <TextInput
+                    <TextInput allowFontScaling={false}
                         style={styles.credential}
                         onChangeText={(value) => {
                             if (inchargePhoneError)
@@ -210,7 +210,7 @@ export default function SpotOwner({
                     }
                 </View>
             )}
-            <Text style={styles.warningText}>{inchargePhoneError ? "Enter a Valid 10 Digit Phone Number " : ""}</Text>
+            <Text allowFontScaling={false} style={styles.warningText}>{inchargePhoneError ? "Enter a Valid 10 Digit Phone Number " : ""}</Text>
 
             <View style={styles.nextBackButtonContainer}>
                 <TouchableOpacity style={styles.backButton} onPress={() => setProgressTracker(1)}>
@@ -218,7 +218,7 @@ export default function SpotOwner({
                         source={require("../../assets/buttons/backButton.png")}
                         style={styles.backAndNextButtonIcon}
                     />
-                    <Text style={styles.backButtonText}>Back</Text>
+                    <Text allowFontScaling={false} style={styles.backButtonText}>Back</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={[styles.nextButton, validate() && { backgroundColor: "#888" }]} disabled={validate()}
                     onPress={() => {
@@ -244,7 +244,7 @@ export default function SpotOwner({
                         }
                         setProgressTracker(3);
                     }}>
-                    <Text style={styles.nextButtonText}>Next</Text>
+                    <Text allowFontScaling={false} style={styles.nextButtonText}>Next</Text>
                     <Image
                         source={require("../../assets/buttons/nextButton.png")}
                         style={styles.backAndNextButtonIcon}

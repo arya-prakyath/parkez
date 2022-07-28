@@ -53,10 +53,10 @@ export default function SpotDetails({
 
     return (
         <View style={[styles.credentialParentContainer, , styles.credentialParentContainerLg]}>
-            <Text style={styles.headerText}>Enter the Name and Address of your Parking Spot to rent</Text>
+            <Text allowFontScaling={false} style={styles.headerText}>Enter the Name and Address of your Parking Spot to rent</Text>
 
             <View style={styles.credentialContainer}>
-                <TextInput
+                <TextInput allowFontScaling={false}
                     style={styles.credential}
                     onChangeText={(value) => {
                         setSpotName(value);
@@ -79,7 +79,7 @@ export default function SpotDetails({
             </View>
 
             <View style={styles.credentialContainer}>
-                <TextInput
+                <TextInput allowFontScaling={false}
                     style={styles.credential}
                     onChangeText={(value) => {
                         setBuilding(value);
@@ -102,7 +102,7 @@ export default function SpotDetails({
             </View>
 
             <View style={styles.credentialContainer}>
-                <TextInput
+                <TextInput allowFontScaling={false}
                     style={styles.credential}
                     onChangeText={(value) => {
                         setStreet(value);
@@ -125,7 +125,7 @@ export default function SpotDetails({
             </View>
 
             <View style={styles.credentialContainer}>
-                <TextInput
+                <TextInput allowFontScaling={false}
                     style={styles.credential}
                     onChangeText={(value) => {
                         setLandmark(value);
@@ -148,7 +148,7 @@ export default function SpotDetails({
             </View>
 
             <View style={styles.credentialContainer}>
-                <TextInput
+                <TextInput allowFontScaling={false}
                     style={styles.credential}
                     value={city}
                     placeholder="City"
@@ -158,7 +158,7 @@ export default function SpotDetails({
             </View>
 
             <View style={styles.credentialContainer}>
-                <TextInput
+                <TextInput allowFontScaling={false}
                     style={styles.credential}
                     onChangeText={(value) => {
                         if (pincodeError)
@@ -191,7 +191,7 @@ export default function SpotDetails({
                     )
                 }
             </View>
-            <Text style={styles.warningText}>{pincodeError ? "Enter a Valid 6 Digit Pincode" : ""}</Text>
+            <Text allowFontScaling={false} style={styles.warningText}>{pincodeError ? "Enter a Valid 6 Digit Pincode" : ""}</Text>
 
 
             <View style={styles.nextBackButtonContainer}>
@@ -200,7 +200,7 @@ export default function SpotDetails({
                         source={require("../../assets/buttons/backButton.png")}
                         style={styles.backAndNextButtonIcon}
                     />
-                    <Text style={styles.backButtonText}>Back</Text>
+                    <Text allowFontScaling={false} style={styles.backButtonText}>Back</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={[styles.nextButton, validate() && { backgroundColor: "#888" }]} disabled={validate()}
                     onPress={() => {
@@ -211,7 +211,7 @@ export default function SpotDetails({
                         setSpotAddress(building, street, landmark, city, pincode);
                         setProgressTracker(2);
                     }}>
-                    <Text style={styles.nextButtonText}>Next</Text>
+                    <Text allowFontScaling={false} style={styles.nextButtonText}>Next</Text>
                     <Image
                         source={require("../../assets/buttons/nextButton.png")}
                         style={styles.backAndNextButtonIcon}

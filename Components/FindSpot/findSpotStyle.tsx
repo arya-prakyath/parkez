@@ -16,8 +16,8 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     borderRadius: 50,
     width: "92%",
-    height: "7%",
-    marginBottom: 10,
+    height: 50,
+    marginVertical: 10,
   },
   searchText: {
     color: "#000",
@@ -40,17 +40,16 @@ const styles = StyleSheet.create({
   },
 
   spotsContainer: {
+    height: "65%",
     alignSelf: "center",
-    height: "70%",
-    width: "100%",
     paddingRight: 5,
   },
   spots: {
     alignSelf: "center",
     backgroundColor: "rgba(0, 0, 0, 0.8)",
     width: "92%",
-    padding: "5%",
-    marginBottom: "5%",
+    padding: 15,
+    marginBottom: 10,
     borderColor: "#555",
     borderWidth: 1,
     borderRightWidth: 3,

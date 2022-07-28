@@ -10,7 +10,7 @@ export default function aboutUs({ onClickBackButton }: aboutUsProps) {
     BackHandler.addEventListener("hardwareBackPress", () => onClickBackButton("Home"))
     return (
         <View style={styles.container}>
-            <Text style={styles.text}>About Screen Here</Text>
+            <Text allowFontScaling={false} style={styles.text}>About Screen Here</Text>
         </View>
     )
 }

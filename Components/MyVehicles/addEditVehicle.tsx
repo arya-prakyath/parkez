@@ -53,8 +53,8 @@ export default function addEditVehicle({
     return (
         <View style={styles.addEditVehicleContainer}>
             <View style={styles.vehicleInfoItem}>
-                <Text style={styles.vehicleInfoHeader}>Vehicle Name</Text>
-                <TextInput
+                <Text allowFontScaling={false} style={styles.vehicleInfoHeader}>Vehicle Name</Text>
+                <TextInput allowFontScaling={false}
                     style={styles.vehicleInfoData}
                     placeholder="Enter Vehicle Name"
                     placeholderTextColor={"#555"}
@@ -64,8 +64,8 @@ export default function addEditVehicle({
             </View>
 
             <View style={styles.vehicleInfoItem}>
-                <Text style={styles.vehicleInfoHeader}>Vehicle Number</Text>
-                <TextInput
+                <Text allowFontScaling={false} style={styles.vehicleInfoHeader}>Vehicle Number</Text>
+                <TextInput allowFontScaling={false}
                     style={styles.vehicleInfoData}
                     placeholder="Enter Vehicle Number Plate"
                     placeholderTextColor={"#555"}
@@ -75,7 +75,7 @@ export default function addEditVehicle({
             </View>
 
             <View style={styles.vehicleInfoItem}>
-                <Text style={styles.vehicleInfoHeader}>Vehicle Type</Text>
+                <Text allowFontScaling={false} style={styles.vehicleInfoHeader}>Vehicle Type</Text>
                 <Dropdown
                     style={[styles.dropdown, isFocus && { borderColor: 'lightblue' }]}
                     placeholderStyle={styles.placeholderStyle}
@@ -98,8 +98,8 @@ export default function addEditVehicle({
             </View>
 
             <View style={styles.vehicleInfoItem}>
-                <Text style={styles.vehicleInfoHeader}>Vehicle Owner Phone</Text>
-                <TextInput
+                <Text allowFontScaling={false} style={styles.vehicleInfoHeader}>Vehicle Owner Phone</Text>
+                <TextInput allowFontScaling={false}
                     style={styles.vehicleInfoData}
                     placeholder="Enter Vehicle Owner's Phone"
                     placeholderTextColor={"#555"}
@@ -114,7 +114,7 @@ export default function addEditVehicle({
                         source={require("../../assets/buttons/backButton.png")}
                         style={styles.addCancelButtonIcon}
                     />
-                    <Text style={styles.cancelButtonText}>Back</Text>
+                    <Text allowFontScaling={false} style={styles.cancelButtonText}>Back</Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity disabled={validate()} style={[styles.addButton, validate() && { backgroundColor: "#888" }]}
@@ -126,7 +126,7 @@ export default function addEditVehicle({
                             onPressButton: () => clearState(),
                         })
                     }}>
-                    <Text style={[styles.addButtonText, { marginLeft: 10, }]}>{selectedVehicle ? "Update" : "Add Vehicle"}</Text>
+                    <Text allowFontScaling={false} style={[styles.addButtonText, { marginLeft: 10, }]}>{selectedVehicle ? "Update" : "Add Vehicle"}</Text>
                     <Image
                         source={require("../../assets/buttons/nextButton.png")}
                         style={styles.addCancelButtonIcon}

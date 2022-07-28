@@ -50,13 +50,11 @@ export default function FindSpot({ onClickBackButton }: findSpotProps) {
         });
     }
 
-
-
     BackHandler.addEventListener("hardwareBackPress", () => onClickBackButton("Home"));
     return (
         <View style={styles.container}>
             <View style={styles.searchBar}>
-                <TextInput
+                <TextInput allowFontScaling={false}
                     style={styles.searchText}
                     onChangeText={(value) => {
                         setSearchText(value);

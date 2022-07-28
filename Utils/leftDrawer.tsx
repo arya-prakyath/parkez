@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, Image, Animated, Platform, StatusBar, TouchableOpacity } from "react-native";
+import { View, Text, Image, Animated, Platform, StatusBar, TouchableOpacity, Dimensions } from "react-native";
 
 interface headerLeftDrawerOptions {
     setScreen: React.Dispatch<React.SetStateAction<string>>,
@@ -104,15 +104,11 @@ export default function headerLeftDrawer({ setScreen, setTitle, currentBlock, on
             opacity: drawerOpacity,
             marginTop: (Platform.OS === 'ios') ? 80 : (StatusBar.currentHeight ? (StatusBar.currentHeight + 80) : 80),
             backgroundColor: "#111",
-            borderColor: "#555",
-            borderRightWidth: 1,
-            borderTopRightRadius: 40,
             position: "absolute",
-            marginBottom: 15,
             alignSelf: "flex-start",
             alignContent: "flex-start",
             width: "72%",
-            height: "75%",
+            height: Dimensions.get("window").height - 120,
             transform: [{ translateX: drawerSlide }],
         }}>
             <View style={{ height: "15%", width: "100%", backgroundColor: "#555", padding: 5, alignSelf: "center" }}>
@@ -129,7 +125,7 @@ export default function headerLeftDrawer({ setScreen, setTitle, currentBlock, on
                             <Image source={require("../assets/drawer-icons/myVehicles.png")} style={{ flex: 0.35, aspectRatio: 1, }} />
                         )
                     }
-                    <Text style={{ color: "#ccc", width: "75%", fontSize: 18, }}>My Vehicles</Text>
+                    <Text allowFontScaling={false} style={{ color: "#ccc", width: "75%", fontSize: 18, }}>My Vehicles</Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity onPress={() => setSelected(1)} style={{ flexDirection: "row", width: "100%", justifyContent: "space-around", alignItems: "center", }}>
@@ -140,7 +136,7 @@ export default function headerLeftDrawer({ setScreen, setTitle, currentBlock, on
                             <Image source={require("../assets/drawer-icons/favorite.png")} style={{ flex: 0.35, aspectRatio: 1, }} />
                         )
                     }
-                    <Text style={{ color: "#ccc", width: "75%", fontSize: 18, }}>Favorite Spots</Text>
+                    <Text allowFontScaling={false} style={{ color: "#ccc", width: "75%", fontSize: 18, }}>Favorite Spots</Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity onPress={() => setSelected(2)} style={{ flexDirection: "row", width: "100%", justifyContent: "space-around", alignItems: "center", }}>
@@ -151,7 +147,7 @@ export default function headerLeftDrawer({ setScreen, setTitle, currentBlock, on
                             <Image source={require("../assets/drawer-icons/history.png")} style={{ flex: 0.35, aspectRatio: 1, }} />
                         )
                     }
-                    <Text style={{ color: "#ccc", width: "75%", fontSize: 18, }}>Booking History</Text>
+                    <Text allowFontScaling={false} style={{ color: "#ccc", width: "75%", fontSize: 18, }}>Booking History</Text>
                 </TouchableOpacity>
             </View>
 
@@ -164,7 +160,7 @@ export default function headerLeftDrawer({ setScreen, setTitle, currentBlock, on
                             <Image source={require("../assets/drawer-icons/support.png")} style={{ flex: 0.35, aspectRatio: 1, }} />
                         )
                     }
-                    <Text style={{ color: "#ccc", width: "75%", fontSize: 18, }}>Support</Text>
+                    <Text allowFontScaling={false} style={{ color: "#ccc", width: "75%", fontSize: 18, }}>Support</Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity onPress={() => setSelected(4)} style={{ flexDirection: "row", width: "100%", justifyContent: "space-around", alignItems: "center", }}>
@@ -175,7 +171,7 @@ export default function headerLeftDrawer({ setScreen, setTitle, currentBlock, on
                             <Image source={require("../assets/drawer-icons/about.png")} style={{ flex: 0.35, aspectRatio: 1, }} />
                         )
                     }
-                    <Text style={{ color: "#ccc", width: "75%", fontSize: 18, }}>About Us</Text>
+                    <Text allowFontScaling={false} style={{ color: "#ccc", width: "75%", fontSize: 18, }}>About Us</Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity onPress={() => setSelected(5)} style={{ flexDirection: "row", width: "100%", justifyContent: "space-around", alignItems: "center", }}>
@@ -186,7 +182,7 @@ export default function headerLeftDrawer({ setScreen, setTitle, currentBlock, on
                             <Image source={require("../assets/drawer-icons/settings.png")} style={{ flex: 0.35, aspectRatio: 1, }} />
                         )
                     }
-                    <Text style={{ color: "#ccc", width: "75%", fontSize: 18, }}>Settings</Text>
+                    <Text allowFontScaling={false} style={{ color: "#ccc", width: "75%", fontSize: 18, }}>Settings</Text>
                 </TouchableOpacity>
             </View>
         </Animated.View >

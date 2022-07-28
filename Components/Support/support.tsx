@@ -10,7 +10,7 @@ export default function support({ onClickBackButton }: supportProps) {
     BackHandler.addEventListener("hardwareBackPress", () => onClickBackButton("Home"))
     return (
         <View style={styles.container}>
-            <Text style={styles.text}>Support Screen Here</Text>
+            <Text allowFontScaling={false} style={styles.text}>Support Screen Here</Text>
         </View>
     )
 }

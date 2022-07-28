@@ -74,8 +74,8 @@ export default function userProfile({ onClickBackButton }: userProfileProps) {
             < View style={styles.profileContainer}>
                 {editMode ? (
                     <View style={styles.profileDataContainer}>
-                        <Text style={styles.profileHead}>UserName</Text>
-                        <TextInput
+                        <Text allowFontScaling={false} style={styles.profileHead}>UserName</Text>
+                        <TextInput allowFontScaling={false}
                             style={styles.profileDataEditMode}
                             placeholderTextColor={"#555"}
                             onChangeText={(value) => setName(value)}
@@ -84,15 +84,15 @@ export default function userProfile({ onClickBackButton }: userProfileProps) {
                     </View>
                 ) : (
                     <View style={styles.profileDataContainer}>
-                        <Text style={styles.profileHead}>UserName</Text>
-                        <Text style={styles.profileData}>{name}</Text>
+                        <Text allowFontScaling={false} style={styles.profileHead}>UserName</Text>
+                        <Text allowFontScaling={false} style={styles.profileData}>{name}</Text>
                     </View>
                 )}
 
                 {editMode ? (
                     <View style={styles.profileDataContainer}>
-                        <Text style={styles.profileHead}>Phone</Text>
-                        <TextInput
+                        <Text allowFontScaling={false} style={styles.profileHead}>Phone</Text>
+                        <TextInput allowFontScaling={false}
                             style={styles.profileDataEditMode}
                             placeholderTextColor={"#555"}
                             onChangeText={(value) => setPhone(value)}
@@ -103,15 +103,15 @@ export default function userProfile({ onClickBackButton }: userProfileProps) {
                     </View>
                 ) : (
                     <View style={styles.profileDataContainer}>
-                        <Text style={styles.profileHead}>Phone</Text>
-                        <Text style={styles.profileData}>{phone}</Text>
+                        <Text allowFontScaling={false} style={styles.profileHead}>Phone</Text>
+                        <Text allowFontScaling={false} style={styles.profileData}>{phone}</Text>
                     </View>
                 )}
 
                 {editMode ? (
                     <View style={styles.profileDataContainer}>
-                        <Text style={styles.profileHead}>Email</Text>
-                        <TextInput
+                        <Text allowFontScaling={false} style={styles.profileHead}>Email</Text>
+                        <TextInput allowFontScaling={false}
                             style={styles.profileDataEditMode}
                             placeholderTextColor={"#555"}
                             onChangeText={(value) => setEmail(value)}
@@ -121,15 +121,15 @@ export default function userProfile({ onClickBackButton }: userProfileProps) {
                     </View>
                 ) : (
                     <View style={styles.profileDataContainer}>
-                        <Text style={styles.profileHead}>Email</Text>
-                        <Text style={styles.profileData}>{email}</Text>
+                        <Text allowFontScaling={false} style={styles.profileHead}>Email</Text>
+                        <Text allowFontScaling={false} style={styles.profileData}>{email}</Text>
                     </View>
                 )}
 
                 {editMode ? (
                     <View style={styles.profileDataContainer}>
-                        <Text style={styles.profileHead}>Address</Text>
-                        <TextInput
+                        <Text allowFontScaling={false} style={styles.profileHead}>Address</Text>
+                        <TextInput allowFontScaling={false}
                             style={styles.profileDataEditMode}
                             placeholderTextColor={"#555"}
                             onChangeText={(value) => setAddress(value)}
@@ -138,8 +138,8 @@ export default function userProfile({ onClickBackButton }: userProfileProps) {
                     </View>
                 ) : (
                     <View style={styles.profileDataContainer}>
-                        <Text style={styles.profileHead}>Address</Text>
-                        <Text style={styles.profileData}>{address}</Text>
+                        <Text allowFontScaling={false} style={styles.profileHead}>Address</Text>
+                        <Text allowFontScaling={false} style={styles.profileData}>{address}</Text>
                     </View>
                 )}
 
@@ -155,7 +155,7 @@ export default function userProfile({ onClickBackButton }: userProfileProps) {
                                     source={require("../../assets/buttons/backButton.png")}
                                     style={styles.homeButtonIcon}
                                 />
-                                <Text style={styles.homeButtonText}>Cancel</Text>
+                                <Text allowFontScaling={false} style={styles.homeButtonText}>Cancel</Text>
                             </TouchableOpacity>
 
                             <TouchableOpacity style={styles.editButton}
@@ -164,7 +164,7 @@ export default function userProfile({ onClickBackButton }: userProfileProps) {
                                     clickedOnImage && setClickedOnImage(false);
                                     ToastAndroid.showWithGravity("Changes to your profile are successful", ToastAndroid.SHORT, ToastAndroid.CENTER);
                                 }}>
-                                <Text style={styles.editButtonText}>Save</Text>
+                                <Text allowFontScaling={false} style={styles.editButtonText}>Save</Text>
                                 <Image
                                     source={require("../../assets/buttons/nextButton.png")}
                                     style={styles.editButtonIcon}
@@ -178,11 +178,11 @@ export default function userProfile({ onClickBackButton }: userProfileProps) {
                                     source={require("../../assets/buttons/backButton.png")}
                                     style={styles.homeButtonIcon}
                                 />
-                                <Text style={styles.homeButtonText}>Home</Text>
+                                <Text allowFontScaling={false} style={styles.homeButtonText}>Home</Text>
                             </TouchableOpacity>
 
                             <TouchableOpacity style={styles.editButton} onPress={() => setEditMode(true)}>
-                                <Text style={styles.editButtonText}>Edit</Text>
+                                <Text allowFontScaling={false} style={styles.editButtonText}>Edit</Text>
                                 <Image
                                     source={require("../../assets/buttons/nextButton.png")}
                                     style={styles.editButtonIcon}
@@ -205,7 +205,7 @@ export default function userProfile({ onClickBackButton }: userProfileProps) {
                             source={require("../../assets/buttons/delete.png")}
                             style={[styles.editDeleteImageOptionsIcon, styles.deleteImageIcon]}
                         />
-                        <Text style={styles.editDeleteImageOptionsText}>Remove</Text>
+                        <Text allowFontScaling={false} style={styles.editDeleteImageOptionsText}>Remove</Text>
                     </TouchableOpacity>
                     <View style={styles.seperator}></View>
                     <TouchableOpacity style={styles.editDeleteImageOptions}
@@ -217,7 +217,7 @@ export default function userProfile({ onClickBackButton }: userProfileProps) {
                             source={require("../../assets/buttons/edit.png")}
                             style={styles.editDeleteImageOptionsIcon}
                         />
-                        <Text style={styles.editDeleteImageOptionsText}>Change</Text>
+                        <Text allowFontScaling={false} style={styles.editDeleteImageOptionsText}>Change</Text>
                     </TouchableOpacity>
                 </View>
             }

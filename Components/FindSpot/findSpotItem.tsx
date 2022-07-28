@@ -42,11 +42,11 @@ export default function FindSpotItem({
         }}>
             <View style={styles.spots}>
                 <View style={styles.spotsNameAndCost}>
-                    <Text style={styles.spotName}>{spotItem.name}</Text>
-                    <Text style={styles.spotCost}>{`₹ ${spotItem.cost[0].cost} / ${spotItem.cost[0].interval}`}</Text>
+                    <Text allowFontScaling={false} style={styles.spotName}>{spotItem.name}</Text>
+                    <Text allowFontScaling={false} style={styles.spotCost}>{`₹ ${spotItem.cost[0].cost} / ${spotItem.cost[0].interval}`}</Text>
                 </View>
                 <View style={styles.spotsAddressAndFavorite}>
-                    <Text style={styles.spotAddress}>{spotItem.address}</Text>
+                    <Text allowFontScaling={false} style={styles.spotAddress}>{spotItem.address}</Text>
                     <TouchableOpacity style={styles.favoriteButtonContainer} onPress={() => {
                         setFavorite(!favorite);
                         ToastAndroid.showWithGravity(

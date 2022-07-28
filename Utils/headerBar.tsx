@@ -47,12 +47,12 @@ export default function HeaderBar({ navigation, title, setTitle, setScreen, curr
                 backgroundColor: "#000",
                 opacity: 0.8,
                 width: width,
-                height: 100,
+                height: StatusBar.currentHeight ? StatusBar.currentHeight + 80 : 60,
                 justifyContent: "space-evenly",
                 paddingTop: Platform.OS === 'ios' ? 0 : StatusBar.currentHeight,
                 flexDirection: "row",
             }}>
-                <TouchableOpacity style={{ width: "10%", marginLeft: "3%", justifyContent: "center", alignItems: "center" }}
+                <TouchableOpacity style={{ marginLeft: 10, justifyContent: "center", alignItems: "center" }}
                     onPress={() => {
                         if (drawerOpen) {
                             animate(drawerOpacity, 0, 200);
@@ -84,7 +84,7 @@ export default function HeaderBar({ navigation, title, setTitle, setScreen, curr
                         animationCompleted ?
                             (
                                 <Animated.View style={{ opacity: titleOpacity, alignSelf: "center" }}>
-                                    <Text style={{ color: "#fff", fontSize: 25, fontWeight: "300", letterSpacing: 3, }}>{title}</Text>
+                                    <Text allowFontScaling={false} style={{ color: "#fff", fontSize: 25, fontWeight: "300", letterSpacing: 2.5, }}>{title}</Text>
                                 </Animated.View>
                             ) : (
                                 <Animated.View style={{ flexDirection: "row", justifyContent: "center", transform: [{ translateX: carPosition }] }} >
@@ -97,7 +97,7 @@ export default function HeaderBar({ navigation, title, setTitle, setScreen, curr
                     }
                 </View>
 
-                <TouchableOpacity style={{ width: "10%", marginRight: "1%", justifyContent: "center", alignItems: "center" }}
+                <TouchableOpacity style={{ width: "10%", justifyContent: "center", alignItems: "center" }}
                     onPress={() => {
                         if (profileOptions) {
                             animate(profileOptionsOpacity, 0, 200);

@@ -57,36 +57,36 @@ export default function AddVehicleInfo({
     return (
         <View style={styles.detailsContainer}>
             <View style={styles.spotNameAndAddressContainer}>
-                <Text style={styles.spotName}>{spotName}</Text>
+                <Text allowFontScaling={false} style={styles.spotName}>{spotName}</Text>
             </View>
 
             <View style={styles.spotCountContainer}>
                 <View style={styles.spotCountItem}>
                     <View style={styles.spotCountBox}>
-                        <Text style={styles.spotCountText}>{spotsTotalCount}</Text>
+                        <Text allowFontScaling={false} style={styles.spotCountText}>{spotsTotalCount}</Text>
                     </View>
-                    <Text style={styles.spotCountHeadText}>Total Number of Spots</Text>
+                    <Text allowFontScaling={false} style={styles.spotCountHeadText}>Total Number of Spots</Text>
                 </View>
 
                 <View style={styles.spotCountItem}>
                     <View style={[styles.spotCountBox, styles.availableBox]}>
-                        <Text style={styles.spotCountTextDark}>{spotsAvailableCount}</Text>
+                        <Text allowFontScaling={false} style={styles.spotCountTextDark}>{spotsAvailableCount}</Text>
                     </View>
-                    <Text style={styles.spotCountHeadText}>Available{'\n'}Spots</Text>
+                    <Text allowFontScaling={false} style={styles.spotCountHeadText}>Available{'\n'}Spots</Text>
                 </View>
 
                 <View style={styles.spotCountItem}>
                     <View style={[styles.spotCountBox, styles.consumedBox]}>
-                        <Text style={styles.spotCountTextDark}>{spotsConsumedCount}</Text>
+                        <Text allowFontScaling={false} style={styles.spotCountTextDark}>{spotsConsumedCount}</Text>
                     </View>
-                    <Text style={styles.spotCountHeadText}>Consumed Spots</Text>
+                    <Text allowFontScaling={false} style={styles.spotCountHeadText}>Consumed Spots</Text>
                 </View>
             </View>
             <View style={styles.seperator}></View>
 
 
             <View style={styles.vehicleInfoContainer}>
-                <Text style={styles.vehicleInfoHeader}>Enter Vehicle Details:</Text>
+                <Text allowFontScaling={false} style={styles.vehicleInfoHeader}>Enter Vehicle Details:</Text>
 
                 <View style={styles.vehicleInfoItem}>
                     <Dropdown
@@ -111,7 +111,7 @@ export default function AddVehicleInfo({
                 </View>
 
                 <View style={styles.vehicleInfoItem}>
-                    <TextInput
+                    <TextInput allowFontScaling={false}
                         style={styles.vehicleInfoData}
                         placeholder="Enter Vehicle Plate Number"
                         placeholderTextColor={"#888"}
@@ -124,7 +124,7 @@ export default function AddVehicleInfo({
 
 
                 <View style={styles.vehicleInfoItem}>
-                    <TextInput
+                    <TextInput allowFontScaling={false}
                         style={styles.vehicleInfoData}
                         placeholder="Enter Phone Number"
                         placeholderTextColor={"#888"}
@@ -138,7 +138,7 @@ export default function AddVehicleInfo({
 
             <View style={styles.halfSeperatorContainer}>
                 <View style={[styles.seperator, styles.halfSeperator]}></View>
-                <Text style={styles.halfSeperatorText}>OR</Text>
+                <Text allowFontScaling={false} style={styles.halfSeperatorText}>OR</Text>
                 <View style={[styles.seperator, styles.halfSeperator]}></View>
             </View>
 
@@ -173,11 +173,11 @@ export default function AddVehicleInfo({
                         source={require("../../../assets/buttons/backButton.png")}
                         style={styles.backAndNextButtonIcon}
                     />
-                    <Text style={styles.backButtonText}>Back</Text>
+                    <Text allowFontScaling={false} style={styles.backButtonText}>Back</Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity style={styles.nextButton} onPress={() => setProgressTracker(2)}>
-                    <Text style={styles.nextButtonText}>Next</Text>
+                    <Text allowFontScaling={false} style={styles.nextButtonText}>Next</Text>
                     <Image
                         source={require("../../../assets/buttons/nextButton.png")}
                         style={styles.backAndNextButtonIcon}

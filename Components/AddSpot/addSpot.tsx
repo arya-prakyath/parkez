@@ -56,30 +56,30 @@ export default function AddSpot({ onClickBackButton }: addSpotProps) {
     return (
         hasSpots ? (
             <View>
-                <Text>TODO: Has Spots</Text>
+                <Text allowFontScaling={false}>TODO: Has Spots</Text>
             </View >
         ) : (
             <View style={styles.container}>
                 {progressTracker === 0 && (
                     <View style={[styles.credentialParentContainer, styles.infoTextContainer]}>
-                        <Text style={styles.infoText}>
-                            <Text style={{ fontStyle: "italic", fontWeight: "200" }}>Step 1 </Text>- Fill In The Spot Details
+                        <Text allowFontScaling={false} style={styles.infoText}>
+                            <Text allowFontScaling={false} style={{ fontStyle: "italic", fontWeight: "200" }}>Step 1 </Text>- Fill In The Spot Details
                         </Text>
-                        <Text style={styles.infoText}>
-                            <Text style={{ fontStyle: "italic", fontWeight: "200" }}>Step 2 </Text>- Fill In The Spot Owner Details
+                        <Text allowFontScaling={false} style={styles.infoText}>
+                            <Text allowFontScaling={false} style={{ fontStyle: "italic", fontWeight: "200" }}>Step 2 </Text>- Fill In The Spot Owner Details
                         </Text>
-                        <Text style={styles.infoText}>
-                            <Text style={{ fontStyle: "italic", fontWeight: "200" }}>Step 3 </Text>- Choose Cost Plans
+                        <Text allowFontScaling={false} style={styles.infoText}>
+                            <Text allowFontScaling={false} style={{ fontStyle: "italic", fontWeight: "200" }}>Step 3 </Text>- Choose Cost Plans
                         </Text>
-                        <Text style={styles.infoText}>
-                            <Text style={{ fontStyle: "italic", fontWeight: "200" }}>Step 4 </Text>- Agree To Terms & Conditions
+                        <Text allowFontScaling={false} style={styles.infoText}>
+                            <Text allowFontScaling={false} style={{ fontStyle: "italic", fontWeight: "200" }}>Step 4 </Text>- Agree To Terms & Conditions
                         </Text>
-                        <Text style={styles.infoText}>
-                            <Text style={{ fontStyle: "italic", fontWeight: "200" }}>Step 5 </Text>- Start Earning
+                        <Text allowFontScaling={false} style={styles.infoText}>
+                            <Text allowFontScaling={false} style={{ fontStyle: "italic", fontWeight: "200" }}>Step 5 </Text>- Start Earning
                         </Text>
                         <View style={styles.nextBackButtonContainer}>
                             <TouchableOpacity style={styles.addSpotButton} onPress={() => setProgressTracker(1)}>
-                                <Text style={styles.addSpotButtonText}>Add Spot</Text>
+                                <Text allowFontScaling={false} style={styles.addSpotButtonText}>Add Spot</Text>
                             </TouchableOpacity>
                         </View >
                     </View>

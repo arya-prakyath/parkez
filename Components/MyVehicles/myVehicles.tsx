@@ -43,7 +43,7 @@ export default function myVehicle({ onClickBackButton }: myVehiclesProps) {
                                 source={require("../../assets/buttons/addButton.png")}
                                 style={styles.addNewVehicleButton}
                             />
-                            <Text style={styles.addNewVehicleButtonText}>Add New Vehicle</Text>
+                            <Text allowFontScaling={false} style={styles.addNewVehicleButtonText}>Add New Vehicle</Text>
                         </TouchableOpacity>
 
                         <MyVehiclesList
@@ -54,7 +54,7 @@ export default function myVehicle({ onClickBackButton }: myVehiclesProps) {
                     </View>
                 ) : (
                     <View style={[styles.MyVehicleContainer, styles.addVehicleContainer]}>
-                        <Text style={styles.infoText}>You have not added any vehicles yet!</Text>
+                        <Text allowFontScaling={false} style={styles.infoText}>You have not added any vehicles yet!</Text>
                         <TouchableOpacity style={[styles.addNewVehicleButtonConatiner, styles.addVehicleButtonConatiner]} onPress={() => {
                             setSelectedVehicle(undefined);
                             setAddEditVehicle(true);
@@ -63,7 +63,7 @@ export default function myVehicle({ onClickBackButton }: myVehiclesProps) {
                                 source={require("../../assets/buttons/addButton.png")}
                                 style={styles.addVehicleButton}
                             />
-                            <Text style={[styles.addNewVehicleButtonText, styles.addVehicleButtonText]}>Add vehicle</Text>
+                            <Text allowFontScaling={false} style={[styles.addNewVehicleButtonText, styles.addVehicleButtonText]}>Add vehicle</Text>
                         </TouchableOpacity>
                     </View>
                 )

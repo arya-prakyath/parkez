@@ -18,14 +18,14 @@ export default function MyVehiclesItem({ vehicle, setSelectedVehicle, setAddEdit
     return (
         <View style={styles.MyVehicleContainer}>
             <View>
-                <Text style={styles.infoText}>
-                    <Text style={{ fontStyle: "italic", fontWeight: "300" }}>Vehicle Name </Text>- {vehicle.vehicleName}
+                <Text allowFontScaling={false} style={styles.infoText}>
+                    <Text allowFontScaling={false} style={{ fontStyle: "italic", fontWeight: "300" }}>Vehicle Name </Text>- {vehicle.vehicleName}
                 </Text>
-                <Text style={styles.infoText}>
-                    <Text style={{ fontStyle: "italic", fontWeight: "300" }}>Vehicle Number </Text>- {vehicle.vehiclePlateNumber}
+                <Text allowFontScaling={false} style={styles.infoText}>
+                    <Text allowFontScaling={false} style={{ fontStyle: "italic", fontWeight: "300" }}>Vehicle Number </Text>- {vehicle.vehiclePlateNumber}
                 </Text>
-                <Text style={styles.infoText}>
-                    <Text style={{ fontStyle: "italic", fontWeight: "300" }}>Vehicle Type </Text>- {vehicle.vehicleType}
+                <Text allowFontScaling={false} style={styles.infoText}>
+                    <Text allowFontScaling={false} style={{ fontStyle: "italic", fontWeight: "300" }}>Vehicle Type </Text>- {vehicle.vehicleType}
                 </Text>
             </View>
 

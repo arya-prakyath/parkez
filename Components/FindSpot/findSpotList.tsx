@@ -1,6 +1,5 @@
 import React from "react";
-import { View, Text, FlatList, } from "react-native";
-import NoResults from "../../Utils/NoResults";
+import { View, FlatList, } from "react-native";
 import FindSpotItem from "./findSpotItem";
 import styles from "./findSpotStyle";
 

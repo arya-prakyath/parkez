@@ -9,7 +9,7 @@ export default function NoResults() {
             justifyContent: "center",
             alignItems: "center"
         }}>
-            <Text style={{
+            <Text allowFontScaling={false} style={{
                 color: "#fff",
                 fontSize: 25,
                 fontWeight: "300",

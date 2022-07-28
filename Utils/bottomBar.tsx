@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, TouchableOpacity, Image } from "react-native";
+import { View, Text, TouchableOpacity, Image, StatusBar } from "react-native";
 
 interface bottomBarProps {
     setScreen: React.Dispatch<React.SetStateAction<string>>,
@@ -71,8 +71,8 @@ export default function bottomBar({ setScreen, setTitle, currentBlock, onClick }
     return (
         <View style={{
             backgroundColor: "#111",
-            height: "9%",
             width: "100%",
+            height: 60,
             flexDirection: "row",
             justifyContent: "space-between",
             alignItems: "center",
@@ -85,13 +85,13 @@ export default function bottomBar({ setScreen, setTitle, currentBlock, onClick }
                     (
                         <View style={{ alignItems: "center", justifyContent: "center" }}>
                             <Image style={{ aspectRatio: 1, flex: 0.85 }} source={require("../assets/bottom-bar-icons/homeSelected.png")} />
-                            <Text style={{ color: "#fff", fontSize: 14, }}>Home</Text>
+                            <Text allowFontScaling={false} style={{ color: "#fff", fontSize: 14, }}>Home</Text>
                         </View>
 
                     ) : (
                         <View style={{ alignItems: "center", justifyContent: "center" }}>
                             <Image style={{ aspectRatio: 1, flex: 0.85 }} source={require("../assets/bottom-bar-icons/home.png")} />
-                            <Text style={{ color: "#fff", fontSize: 14, }}>Home</Text>
+                            <Text allowFontScaling={false} style={{ color: "#fff", fontSize: 14, }}>Home</Text>
                         </View>
                     )
                 }
@@ -102,13 +102,13 @@ export default function bottomBar({ setScreen, setTitle, currentBlock, onClick }
                     (
                         <View style={{ alignItems: "center", justifyContent: "center" }}>
                             <Image style={{ aspectRatio: 1, flex: 0.85 }} source={require("../assets/bottom-bar-icons/findSpotSelected.png")} />
-                            <Text style={{ color: "#fff", fontSize: 14, }}>Find Spot</Text>
+                            <Text allowFontScaling={false} style={{ color: "#fff", fontSize: 14, }}>Find Spot</Text>
                         </View>
 
                     ) : (
                         <View style={{ alignItems: "center", justifyContent: "center" }}>
                             <Image style={{ aspectRatio: 1, flex: 0.85 }} source={require("../assets/bottom-bar-icons/findSpot.png")} />
-                            <Text style={{ color: "#fff", fontSize: 14, }}>Find Spot</Text>
+                            <Text allowFontScaling={false} style={{ color: "#fff", fontSize: 14, }}>Find Spot</Text>
                         </View>
                     )
                 }
@@ -119,13 +119,13 @@ export default function bottomBar({ setScreen, setTitle, currentBlock, onClick }
                     (
                         <View style={{ alignItems: "center", justifyContent: "center" }}>
                             <Image style={{ aspectRatio: 1, flex: 0.85 }} source={require("../assets/bottom-bar-icons/addSpotSelected.png")} />
-                            <Text style={{ color: "#fff", fontSize: 14, }}>Add Spot</Text>
+                            <Text allowFontScaling={false} style={{ color: "#fff", fontSize: 14, }}>Add Spot</Text>
                         </View>
 
                     ) : (
                         <View style={{ alignItems: "center", justifyContent: "center" }}>
                             <Image style={{ aspectRatio: 1, flex: 0.85 }} source={require("../assets/bottom-bar-icons/addSpot.png")} />
-                            <Text style={{ color: "#fff", fontSize: 14, }}>Add Spot</Text>
+                            <Text allowFontScaling={false} style={{ color: "#fff", fontSize: 14, }}>Add Spot</Text>
                         </View>
                     )
                 }
@@ -136,13 +136,13 @@ export default function bottomBar({ setScreen, setTitle, currentBlock, onClick }
                     (
                         <View style={{ alignItems: "center", justifyContent: "center" }}>
                             <Image style={{ aspectRatio: 1, flex: 0.85 }} source={require("../assets/bottom-bar-icons/walletSelected.png")} />
-                            <Text style={{ color: "#fff", fontSize: 14, }}>Wallet</Text>
+                            <Text allowFontScaling={false} style={{ color: "#fff", fontSize: 14, }}>Wallet</Text>
                         </View>
 
                     ) : (
                         <View style={{ alignItems: "center", justifyContent: "center" }}>
                             <Image style={{ aspectRatio: 1, flex: 0.85 }} source={require("../assets/bottom-bar-icons/wallet.png")} />
-                            <Text style={{ color: "#fff", fontSize: 14, }}>Wallet</Text>
+                            <Text allowFontScaling={false} style={{ color: "#fff", fontSize: 14, }}>Wallet</Text>
                         </View>
                     )
                 }

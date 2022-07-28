@@ -69,10 +69,10 @@ export default function Login({ navigation }: { navigation: any }) {
 
                     <View style={styles.loginHeadsContainer}>
                         <TouchableOpacity onPress={() => { setphoneOrMail("phone") }} style={phoneOrMail === "phone" ? [styles.selectedLoginHead, styles.loginHead, styles.otpLoginHead] : styles.loginHead} >
-                            <Text style={phoneOrMail === "phone" ? styles.selectedLoginHeadText : styles.loginHeadText}>Phone</Text>
+                            <Text allowFontScaling={false} style={phoneOrMail === "phone" ? styles.selectedLoginHeadText : styles.loginHeadText}>Phone</Text>
                         </TouchableOpacity>
                         <TouchableOpacity onPress={() => { setphoneOrMail("email") }} style={phoneOrMail === "email" ? [styles.selectedLoginHead, styles.loginHead, styles.emailLoginHead] : styles.loginHead}>
-                            <Text style={phoneOrMail === "email" ? styles.selectedLoginHeadText : styles.loginHeadText}>Email</Text>
+                            <Text allowFontScaling={false} style={phoneOrMail === "email" ? styles.selectedLoginHeadText : styles.loginHeadText}>Email</Text>
                         </TouchableOpacity>
                     </View>
 
@@ -83,9 +83,9 @@ export default function Login({ navigation }: { navigation: any }) {
                         }
                     </View>
 
-                    <Text style={styles.registerLink}>
+                    <Text allowFontScaling={false} style={styles.registerLink}>
                         New to the app?{'\t'}
-                        <Text style={styles.siteLink} onPress={register}>Register Now</Text>
+                        <Text allowFontScaling={false} style={styles.siteLink} onPress={register}>Register Now</Text>
                     </Text>
 
                     <View style={styles.socialMediaContainer}>

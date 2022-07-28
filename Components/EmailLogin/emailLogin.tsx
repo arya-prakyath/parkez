@@ -68,7 +68,7 @@ export default function Login({ navigation, carPosition, textOpacity }: loginPro
             (
                 <View style={styles.container}>
                     <View style={styles.credentialContainer}>
-                        <TextInput
+                        <TextInput allowFontScaling={false}
                             style={styles.credential}
                             onChangeText={(value) => {
                                 setMail(value);
@@ -97,10 +97,10 @@ export default function Login({ navigation, carPosition, textOpacity }: loginPro
                         }
                     </View>
 
-                    <Text style={styles.warningText}>{wrongMail ? "This Email is not registered" : ""}</Text>
+                    <Text allowFontScaling={false} style={styles.warningText}>{wrongMail ? "This Email is not registered" : ""}</Text>
 
                     <View style={styles.credentialContainer}>
-                        <TextInput
+                        <TextInput allowFontScaling={false}
                             style={styles.credential}
                             onChangeText={(value) => {
                                 setPassword(value);
@@ -127,9 +127,9 @@ export default function Login({ navigation, carPosition, textOpacity }: loginPro
                         </TouchableHighlight>
                     </View>
 
-                    <Text style={styles.warningText}>{wrongPassword ? "The entered password is wrong" : ""}</Text>
+                    <Text allowFontScaling={false} style={styles.warningText}>{wrongPassword ? "The entered password is wrong" : ""}</Text>
 
-                    <Text style={styles.forgotPasswordLink} onPress={passwordReset}>Forgot Password?</Text>
+                    <Text allowFontScaling={false} style={styles.forgotPasswordLink} onPress={passwordReset}>Forgot Password?</Text>
 
                     {
                         mail && password ?

@@ -48,7 +48,7 @@ export default function SpotCostPlan({
     for (let i = 0; i < costListCount; i++) {
         costPlans.push(
             <View style={styles.costContainer} key={i}>
-                <TextInput
+                <TextInput allowFontScaling={false}
                     style={styles.costInput}
                     onChangeText={(value) => {
                         value = value.replace(' ', '');
@@ -57,12 +57,11 @@ export default function SpotCostPlan({
                         costList[i] = value;
                         setCostList(costList);
                     }}
-                    value={costList[i]}
                     placeholder="Enter Cost"
                     placeholderTextColor={"#bbb"}
                     keyboardType="number-pad"
                 />
-                <Text style={styles.perText}>Per</Text>
+                <Text allowFontScaling={false} style={styles.perText}>Per</Text>
                 <Dropdown
                     style={[styles.dropdown, isFocus && { borderColor: 'lightblue' }]}
                     placeholderStyle={styles.placeholderStyle}
@@ -125,7 +124,7 @@ export default function SpotCostPlan({
                     source={require("../../assets/buttons/addButton.png")}
                     style={styles.addCostPlanButton}
                 />
-                <Text style={styles.addCostPlanButtonText}>Add Cost Plan</Text>
+                <Text allowFontScaling={false} style={styles.addCostPlanButtonText}>Add Cost Plan</Text>
             </TouchableOpacity>
 
             <ScrollView>
@@ -138,7 +137,7 @@ export default function SpotCostPlan({
                         source={require("../../assets/buttons/backButton.png")}
                         style={styles.backAndNextButtonIcon}
                     />
-                    <Text style={styles.backButtonText}>Back</Text>
+                    <Text allowFontScaling={false} style={styles.backButtonText}>Back</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={[styles.nextButton, validate() && { backgroundColor: "#888" }]} disabled={validate()}
                     onPress={() => {
@@ -153,7 +152,7 @@ export default function SpotCostPlan({
                         setSpotCostPlans(spotCostPlans);
                         setProgressTracker(4);
                     }}>
-                    <Text style={styles.nextButtonText}>Next</Text>
+                    <Text allowFontScaling={false} style={styles.nextButtonText}>Next</Text>
                     <Image
                         source={require("../../assets/buttons/nextButton.png")}
                         style={styles.backAndNextButtonIcon}

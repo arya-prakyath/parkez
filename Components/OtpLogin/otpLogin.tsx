@@ -63,12 +63,12 @@ export default function Login({ navigation, carPosition, textOpacity }: loginPro
     return (
         !otpgenerated ?
             (<View style={styles.container}>
-                <Text style={styles.verifyText1}>Enter Your Phone number{'\n'}
-                    <Text style={styles.verifyText2}>To generate the OTP</Text>
+                <Text allowFontScaling={false} style={styles.verifyText1}>Enter Your Phone number{'\n'}
+                    <Text allowFontScaling={false} style={styles.verifyText2}>To generate the OTP</Text>
                 </Text>
 
                 <View style={styles.phoneNumberContainer}>
-                    <TextInput
+                    <TextInput allowFontScaling={false}
                         style={styles.phone}
                         onChangeText={(value) => {
                             value = value.replace(' ', '');
@@ -102,29 +102,29 @@ export default function Login({ navigation, carPosition, textOpacity }: loginPro
                     }
                 </View>
 
-                {wrongPhone && <Text style={styles.warningText}>This number is not registered! {'\n'}Please check if the entered number is correct or Register if you are new to this app.</Text>}
+                {wrongPhone && <Text allowFontScaling={false} style={styles.warningText}>This number is not registered! {'\n'}Please check if the entered number is correct or Register if you are new to this app.</Text>}
 
                 {(phone && phone.length === 10 && /^[0-9]+$/.test(phone)) ?
                     (
                         <TouchableOpacity onPress={generateOtp} style={styles.otpButton}>
-                            <Text style={styles.btnText}>Get OTP</Text>
+                            <Text allowFontScaling={false} style={styles.btnText}>Get OTP</Text>
                         </TouchableOpacity>
                     ) : (
                         <TouchableOpacity style={[styles.otpButton, styles.otpButtonDisabled]} disabled={true}>
-                            <Text style={styles.btnText}>Get OTP</Text>
+                            <Text allowFontScaling={false} style={styles.btnText}>Get OTP</Text>
                         </TouchableOpacity>
                     )
                 }
             </View>
             ) : (
                 <View style={styles.container}>
-                    <Text style={styles.verifyText1}>Verify the OTP</Text>
-                    <Text style={styles.verifyText2}>Sent to {phone.substring(0, 5) + " " + phone.substring(5,)}</Text>
-                    <TextInput
+                    <Text allowFontScaling={false} style={styles.verifyText1}>Verify the OTP</Text>
+                    <Text allowFontScaling={false} style={styles.verifyText2}>Sent to {phone.substring(0, 5) + " " + phone.substring(5,)}</Text>
+                    <TextInput allowFontScaling={false}
                         style={styles.otpTextField}
                         value={otp}
                         autoFocus={true}
-                        onChangeText={(value) => {
+                        onChangeText={(value: string) => {
                             if (value.indexOf(" ") === -1 && value.indexOf(",") === -1 && value.indexOf(".") === -1 && value.indexOf("-") === -1)
                                 setOtp(value);
                             if (wrongOtp)
@@ -135,17 +135,17 @@ export default function Login({ navigation, carPosition, textOpacity }: loginPro
                         keyboardType="number-pad"
                     />
 
-                    {wrongOtp && <Text style={styles.warningText}>Entered OTP is wrong</Text>}
+                    {wrongOtp && <Text allowFontScaling={false} style={styles.warningText}>Entered OTP is wrong</Text>}
 
                     <View style={styles.resetLinksContainer}>
-                        <Text style={styles.resetLinks} onPress={() => {
+                        <Text allowFontScaling={false} style={styles.resetLinks} onPress={() => {
                             setOtp('');
                             setWrongOtp(false);
                             generateOtp();
                         }}>
                             Resend OTP
                         </Text>
-                        <Text style={styles.resetLinks} onPress={() => {
+                        <Text allowFontScaling={false} style={styles.resetLinks} onPress={() => {
                             setOtp('');
                             setWrongOtp(false);
                             setOtpGenerated(false);
@@ -157,11 +157,11 @@ export default function Login({ navigation, carPosition, textOpacity }: loginPro
                     {otp && otp.length === 4 ?
                         (
                             <TouchableOpacity onPress={verifyOtp} style={styles.verifyOtpBtn}>
-                                <Text style={styles.btnText}>Verify</Text>
+                                <Text allowFontScaling={false} style={styles.btnText}>Verify</Text>
                             </TouchableOpacity>
                         ) : (
                             <TouchableOpacity style={[styles.verifyOtpBtn, styles.verifyOtpBtnDisabled]} disabled={true}>
-                                <Text style={styles.btnText}>Verify</Text>
+                                <Text allowFontScaling={false} style={styles.btnText}>Verify</Text>
                             </TouchableOpacity>
                         )
                     }

@@ -57,11 +57,11 @@ export default function PasswordReset({
     return (
         <View style={styles.container}>
             <View style={[styles.credentialContainer, styles.passwordResetContainer]}>
-                <Text style={[styles.credential, styles.emailDisabled]}>{parentMail}</Text>
+                <Text allowFontScaling={false} style={[styles.credential, styles.emailDisabled]}>{parentMail}</Text>
             </View>
 
             <View style={styles.credentialContainer}>
-                <TextInput
+                <TextInput allowFontScaling={false}
                     style={styles.credential}
                     onChangeText={(value) => {
                         setNewPassword(value);
@@ -89,7 +89,7 @@ export default function PasswordReset({
             </View>
 
             <View style={styles.credentialContainer}>
-                <TextInput
+                <TextInput allowFontScaling={false}
                     style={styles.credential}
                     onChangeText={(value) => {
                         setConfirmPassword(value);
@@ -116,22 +116,22 @@ export default function PasswordReset({
                 </TouchableHighlight>
             </View>
 
-            <Text style={[styles.warningText, { marginBottom: "5%" }]}>{passwordValidationError}</Text>
+            <Text allowFontScaling={false} style={[styles.warningText, { marginBottom: "5%" }]}>{passwordValidationError}</Text>
 
             {(newPassword && confirmPassword) ?
                 (
                     <TouchableOpacity onPress={verifyPassword} style={styles.otpButton}>
-                        <Text style={styles.btnText}>Change Password</Text>
+                        <Text allowFontScaling={false} style={styles.btnText}>Change Password</Text>
                     </TouchableOpacity>
                 ) : (
                     <TouchableOpacity style={[styles.otpButton, styles.otpButtonDisabled]} disabled={true}>
-                        <Text style={styles.btnText}>Change Password</Text>
+                        <Text allowFontScaling={false} style={styles.btnText}>Change Password</Text>
                     </TouchableOpacity>
                 )
             }
 
             <TouchableOpacity onPress={() => setResetPassword(false)} style={[styles.otpButton, styles.cancelButton]}>
-                <Text style={styles.btnText}>Cancel</Text>
+                <Text allowFontScaling={false} style={styles.btnText}>Cancel</Text>
             </TouchableOpacity>
 
         </View>

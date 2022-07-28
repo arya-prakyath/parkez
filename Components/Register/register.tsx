@@ -136,11 +136,11 @@ export default function Register({ setRegisterNow, parentElementFade }: register
 
             <View style={styles.registerContainer}>
                 <View style={styles.registerHeadContainer}>
-                    <Text style={styles.registerHeadText}>Welcome</Text>
+                    <Text allowFontScaling={false} style={styles.registerHeadText}>Welcome</Text>
                 </View>
 
                 <View style={styles.credentialContainer}>
-                    <TextInput
+                    <TextInput allowFontScaling={false}
                         style={styles.credential}
                         onChangeText={(value) => {
                             setName(value);
@@ -167,11 +167,11 @@ export default function Register({ setRegisterNow, parentElementFade }: register
                         )
                     }
                 </View>
-                <Text style={[styles.warningText]}>{nameError}</Text>
+                <Text allowFontScaling={false} style={[styles.warningText]}>{nameError}</Text>
 
 
                 <View style={styles.credentialContainer}>
-                    <TextInput
+                    <TextInput allowFontScaling={false}
                         style={styles.credential}
                         onChangeText={(value) => {
                             value = value.replace(' ', '');
@@ -204,11 +204,11 @@ export default function Register({ setRegisterNow, parentElementFade }: register
                         )
                     }
                 </View>
-                <Text style={[styles.warningText]}>{phoneError}</Text>
+                <Text allowFontScaling={false} style={[styles.warningText]}>{phoneError}</Text>
 
 
                 <View style={styles.credentialContainer}>
-                    <TextInput
+                    <TextInput allowFontScaling={false}
                         style={styles.credential}
                         onChangeText={(value) => {
                             setMail(value);
@@ -236,11 +236,11 @@ export default function Register({ setRegisterNow, parentElementFade }: register
                         )
                     }
                 </View>
-                <Text style={[styles.warningText]}>{mailError}</Text>
+                <Text allowFontScaling={false} style={[styles.warningText]}>{mailError}</Text>
 
 
                 <View style={styles.credentialContainer}>
-                    <TextInput
+                    <TextInput allowFontScaling={false}
                         style={styles.credential}
                         onChangeText={(value) => {
                             setPassword(value);
@@ -266,11 +266,11 @@ export default function Register({ setRegisterNow, parentElementFade }: register
                         }
                     </TouchableHighlight>
                 </View>
-                <Text style={[styles.warningText]}>{passwordError}</Text>
+                <Text allowFontScaling={false} style={[styles.warningText]}>{passwordError}</Text>
 
 
                 <View style={styles.credentialContainer}>
-                    <TextInput
+                    <TextInput allowFontScaling={false}
                         style={[styles.credential, styles.vehicleNumber]}
                         onChangeText={(value) => {
                             setVehicleNumber(value);
@@ -299,23 +299,23 @@ export default function Register({ setRegisterNow, parentElementFade }: register
                         )
                     }
                 </View>
-                <Text style={[styles.warningText]}>{vehicleNumberError}</Text>
+                <Text allowFontScaling={false} style={[styles.warningText]}>{vehicleNumberError}</Text>
 
 
                 {(name && phone && mail && password && vehicleNumber) ?
                     (
                         <TouchableOpacity onPress={onSubmit} style={styles.registerButton}>
-                            <Text style={styles.btnText}>Verify & Register</Text>
+                            <Text allowFontScaling={false} style={styles.btnText}>Verify & Register</Text>
                         </TouchableOpacity>
                     ) : (
                         <TouchableOpacity style={[styles.registerButton, styles.registerButtonDisabled]} disabled={true}>
-                            <Text style={styles.btnText}>Verify & Register</Text>
+                            <Text allowFontScaling={false} style={styles.btnText}>Verify & Register</Text>
                         </TouchableOpacity>
                     )
                 }
 
                 <TouchableOpacity onPress={onCancel} style={styles.registerButton}>
-                    <Text style={styles.btnText}>Cancel</Text>
+                    <Text allowFontScaling={false} style={styles.btnText}>Cancel</Text>
                 </TouchableOpacity>
             </View>
 

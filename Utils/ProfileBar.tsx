@@ -39,14 +39,14 @@ export default function HeaderProfileOptions({ navigation, onClickProfile, onCli
             alignSelf: "flex-end",
             justifyContent: "space-evenly",
             width: "50%",
-            height: "12%",
+            height: 125,
             transform: [{ translateX: profileOptionsSlide }],
         }}>
             <TouchableOpacity onPress={onClickProfile}>
-                <Text style={{ color: "#ccc", borderBottomColor: "#ccc", borderBottomWidth: 1, width: "90%", fontSize: 18, marginLeft: 18, paddingBottom: 8 }}>Profile</Text>
+                <Text allowFontScaling={false} style={{ color: "#ccc", borderBottomColor: "#ccc", borderBottomWidth: 1, width: "90%", fontSize: 18, marginLeft: 18, paddingBottom: 8 }}>Profile</Text>
             </TouchableOpacity>
             <TouchableOpacity onPress={logOut}>
-                <Text style={{ color: "#ccc", borderBottomColor: "#acccaa", borderBottomWidth: 1, width: "90%", fontSize: 18, marginLeft: 18, paddingBottom: 8 }}>Logout</Text>
+                <Text allowFontScaling={false} style={{ color: "#ccc", borderBottomColor: "#acccaa", borderBottomWidth: 1, width: "90%", fontSize: 18, marginLeft: 18, paddingBottom: 8 }}>Logout</Text>
             </TouchableOpacity>
         </Animated.View>
     )

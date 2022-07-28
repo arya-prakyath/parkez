@@ -60,12 +60,12 @@ export default function ForgotPassword({
         !otpGenerated ?
             (
                 <View style={[styles.container, { justifyContent: "center" }]}>
-                    <Text style={styles.verifyText1}>Enter Your Email ID{'\n'}
-                        <Text style={styles.verifyText2}>To generate the OTP</Text>
+                    <Text allowFontScaling={false} style={styles.verifyText1}>Enter Your Email ID{'\n'}
+                        <Text allowFontScaling={false} style={styles.verifyText2}>To generate the OTP</Text>
                     </Text>
 
                     <View style={[styles.credentialContainer, { height: "20%", marginTop: "3%" }]}>
-                        <TextInput
+                        <TextInput allowFontScaling={false}
                             style={styles.credential}
                             onChangeText={(value) => {
                                 setMail(value);
@@ -94,29 +94,29 @@ export default function ForgotPassword({
                         }
                     </View>
 
-                    <Text style={[styles.warningText, { marginBottom: "3%" }]}>{wrongMail ? "This Email is not registered" : ""}</Text>
+                    <Text allowFontScaling={false} style={[styles.warningText, { marginBottom: "3%" }]}>{wrongMail ? "This Email is not registered" : ""}</Text>
 
                     {(mail && /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(mail)) ?
                         (
                             <TouchableOpacity onPress={generateOtp} style={styles.otpButton}>
-                                <Text style={styles.btnText}>Get OTP</Text>
+                                <Text allowFontScaling={false} style={styles.btnText}>Get OTP</Text>
                             </TouchableOpacity>
                         ) : (
                             <TouchableOpacity style={[styles.otpButton, styles.otpButtonDisabled]} disabled={true}>
-                                <Text style={styles.btnText}>Get OTP</Text>
+                                <Text allowFontScaling={false} style={styles.btnText}>Get OTP</Text>
                             </TouchableOpacity>
                         )
                     }
 
                     <TouchableOpacity onPress={() => setResetPassword(false)} style={[styles.otpButton, styles.cancelButton]}>
-                        <Text style={styles.btnText}>Cancel</Text>
+                        <Text allowFontScaling={false} style={styles.btnText}>Cancel</Text>
                     </TouchableOpacity>
                 </View >
             ) : !passwordReset ? (
                 <View style={[styles.container, { justifyContent: "center" }]}>
-                    <Text style={styles.verifyText1}>Verify the OTP</Text>
-                    <Text style={styles.verifyText2}>Sent to {mail}</Text>
-                    <TextInput
+                    <Text allowFontScaling={false} style={styles.verifyText1}>Verify the OTP</Text>
+                    <Text allowFontScaling={false} style={styles.verifyText2}>Sent to {mail}</Text>
+                    <TextInput allowFontScaling={false}
                         style={styles.otpTextField}
                         value={otp}
                         autoFocus={true}
@@ -131,17 +131,17 @@ export default function ForgotPassword({
                         keyboardType="number-pad"
                     />
 
-                    {wrongOtp && <Text style={styles.warningText}>Entered OTP is wrong</Text>}
+                    {wrongOtp && <Text allowFontScaling={false} style={styles.warningText}>Entered OTP is wrong</Text>}
 
                     <View style={styles.resetLinksContainer}>
-                        <Text style={styles.resetLinks} onPress={() => {
+                        <Text allowFontScaling={false} style={styles.resetLinks} onPress={() => {
                             setOtp('');
                             setWrongOtp(false);
                             generateOtp();
                         }}>
                             Resend OTP
                         </Text>
-                        <Text style={styles.resetLinks} onPress={() => {
+                        <Text allowFontScaling={false} style={styles.resetLinks} onPress={() => {
                             setOtp('');
                             setWrongOtp(false);
                             setOtpGenerated(false);
@@ -153,11 +153,11 @@ export default function ForgotPassword({
                     {otp && otp.length === 4 ?
                         (
                             <TouchableOpacity onPress={verifyOtp} style={styles.verifyOtpBtn}>
-                                <Text style={styles.btnText}>Verify</Text>
+                                <Text allowFontScaling={false} style={styles.btnText}>Verify</Text>
                             </TouchableOpacity>
                         ) : (
                             <TouchableOpacity style={[styles.verifyOtpBtn, styles.verifyOtpBtnDisabled]} disabled={true}>
-                                <Text style={styles.btnText}>Verify</Text>
+                                <Text allowFontScaling={false} style={styles.btnText}>Verify</Text>
                             </TouchableOpacity>
                         )
                     }

@@ -72,53 +72,53 @@ export default function AddDateAndTime({
                 onCancel={hideDatePicker}
             />
             <View style={styles.spotNameAndAddressContainer}>
-                <Text style={styles.spotName}>{spotName}</Text>
+                <Text allowFontScaling={false} style={styles.spotName}>{spotName}</Text>
             </View>
 
             <View style={styles.spotCountContainer}>
                 <View style={styles.spotCountItem}>
                     <View style={styles.spotCountBox}>
-                        <Text style={styles.spotCountText}>{spotsTotalCount}</Text>
+                        <Text allowFontScaling={false} style={styles.spotCountText}>{spotsTotalCount}</Text>
                     </View>
-                    <Text style={styles.spotCountHeadText}>Total Number of Spots</Text>
+                    <Text allowFontScaling={false} style={styles.spotCountHeadText}>Total Number of Spots</Text>
                 </View>
 
                 <View style={styles.spotCountItem}>
                     <View style={[styles.spotCountBox, styles.availableBox]}>
-                        <Text style={styles.spotCountTextDark}>{spotsAvailableCount}</Text>
+                        <Text allowFontScaling={false} style={styles.spotCountTextDark}>{spotsAvailableCount}</Text>
                     </View>
-                    <Text style={styles.spotCountHeadText}>Available{'\n'}Spots</Text>
+                    <Text allowFontScaling={false} style={styles.spotCountHeadText}>Available{'\n'}Spots</Text>
                 </View>
 
                 <View style={styles.spotCountItem}>
                     <View style={[styles.spotCountBox, styles.consumedBox]}>
-                        <Text style={styles.spotCountTextDark}>{spotsConsumedCount}</Text>
+                        <Text allowFontScaling={false} style={styles.spotCountTextDark}>{spotsConsumedCount}</Text>
                     </View>
-                    <Text style={styles.spotCountHeadText}>Consumed Spots</Text>
+                    <Text allowFontScaling={false} style={styles.spotCountHeadText}>Consumed Spots</Text>
                 </View>
             </View>
             <View style={styles.seperator}></View>
 
             <View style={styles.dateTimeContainer}>
-                <Text style={styles.dateTimeHead}>Pick From Date and Time:</Text>
+                <Text allowFontScaling={false} style={styles.dateTimeHead}>Pick From Date and Time:</Text>
                 <View style={styles.dateTimeItem}>
                     <TouchableOpacity style={[styles.dateTimeBox, styles.leftBox]} onPress={() => showDatePicker("fromDate")}>
-                        <Text style={styles.dateTimeText}>{fromDate}</Text>
+                        <Text allowFontScaling={false} style={styles.dateTimeText}>{fromDate}</Text>
                     </TouchableOpacity>
 
                     <TouchableOpacity style={[styles.dateTimeBox, styles.rightBox]} onPress={() => showDatePicker("fromTime")}>
-                        <Text style={styles.dateTimeText}>{fromTime}</Text>
+                        <Text allowFontScaling={false} style={styles.dateTimeText}>{fromTime}</Text>
                     </TouchableOpacity>
                 </View>
 
-                <Text style={styles.dateTimeHead}>Pick To Date and Time:</Text>
+                <Text allowFontScaling={false} style={styles.dateTimeHead}>Pick To Date and Time:</Text>
                 <View style={styles.dateTimeItem}>
                     <TouchableOpacity style={[styles.dateTimeBox, styles.leftBox]} onPress={() => showDatePicker("toDate")}>
-                        <Text style={styles.dateTimeText}>{toDate}</Text>
+                        <Text allowFontScaling={false} style={styles.dateTimeText}>{toDate}</Text>
                     </TouchableOpacity>
 
                     <TouchableOpacity style={[styles.dateTimeBox, styles.rightBox]} onPress={() => showDatePicker("toTime")}>
-                        <Text style={styles.dateTimeText}>{toTime}</Text>
+                        <Text allowFontScaling={false} style={styles.dateTimeText}>{toTime}</Text>
                     </TouchableOpacity>
                 </View>
             </View>
@@ -129,7 +129,7 @@ export default function AddDateAndTime({
                         source={require("../../../assets/buttons/backButton.png")}
                         style={styles.backAndNextButtonIcon}
                     />
-                    <Text style={styles.backButtonText}>Back</Text>
+                    <Text allowFontScaling={false} style={styles.backButtonText}>Back</Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity style={styles.nextButton} onPress={() => {
@@ -149,7 +149,7 @@ export default function AddDateAndTime({
                     ));
                     setProgressTracker(3);
                 }}>
-                    <Text style={styles.nextButtonText}>Next</Text>
+                    <Text allowFontScaling={false} style={styles.nextButtonText}>Next</Text>
                     <Image
                         source={require("../../../assets/buttons/nextButton.png")}
                         style={styles.backAndNextButtonIcon}

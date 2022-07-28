@@ -10,7 +10,7 @@ export default function settings({ onClickBackButton }: settingsProps) {
     BackHandler.addEventListener("hardwareBackPress", () => onClickBackButton("Home"))
     return (
         <View style={styles.container}>
-            <Text style={styles.text}>Settings Screen Here</Text>
+            <Text allowFontScaling={false} style={styles.text}>Settings Screen Here</Text>
         </View>
     )
 }

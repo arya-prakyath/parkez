@@ -55,7 +55,7 @@ export default function favoriteSpots({ onClickBackButton }: favoriteSpotsProps)
     return (
         <View style={styles.container}>
             <View style={styles.searchBar}>
-                <TextInput
+                <TextInput allowFontScaling={false}
                     style={styles.searchText}
                     onChangeText={(value) => {
                         setSearchText(value);

@@ -10,10 +10,10 @@ const styles = StyleSheet.create({
     detailsContainer: {
         backgroundColor: "rgba(0, 0, 0, 0.8)",
         maxHeight: "75%",
-        minHeight: "70%",
+        minHeight: "60%",
         width: "95%",
         alignItems: "center",
-        paddingVertical: "5%",
+        paddingVertical: 15,
         alignSelf: "center",
         borderColor: "#555",
         borderWidth: 3,
@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
 
     spotCountContainer: {
         width: "90%",
-        height: "18%",
+        height: 75,
         flexDirection: "row",
         justifyContent: "space-between",
     },
@@ -166,7 +166,7 @@ const styles = StyleSheet.create({
         paddingLeft: 10,
     },
     dropdown: {
-        height: 45,
+        height: 48,
         borderColor: '#888',
         borderWidth: 1,
         borderRadius: 10,
@@ -235,7 +235,8 @@ const styles = StyleSheet.create({
         color: "#fff",
         fontSize: 18,
         fontWeight: "300",
-        margin: 10,
+        width: "90%",
+        marginBottom: 15,
     },
     confirmationItem: {
         width: "90%",
