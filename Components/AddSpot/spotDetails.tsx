@@ -64,6 +64,7 @@ export default function SpotDetails({
                     value={spotName}
                     placeholder="Spot Name"
                     placeholderTextColor={"#bbb"}
+                    autoCorrect={false}
                 />
                 {
                     spotName.length > 1 && (
@@ -87,6 +88,7 @@ export default function SpotDetails({
                     value={building}
                     placeholder="Building Name/ No."
                     placeholderTextColor={"#bbb"}
+                    autoCorrect={false}
                 />
                 {
                     building.length > 1 && (
@@ -110,6 +112,7 @@ export default function SpotDetails({
                     value={street}
                     placeholder="Street/ Main/ Cross/ Locality"
                     placeholderTextColor={"#bbb"}
+                    autoCorrect={false}
                 />
                 {
                     street.length > 1 && (
@@ -133,6 +136,7 @@ export default function SpotDetails({
                     value={landmark}
                     placeholder="Landmark"
                     placeholderTextColor={"#bbb"}
+                    autoCorrect={false}
                 />
                 {
                     landmark.length > 1 && (
@@ -149,11 +153,12 @@ export default function SpotDetails({
 
             <View style={styles.credentialContainer}>
                 <TextInput allowFontScaling={false}
-                    style={[styles.credential, {color: "#888"}]}
+                    style={[styles.credential, { color: "#888" }]}
                     value={city}
                     placeholder="City"
                     placeholderTextColor={"#bbb"}
                     editable={false}
+                    autoCorrect={false}
                 />
             </View>
 
@@ -174,6 +179,7 @@ export default function SpotDetails({
                     placeholderTextColor={"#bbb"}
                     maxLength={7}
                     keyboardType="number-pad"
+                    autoCorrect={false}
                 />
                 {
                     pincode.length > 1 && (

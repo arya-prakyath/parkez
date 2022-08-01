@@ -63,6 +63,7 @@ export default function SpotOwner({
                     value={spotOwnerName}
                     placeholder="Spot Owner's Name"
                     placeholderTextColor={"#bbb"}
+                    autoCorrect={false}
                 />
                 {
                     spotOwnerName.length > 1 && (
@@ -100,6 +101,7 @@ export default function SpotOwner({
                     placeholderTextColor={"#bbb"}
                     keyboardType="numeric"
                     maxLength={11}
+                    autoCorrect={false}
                 />
                 {
                     spotOwnerPhone.length > 1 && (
@@ -153,6 +155,7 @@ export default function SpotOwner({
                         placeholder="Spot Incharge's Name"
                         placeholderTextColor={"#bbb"}
                         editable={!ownerAndInchargeSame}
+                        autoCorrect={false}
                     />
                     {
                         spotInchargeName.length > 1 && (
@@ -192,6 +195,7 @@ export default function SpotOwner({
                         keyboardType="numeric"
                         maxLength={11}
                         editable={!ownerAndInchargeSame}
+                        autoCorrect={false}
                     />
                     {
                         spotInchargePhone.length > 1 && (
