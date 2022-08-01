@@ -1,11 +1,12 @@
 import { Platform, StatusBar, StyleSheet } from "react-native";
+import { marginFromHeader } from "../../Utils/dimentions";
 
 const styles = StyleSheet.create({
   container: {
     justifyContent: "flex-start",
     width: "100%",
     height: "100%",
-    marginTop: (Platform.OS === 'ios') ? 80 : (StatusBar.currentHeight ? (StatusBar.currentHeight + 80) : 80),
+    marginTop: marginFromHeader,
   },
 
   searchBar: {
@@ -16,8 +17,8 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     borderRadius: 50,
     width: "92%",
-    height: "7%",
-    marginBottom: 10,
+    height: 50,
+    marginVertical: 10,
   },
   searchText: {
     color: "#000",

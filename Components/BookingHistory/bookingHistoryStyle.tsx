@@ -1,10 +1,11 @@
-import { Platform, StatusBar, StyleSheet } from "react-native";
+import { Dimensions, Platform, StatusBar, StyleSheet } from "react-native";
+import { marginFromHeader } from "../../Utils/dimentions";
 
 const styles = StyleSheet.create({
   container: {
     width: "100%",
     height: "100%",
-    marginTop: (Platform.OS === 'ios') ? 80 : (StatusBar.currentHeight ? (StatusBar.currentHeight + 80) : 80),
+    marginTop: marginFromHeader + 10,
   },
   historyContainer: {
     width: "100%",
@@ -14,7 +15,7 @@ const styles = StyleSheet.create({
 
   historyList: {
     alignSelf: "center",
-    height: "78%",
+    height: Dimensions.get("screen").height - (marginFromHeader + 110),
     width: "100%",
   },
 

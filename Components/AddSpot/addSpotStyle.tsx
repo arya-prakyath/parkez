@@ -1,14 +1,16 @@
 import { Platform, StatusBar, StyleSheet } from "react-native";
+import { marginFromHeader } from "../../Utils/dimentions";
 
 const styles = StyleSheet.create({
   container: {
     justifyContent: "flex-start",
     width: "100%",
-    height: "100%",
-    marginTop: (Platform.OS === 'ios') ? 80 : (StatusBar.currentHeight ? (StatusBar.currentHeight + 80) : 80),
+    height: "90%",
+    marginTop: marginFromHeader,
   },
 
   infoTextContainer: {
+    height: "70%",
     paddingTop: 15,
     paddingBottom: 25,
     paddingHorizontal: 25,
@@ -25,8 +27,9 @@ const styles = StyleSheet.create({
   },
   addSpotButton: {
     width: "100%",
-    height: "100%",
+    height: "90%",
     backgroundColor: "#fff",
+    marginTop: 25,
     borderRadius: 25,
     justifyContent: "center",
     alignItems: "center",
@@ -39,7 +42,7 @@ const styles = StyleSheet.create({
 
   credentialParentContainer: {
     backgroundColor: "rgba(0, 0, 0, 0.8)",
-    height: "70%",
+    height: "80%",
     width: "95%",
     alignItems: "center",
     paddingVertical: 30,
@@ -71,7 +74,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "#888",
     height: 42,
-    margin: 10,
+    margin: 15,
     width: "85%",
   },
   credential: {
@@ -85,10 +88,10 @@ const styles = StyleSheet.create({
   buttonContainer: {
     justifyContent: "center",
     alignItems: "center",
-    marginRight: 5,
+    marginRight: 8,
   },
   buttons: {
-    flex: 0.4,
+    flex: 0.45,
     aspectRatio: 1,
   },
   buttonForAddress: {

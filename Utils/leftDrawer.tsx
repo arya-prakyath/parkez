@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { View, Text, Image, Animated, Platform, StatusBar, TouchableOpacity, Dimensions } from "react-native";
+import { marginFromHeader } from "./dimentions";
 
 interface headerLeftDrawerOptions {
     setScreen: React.Dispatch<React.SetStateAction<string>>,
@@ -102,7 +103,7 @@ export default function headerLeftDrawer({ setScreen, setTitle, currentBlock, on
     return (
         <Animated.View style={{
             opacity: drawerOpacity,
-            marginTop: (Platform.OS === 'ios') ? 80 : (StatusBar.currentHeight ? (StatusBar.currentHeight + 80) : 80),
+            marginTop: marginFromHeader,
             backgroundColor: "#111",
             position: "absolute",
             alignSelf: "flex-start",

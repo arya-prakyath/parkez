@@ -1,11 +1,12 @@
-import { Platform, StatusBar, StyleSheet } from "react-native";
+import { Dimensions, Platform, StatusBar, StyleSheet } from "react-native";
+import { marginFromHeader } from "../../Utils/dimentions";
 
 const styles = StyleSheet.create({
   container: {
     justifyContent: "flex-start",
     width: "100%",
     height: "100%",
-    marginTop: (Platform.OS === 'ios') ? 80 : (StatusBar.currentHeight ? (StatusBar.currentHeight + 80) : 80),
+    marginVertical: marginFromHeader,
   },
 
   addNewVehicleButtonConatiner: {
@@ -33,7 +34,7 @@ const styles = StyleSheet.create({
   MyVehiclesContainer: {
     alignSelf: "center",
     width: "100%",
-    height: "100%",
+    height: Dimensions.get("screen").height - 30,
     paddingRight: 5,
   },
   MyVehiclesList: {
@@ -44,13 +45,13 @@ const styles = StyleSheet.create({
   MyVehicleContainer: {
     backgroundColor: "rgba(0, 0, 0, 0.8)",
     width: "92%",
-    height: 120,
+    height: 110,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-around",
     alignSelf: "center",
-    marginBottom: "5%",
-    paddingHorizontal: 10,
+    marginBottom: 12,
+    paddingHorizontal: 15,
     borderColor: "#555",
     borderWidth: 1,
     borderRightWidth: 3,
@@ -59,9 +60,9 @@ const styles = StyleSheet.create({
   },
   infoText: {
     color: "#fff",
-    fontSize: 17,
+    fontSize: 16,
     fontWeight: "400",
-    letterSpacing: 0.5,
+    letterSpacing: 1,
   },
   gotoItemContainer: {
     alignItems: "flex-end",
@@ -96,11 +97,11 @@ const styles = StyleSheet.create({
 
   addEditVehicleContainer: {
     backgroundColor: "rgba(0, 0, 0, 0.8)",
+    marginTop: marginFromHeader + 10,
     height: "68%",
     width: "95%",
     alignSelf: "center",
     justifyContent: "center",
-    marginTop: (Platform.OS === 'ios') ? 80 : (StatusBar.currentHeight ? (StatusBar.currentHeight + 80) : 80),
     borderColor: "#555",
     borderWidth: 3,
     borderTopLeftRadius: 0,
@@ -124,14 +125,15 @@ const styles = StyleSheet.create({
     height: 40,
     color: "#fff",
     fontSize: 18,
-    borderColor: "#fff",
-    borderBottomWidth: 1,
+    borderWidth: 1,
+    borderColor: "#888",
     marginBottom: 10,
     marginLeft: 10,
+    paddingLeft: 5,
   },
   dropdown: {
     height: 45,
-    borderColor: '#fff',
+    borderColor: '#888',
     borderWidth: 1,
     borderRadius: 10,
     marginLeft: 10,

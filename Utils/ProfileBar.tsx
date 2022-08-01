@@ -1,6 +1,7 @@
 import { StackActions } from "@react-navigation/native";
 import { Animated, Text, Platform, StatusBar, TouchableOpacity, Alert } from "react-native";
 import showAlert from "./alertBox";
+import { marginFromHeader } from "./dimentions";
 
 interface headerProfileOptions {
     navigation: any;
@@ -29,7 +30,7 @@ export default function HeaderProfileOptions({ navigation, onClickProfile, onCli
     return (
         <Animated.View style={{
             opacity: profileOptionsOpacity,
-            marginTop: (Platform.OS === 'ios') ? 80 : (StatusBar.currentHeight ? (StatusBar.currentHeight + 80) : 80),
+            marginTop: marginFromHeader,
             backgroundColor: "#111",
             borderColor: "#555",
             borderWidth: 1,

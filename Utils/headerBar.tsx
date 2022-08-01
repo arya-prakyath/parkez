@@ -47,7 +47,7 @@ export default function HeaderBar({ navigation, title, setTitle, setScreen, curr
                 backgroundColor: "#000",
                 opacity: 0.8,
                 width: width,
-                height: StatusBar.currentHeight ? StatusBar.currentHeight + 80 : 60,
+                height: StatusBar.currentHeight ? StatusBar.currentHeight + 60 : 60,
                 justifyContent: "space-evenly",
                 paddingTop: Platform.OS === 'ios' ? 0 : StatusBar.currentHeight,
                 flexDirection: "row",

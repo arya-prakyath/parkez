@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
     right: "1%",
     top: "8%",
     width: "40%",
-    height: 85,
+    height: 90,
     paddingVertical: 5,
     borderColor: "#555",
     borderWidth: 1,
@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
   
   profileContainer: {
     backgroundColor: "rgba(0, 0, 0, 0.8)",
-    height: "58%",
+    height: "52%",
     width: "85%",
     marginTop: "1%",
     alignSelf: "center",
@@ -79,7 +79,9 @@ const styles = StyleSheet.create({
     borderBottomWidth: 3,
     borderRadius: 15,
   },
-
+  profileDetails: {
+    height: "80%",
+  },
   profileDataContainer: {
     marginVertical: 8,
     marginHorizontal: 15,
@@ -100,15 +102,15 @@ const styles = StyleSheet.create({
     color: "#fff",
     width: "90%",
     fontSize: 16,
-    borderColor: "#fff",
-    borderBottomWidth: 1,
-    paddingLeft: 3,
+    borderWidth: 1,
+    borderColor: "#888",
+    padding: 3,
   },
 
   buttonContainer: {
     height: "15%",
     width: "100%",
-    marginTop: 25,
+    marginTop: 5,
     marginBottom: 5,
     paddingHorizontal: 15,
     flexDirection: "row",
@@ -143,14 +145,14 @@ const styles = StyleSheet.create({
     width: "45%",
     height: "100%",
   },
+  editButtonText: {
+    fontSize: 16,
+    color: "#000",
+  },
   editButtonIcon: {
     flex: 0.3,
     aspectRatio: 1,
     marginLeft: 10,
-  },
-  editButtonText: {
-    fontSize: 16,
-    color: "#000",
   },
 })
 
