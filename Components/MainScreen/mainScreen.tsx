@@ -51,7 +51,7 @@ export default function Home({ navigation }: mainScreenProps) {
             imageStyle={{ opacity: 0.5 }}
             blurRadius={1}
         >
-            {screen === "Home" && <HomeScreen onClickBackButton={onClickBackButton}/>}
+            {screen === "Home" && <HomeScreen onClickBackButton={onClickBackButton} setScreen={setScreen} setTitle={setTitle}/>}
             {screen === "FindSpot" && <FindSpotScreen onClickBackButton={onClickBackButton}/>}
             {screen === "AddSpot" && <AddSpotScreen onClickBackButton={onClickBackButton}/>}
             {screen === "Wallet" && <WalletScreen onClickBackButton={onClickBackButton}/>}

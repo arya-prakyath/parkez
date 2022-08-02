@@ -3,6 +3,7 @@ import { Animated, Dimensions, Image, ImageBackground, View } from "react-native
 import { StackActions } from '@react-navigation/native';
 import styles from "./welcomeStyle";
 import animate from "../../Animations/animate";
+import { getCache, setCache } from "../../Models/getSetCache";
 
 export default function Welome({ navigation }: { navigation: any }) {
     const width = Dimensions.get('window').width;
@@ -12,17 +13,25 @@ export default function Welome({ navigation }: { navigation: any }) {
     const moveText = () => {
         animate(textPosition, 0, 800, () => animate(textPosition, -25, 1200, () => animate(textPosition, width, 1000)))
     }
-    
+
     const moveCar = () => {
         animate(carPosition, 0, 800, () => animate(carPosition, 25, 1200, () => animate(carPosition, -width, 1000, () => {
-            navigation.dispatch(
-                StackActions.replace('Login', {
-                    navigation: navigation,
-                })
-            );
+            getCache("login")?.then(valuePromise => valuePromise).then(value => {
+                value === '1' ?
+                    navigation.dispatch(
+                        StackActions.replace('Main', {
+                            navigation: navigation,
+                        })
+                    ) : navigation.dispatch(
+                        StackActions.replace('Login', {
+                            navigation: navigation,
+                        })
+                    )
+            })
         })))
     }
 
+    // setCache("bookingProgressCache", '0');
 
     return (
         <ImageBackground

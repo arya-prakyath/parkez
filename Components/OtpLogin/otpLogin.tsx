@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
     Text,
     View,
@@ -15,6 +15,7 @@ import animate from "../../Animations/animate";
 import phoneList from "../../Models/phoneListData";
 import showAlert from "../../Utils/alertBox";
 import styles from "./otpLoginStyle";
+import { getCache, setCache } from "../../Models/getSetCache";
 
 interface loginProps {
     navigation: any,
@@ -31,8 +32,13 @@ export default function Login({ navigation, carPosition, textOpacity }: loginPro
     const [wrongPhone, setWrongPhone] = useState(false);
     const [wrongOtp, setWrongOtp] = useState(false);
 
+    useEffect(() => {
+        getCache("phoneCache")?.then(valuePromise => valuePromise).then(value => setPhone(value ?? ""))
+    }, []);
+
     const generateOtp = () => {
         if (phoneList.includes(phone)) {
+            setCache("phoneCache", phone);
             setOtpGenerated(true);
             const otp = Math.floor(Math.random() * 9000) + 1000;
             setGeneratedOtp(otp);
@@ -48,6 +54,7 @@ export default function Login({ navigation, carPosition, textOpacity }: loginPro
             Keyboard.dismiss();
             animate(textOpacity, 0, 1000);
             animate(carPosition, 100, 1000, () => animate(carPosition, -width, 800, () => {
+                setCache("login", "1");
                 navigation.dispatch(
                     StackActions.replace('Main', {
                         navigation: navigation,

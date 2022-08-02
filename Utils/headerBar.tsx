@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { View, Image, Text, Platform, StatusBar, TouchableOpacity, Animated, Dimensions } from "react-native";
 import animate from "../Animations/animate";
+import { setCache } from "../Models/getSetCache";
 import BottomBar from "./bottomBar";
 import LeftDrawer from "./leftDrawer";
 import ProfileBar from "./ProfileBar";
@@ -144,6 +145,7 @@ export default function HeaderBar({ navigation, title, setTitle, setScreen, curr
                     animate(profileOptionsOpacity, 0, 200);
                     animate(profileOptionsSlide, width, 500);
                     setProfileOptions(false);
+                    setCache("login", '0');
                 }}
             />
 

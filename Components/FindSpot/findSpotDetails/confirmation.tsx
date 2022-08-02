@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { View, Text, TouchableOpacity, Image, ScrollView } from "react-native";
+import { setCache } from "../../../Models/getSetCache";
 import showAlert from "../../../Utils/alertBox";
 import styles from "./findSpotDetailsStyle";
 
@@ -81,6 +82,17 @@ export default function Confirmation({
                 </TouchableOpacity>
 
                 <TouchableOpacity style={styles.nextButton} onPress={() => {
+                    const spotDetails = {
+                        spotName: spotName,
+                        spotAddress: spotAddress,
+                        vehicleNumber: vehicleNumber,
+                        vehicleType: vehicleType,
+                        ownersPhone: ownersPhone,
+                        fromDateTime: fromDateTime,
+                        toDateTime: toDateTime,
+                    };
+                    setCache("bookingProgressCache", '1');
+                    setCache("bookedSpot", JSON.stringify(spotDetails));
                     showAlert({
                         title: "Booking Successful !",
                         message: `The selected spot is booked for you from ${fromDateTime.toString().split("GMT")[0]} to ${toDateTime.toString().split("GMT")[0]}\n\nGoto home page to generate the QR code for verification on arrival.`,
