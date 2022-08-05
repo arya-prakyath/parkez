@@ -22,6 +22,7 @@ interface userProfileProps {
 export default function userProfile({ onClickBackButton }: userProfileProps) {
   const [editMode, setEditMode] = useState(false);
   const [clickedOnImage, setClickedOnImage] = useState(false);
+  const [previousValues, setPreviousValues] = useState<{ profileImageData: string, name: string, phone: string, email: string, address: string }>();
 
   const [profileImageData, setProfileImageData] = useState<string | undefined>();
   const [name, setName] = useState("Arya");
@@ -217,6 +218,12 @@ export default function userProfile({ onClickBackButton }: userProfileProps) {
               onPress={() => {
                 setEditMode(false);
                 clickedOnImage && setClickedOnImage(false);
+                setProfileImageData(previousValues?.profileImageData);
+                setCache("profilePicture", previousValues?.profileImageData ?? "");
+                setName(previousValues?.name ?? "");
+                setPhone(previousValues?.phone ?? "")
+                setEmail(previousValues?.email ?? "");
+                setAddress(previousValues?.address ?? "");
               }}
             >
               <Image
@@ -266,7 +273,17 @@ export default function userProfile({ onClickBackButton }: userProfileProps) {
 
             <TouchableOpacity
               style={styles.editButton}
-              onPress={() => setEditMode(true)}
+              onPress={() => {
+                setEditMode(true);
+                let tempObj = {
+                  profileImageData: profileImageData ?? "",
+                  name: name,
+                  phone: phone,
+                  email: email,
+                  address: address,
+                }
+                setPreviousValues(tempObj);
+              }}
             >
               <Text allowFontScaling={false} style={styles.editButtonText}>
                 Edit
