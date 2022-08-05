@@ -12,6 +12,7 @@ import { getCache, setCache } from "../../Models/getSetCache";
 import QRCode from 'react-native-qrcode-svg';
 import styles from "./homeStyle";
 import Spinner from "../../Utils/spinner";
+import getFormattedTime from "../../Utils/timeFormatter";
 
 interface bookedSpotType {
   spotName: string;
@@ -128,11 +129,11 @@ export default function Home({ onClickBackButton, setScreen, setTitle }: homePro
 
                 <View style={styles.bookedItemContainer}>
                   <Text style={styles.bookedItemHead}>Spot Available From</Text>
-                  <Text style={styles.bookedItemData}>{`${bookedSpot?.fromDateTime.split('T')[0]} ${bookedSpot?.fromDateTime.split('T')[1].split('.')[0]}`}</Text>
+                  <Text style={styles.bookedItemData}>{`${bookedSpot?.fromDateTime.split('T')[0]}\n${getFormattedTime(bookedSpot?.fromDateTime.split('T')[1].split('.')[0])}`}</Text>
                 </View>
                 <View style={styles.bookedItemContainer}>
                   <Text style={styles.bookedItemHead}>Spot Available To</Text>
-                  <Text style={styles.bookedItemData}>{`${bookedSpot?.toDateTime.split('T')[0]} ${bookedSpot?.toDateTime.split('T')[1].split('.')[0]}`}</Text>
+                  <Text style={styles.bookedItemData}>{`${bookedSpot?.toDateTime.split('T')[0]}\n${getFormattedTime(bookedSpot?.toDateTime.split('T')[1].split('.')[0])}`}</Text>
                 </View>
                 <View style={styles.seperator}></View>
 
@@ -194,7 +195,7 @@ export default function Home({ onClickBackButton, setScreen, setTitle }: homePro
       {
         bookingProgress === '3' && (
           <View style={styles.bookedContainer}>
-            <Text style={styles.bookedHeader}>{`Arrived! You have the Spot till ${bookedSpot?.toDateTime.split('T')[0]} ${bookedSpot?.toDateTime.split('T')[1].split('.')[0]}`}</Text>
+            <Text style={styles.bookedHeader}>{`Arrived! You have the Spot till ${bookedSpot?.toDateTime.split('T')[0]} ${getFormattedTime(bookedSpot?.toDateTime.split('T')[1].split('.')[0])}`}</Text>
             <View style={styles.seperator}></View>
 
             <ScrollView showsVerticalScrollIndicator={false}>
@@ -212,7 +213,7 @@ export default function Home({ onClickBackButton, setScreen, setTitle }: homePro
 
               <View style={styles.bookedItemContainer}>
                 <Text style={styles.bookedItemHead}>Spot Entry On</Text>
-                <Text style={styles.bookedItemData}>{`${bookedSpot?.fromDateTime.split('T')[0]} ${bookedSpot?.fromDateTime.split('T')[1].split('.')[0]}`}</Text>
+                <Text style={styles.bookedItemData}>{`${bookedSpot?.fromDateTime.split('T')[0]} ${getFormattedTime(bookedSpot?.fromDateTime.split('T')[1].split('.')[0])}`}</Text>
               </View>
               <View style={styles.seperator}></View>
 
@@ -259,11 +260,11 @@ export default function Home({ onClickBackButton, setScreen, setTitle }: homePro
 
               <View style={styles.bookedItemContainer}>
                 <Text style={styles.bookedItemHead}>Spot Entry On</Text>
-                <Text style={styles.bookedItemData}>{`${bookedSpot?.fromDateTime.split('T')[0]} ${bookedSpot?.fromDateTime.split('T')[1].split('.')[0]}`}</Text>
+                <Text style={styles.bookedItemData}>{`${bookedSpot?.fromDateTime.split('T')[0]} ${getFormattedTime(bookedSpot?.fromDateTime.split('T')[1].split('.')[0])}`}</Text>
               </View>
               <View style={styles.bookedItemContainer}>
                 <Text style={styles.bookedItemHead}>Spot Exit On</Text>
-                <Text style={styles.bookedItemData}>{`${bookedSpot?.toDateTime.split('T')[0]} ${bookedSpot?.toDateTime.split('T')[1].split('.')[0]}`}</Text>
+                <Text style={styles.bookedItemData}>{`${bookedSpot?.toDateTime.split('T')[0]} ${getFormattedTime(bookedSpot?.toDateTime.split('T')[1].split('.')[0])}`}</Text>
               </View>
               <View style={styles.seperator}></View>
 

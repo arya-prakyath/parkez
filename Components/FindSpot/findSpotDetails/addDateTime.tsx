@@ -2,12 +2,13 @@ import React, { useState } from "react";
 import { View, Text, Image, TouchableOpacity } from "react-native";
 import styles from "./findSpotDetailsStyle";
 import DateTimePickerModal from "react-native-modal-datetime-picker";
+import getFormattedTime from "../../../Utils/timeFormatter";
 
 interface addDateTimeProps {
     spotName: string;
     spotsTotalCount: number;
     spotsAvailableCount: number;
-    spotsConsumedCount: number;   
+    spotsConsumedCount: number;
     setProgressTracker: React.Dispatch<React.SetStateAction<number>>;
     fromDateTime: Date | undefined;
     setFromDateTime: React.Dispatch<React.SetStateAction<Date | undefined>>;
@@ -107,7 +108,7 @@ export default function AddDateAndTime({
                     </TouchableOpacity>
 
                     <TouchableOpacity style={[styles.dateTimeBox, styles.rightBox]} onPress={() => showDatePicker("fromTime")}>
-                        <Text allowFontScaling={false} style={styles.dateTimeText}>{fromTime}</Text>
+                        <Text allowFontScaling={false} style={styles.dateTimeText}>{getFormattedTime(fromTime)}</Text>
                     </TouchableOpacity>
                 </View>
 
@@ -118,7 +119,7 @@ export default function AddDateAndTime({
                     </TouchableOpacity>
 
                     <TouchableOpacity style={[styles.dateTimeBox, styles.rightBox]} onPress={() => showDatePicker("toTime")}>
-                        <Text allowFontScaling={false} style={styles.dateTimeText}>{toTime}</Text>
+                        <Text allowFontScaling={false} style={styles.dateTimeText}>{getFormattedTime(toTime)}</Text>
                     </TouchableOpacity>
                 </View>
             </View>

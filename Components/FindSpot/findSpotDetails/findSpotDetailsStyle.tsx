@@ -181,6 +181,7 @@ const styles = StyleSheet.create({
     fontWeight: "300",
   },
   selectedTextStyle: {
+    color: "#fff",
     fontSize: 16,
   },
   iconStyle: {
@@ -310,6 +311,9 @@ const styles = StyleSheet.create({
     fontSize: 15,
     fontWeight: "300",
     marginLeft: 25,
+  },
+  disabled: {
+    backgroundColor: "#888",
   },
 });
 

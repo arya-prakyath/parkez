@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { View, Text, TouchableOpacity, Image, ScrollView } from "react-native";
 import { setCache } from "../../../Models/getSetCache";
 import showAlert from "../../../Utils/alertBox";
+import getFomattedDateTime from "../../../Utils/dateTimeFormatter";
 import styles from "./findSpotDetailsStyle";
 
 interface confirmationProps {
@@ -15,6 +16,7 @@ interface confirmationProps {
     toDateTime: Date;
     onClickConfirm: () => {};
 }
+
 export default function Confirmation({
     setProgressTracker,
     spotName,
@@ -61,12 +63,12 @@ export default function Confirmation({
 
                     <View style={styles.confirmationItem}>
                         <Text allowFontScaling={false} style={styles.confirmationHead}>Spot Entry On</Text>
-                        <Text allowFontScaling={false} style={styles.confirmationData}>{fromDateTime.toString().split("GMT")[0]}</Text>
+                        <Text allowFontScaling={false} style={styles.confirmationData}>{getFomattedDateTime(fromDateTime.toString())}</Text>
                     </View>
 
                     <View style={styles.confirmationItem}>
                         <Text allowFontScaling={false} style={styles.confirmationHead}>Spot Exit On</Text>
-                        <Text allowFontScaling={false} style={styles.confirmationData}>{toDateTime.toString().split("GMT")[0]}</Text>
+                        <Text allowFontScaling={false} style={styles.confirmationData}>{getFomattedDateTime(toDateTime.toString())}</Text>
                     </View>
                     <View style={styles.seperator}></View>
                 </ScrollView>
@@ -95,7 +97,7 @@ export default function Confirmation({
                     setCache("bookedSpot", JSON.stringify(spotDetails));
                     showAlert({
                         title: "Booking Successful !",
-                        message: `The selected spot is booked for you from ${fromDateTime.toString().split("GMT")[0]} to ${toDateTime.toString().split("GMT")[0]}\n\nGoto home page to generate the QR code for verification on arrival.`,
+                        message: `The selected spot is booked for you\n\nFrom - ${getFomattedDateTime(fromDateTime.toString())}\n\nTo - ${getFomattedDateTime(toDateTime.toString())}\n\nGoto home page to generate the QR code for verification on arrival.`,
                         buttonText: "Goto Home",
                         onPressButton: () => { onClickConfirm() }
                     })

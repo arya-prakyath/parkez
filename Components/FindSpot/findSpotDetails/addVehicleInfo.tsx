@@ -49,10 +49,29 @@ export default function AddVehicleInfo({
     const [selectedVehicle, setSelectedVehicle] = useState<string>();
     const vehicleTypes: vehicleTypesType[] = vehicleTypesData;
     const vehiclesList: vehicleType[] = vehiclesListData;
-    let vehiclesListLabelsAndValues: {label: string, value: vehicleType}[] = [];
+
+    const [validation, setValidation] = useState(false);
+
+
+    let vehiclesListLabelsAndValues: { label: string, value: vehicleType }[] = [];
     vehiclesList.map(item => {
-        vehiclesListLabelsAndValues.push({label: item.vehicleName, value: item});
+        vehiclesListLabelsAndValues.push({ label: item.vehicleName, value: item });
     })
+
+    const validate = () => {
+        if (vehicleTypeToBook && vehicleNumberToBook && phoneNumberToBook) {
+            if (!vehicleTypeToBook)
+                return false;
+            if (!vehicleNumberToBook.match("^[A-Z]{2}[ -][0-9]{1,2}(?: [A-Z])?(?: [A-Z]*)? [0-9]{4}$"))
+                return false;
+            if (phoneNumberToBook.length !== 10)
+                return false;
+            if (phoneNumberToBook.match("^[0-1]+$"))
+                return false;
+            return true;
+        }
+        return false;
+    }
 
     return (
         <View style={styles.detailsContainer}>
@@ -118,7 +137,7 @@ export default function AddVehicleInfo({
                         onChangeText={(value) => setVehicleNumberToBook(value)}
                         value={vehicleNumberToBook}
                         autoCorrect={false}
-                        maxLength={12}
+                        maxLength={13}
                     />
                 </View>
 
@@ -176,13 +195,25 @@ export default function AddVehicleInfo({
                     <Text allowFontScaling={false} style={styles.backButtonText}>Back</Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={styles.nextButton} onPress={() => setProgressTracker(2)}>
-                    <Text allowFontScaling={false} style={styles.nextButtonText}>Next</Text>
-                    <Image
-                        source={require("../../../assets/buttons/nextButton.png")}
-                        style={styles.backAndNextButtonIcon}
-                    />
-                </TouchableOpacity>
+                {validate() ?
+                    (
+                        <TouchableOpacity style={styles.nextButton} onPress={() => setProgressTracker(2)}>
+                            <Text allowFontScaling={false} style={styles.nextButtonText}>Next</Text>
+                            <Image
+                                source={require("../../../assets/buttons/nextButton.png")}
+                                style={styles.backAndNextButtonIcon}
+                            />
+                        </TouchableOpacity>
+                    ) : (
+                        <TouchableOpacity style={[styles.nextButton, styles.disabled]} disabled={true}>
+                            <Text allowFontScaling={false} style={styles.nextButtonText}>Next</Text>
+                            <Image
+                                source={require("../../../assets/buttons/nextButton.png")}
+                                style={styles.backAndNextButtonIcon}
+                            />
+                        </TouchableOpacity>
+                    )
+                }
             </View >
         </View>
     )

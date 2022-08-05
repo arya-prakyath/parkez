@@ -1,5 +1,5 @@
 import { StackActions } from "@react-navigation/native";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
     Text,
     View,
@@ -15,6 +15,7 @@ import animate from "../../Animations/animate";
 import usersList from "../../Models/usersListData";
 import ForgotPassword from "./forgotPassword";
 import styles from "./emailLoginStyle";
+import { getCache, setCache } from "../../Models/getSetCache";
 
 interface loginProps {
     navigation: any,
@@ -32,6 +33,10 @@ export default function Login({ navigation, carPosition, textOpacity }: loginPro
     const [hidePassword, setHidePassword] = useState(true);
     const [resetPassword, setResetPassword] = useState(false);
 
+    useEffect(() => {
+        getCache("mailCache")?.then(valuePromise => valuePromise).then(value => setMail(value ?? ""))
+    }, []);
+
     const login = () => {
         Keyboard.dismiss();
         for (let user of usersList) {
@@ -41,6 +46,7 @@ export default function Login({ navigation, carPosition, textOpacity }: loginPro
             }
 
             if (mail === user.username && password === user.password) {
+                setCache("mailCache", mail);
                 animate(textOpacity, 0, 1000);
                 animate(carPosition, 100, 1000, () => animate(carPosition, -width, 800, () => {
                     navigation.dispatch(
