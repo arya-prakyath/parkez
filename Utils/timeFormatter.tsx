@@ -18,7 +18,7 @@ const getFormattedTime = (time: string | undefined) => {
             return (hour < 10) ? `0${hour} : ${min} PM` : `${hour} : ${min} PM`;
         }
         else {
-            return `0${hour} : ${min} AM`;
+            return (hour < 10) ? `0${hour} : ${min} AM` : `${hour} : ${min} AM`;
         }
     }
 }

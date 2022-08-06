@@ -5,6 +5,7 @@ import { getCache, setCache } from "../Models/getSetCache";
 import BottomBar from "./bottomBar";
 import LeftDrawer from "./leftDrawer";
 import ProfileBar from "./ProfileBar";
+import profileDefaultPicture from "./profileDefaultPicture";
 
 interface headerBarProps {
     navigation: any,
@@ -43,7 +44,7 @@ export default function HeaderBar({ navigation, title, setTitle, setScreen, curr
 
     useEffect(() => {
         getCache("profilePicture")?.then(valuePromise => valuePromise).then(value => {
-            setProfileImageData(value ?? "")
+            setProfileImageData(value ?? profileDefaultPicture)
         })
     }, []);
 

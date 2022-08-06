@@ -98,6 +98,10 @@ const styles = StyleSheet.create({
     fontWeight: "400",
   },
 
+  profileDataEditModeContainer:{
+    marginVertical: 5,
+    marginHorizontal: 15,
+  },
   profileDataEditMode: {
     color: "#fff",
     width: "90%",
@@ -105,6 +109,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "#888",
     padding: 3,
+    paddingLeft: 10,
   },
 
   buttonContainer: {

@@ -12,6 +12,7 @@ import {
 import * as DocumentPicker from "expo-document-picker";
 import styles from "./userProfileStyle";
 import { getCache, setCache } from "../../Models/getSetCache";
+import profileDefaultPicture from "../../Utils/profileDefaultPicture";
 
 const imageFileTypes: string[] = ["jpg", "jpeg", "png"];
 
@@ -26,15 +27,18 @@ export default function userProfile({ onClickBackButton }: userProfileProps) {
 
   const [profileImageData, setProfileImageData] = useState<string | undefined>();
   const [name, setName] = useState("Arya");
-  const [phone, setPhone] = useState("9865246197");
+  const [phone, setPhone] = useState("98652 46197");
   const [email, setEmail] = useState("arya@parkez.com");
   const [address, setAddress] = useState(
-    "Rajajinagara, Bangalore, Karnataka, India - 560 079"
+    "Somewhere, Bangalore, Karnataka, India - 560 079"
   );
 
   useEffect(() => {
     getCache("profilePicture")?.then(valuePromise => valuePromise).then(value => {
-      setProfileImageData(value ?? "")
+      if (value)
+        setProfileImageData(value);
+      else
+        setProfileImageData(profileDefaultPicture);
     })
   }, []);
 
@@ -111,7 +115,7 @@ export default function userProfile({ onClickBackButton }: userProfileProps) {
         <View style={styles.profileDetails}>
           <ScrollView>
             {editMode ? (
-              <View style={styles.profileDataContainer}>
+              <View style={styles.profileDataEditModeContainer}>
                 <Text allowFontScaling={false} style={styles.profileHead}>
                   UserName
                 </Text>
@@ -135,7 +139,7 @@ export default function userProfile({ onClickBackButton }: userProfileProps) {
             )}
 
             {editMode ? (
-              <View style={styles.profileDataContainer}>
+              <View style={styles.profileDataEditModeContainer}>
                 <Text allowFontScaling={false} style={styles.profileHead}>
                   Phone
                 </Text>
@@ -161,7 +165,7 @@ export default function userProfile({ onClickBackButton }: userProfileProps) {
             )}
 
             {editMode ? (
-              <View style={styles.profileDataContainer}>
+              <View style={styles.profileDataEditModeContainer}>
                 <Text allowFontScaling={false} style={styles.profileHead}>
                   Email
                 </Text>
@@ -186,7 +190,7 @@ export default function userProfile({ onClickBackButton }: userProfileProps) {
             )}
 
             {editMode ? (
-              <View style={styles.profileDataContainer}>
+              <View style={styles.profileDataEditModeContainer}>
                 <Text allowFontScaling={false} style={styles.profileHead}>
                   Address
                 </Text>
@@ -196,6 +200,7 @@ export default function userProfile({ onClickBackButton }: userProfileProps) {
                   placeholderTextColor={"#555"}
                   onChangeText={(value) => setAddress(value)}
                   value={address}
+                  multiline={true}
                 />
               </View>
             ) : (
@@ -304,7 +309,7 @@ export default function userProfile({ onClickBackButton }: userProfileProps) {
             onPress={() => {
               setProfileImageData(undefined);
               setClickedOnImage(false);
-              setCache("profilePicture", "");
+              setCache("profilePicture", profileDefaultPicture);
               ToastAndroid.show("Profile picture removed", 100);
             }}
           >

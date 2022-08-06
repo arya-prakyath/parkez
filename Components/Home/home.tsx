@@ -42,9 +42,9 @@ export default function Home({ onClickBackButton, setScreen, setTitle }: homePro
         setBookingprogress(value);
         getCache("bookedSpot")?.then(valuePromise => valuePromise).then(value => {
           value && setBookedSpot(JSON.parse(value));
-          setLoading(false);
         });
       }
+      setLoading(false);
     });
   }, []);
 
@@ -292,7 +292,6 @@ export default function Home({ onClickBackButton, setScreen, setTitle }: homePro
           </View>
         )
       }
-
     </View>
   );
 }
