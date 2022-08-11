@@ -10,19 +10,37 @@ interface bottomBarProps {
 export default function bottomBar({ setScreen, setTitle, currentBlock, onClick }: bottomBarProps) {
     const [homeSelected, setHomeSelected] = useState(true);
     const [findSpotSelected, setFindSpotSelected] = useState(false);
-    const [addSpotSelected, setAddSpotSelected] = useState(false);
+    const [myPlaceSelected, setMyPlaceSelected] = useState(false);
     const [walletSelected, setWalletSelected] = useState(false);
 
-    if (currentBlock === "home"){
+    if (currentBlock === "home") {
         !homeSelected && setHomeSelected(true);
         findSpotSelected && setFindSpotSelected(false);
-        addSpotSelected && setAddSpotSelected(false);
+        myPlaceSelected && setMyPlaceSelected(false);
         walletSelected && setWalletSelected(false);
+    }
+    else if (currentBlock === "findSpot") {
+        !findSpotSelected && setFindSpotSelected(true);
+        homeSelected && setHomeSelected(false);
+        myPlaceSelected && setMyPlaceSelected(false);
+        walletSelected && setWalletSelected(false);
+    }
+    else if (currentBlock === "myPlace") {
+        !myPlaceSelected && setMyPlaceSelected(true);
+        findSpotSelected && setFindSpotSelected(false);
+        homeSelected && setHomeSelected(false);
+        walletSelected && setWalletSelected(false);
+    }
+    else if (currentBlock === "wallet") {
+        homeSelected && setHomeSelected(false);
+        findSpotSelected && setFindSpotSelected(false);
+        myPlaceSelected && setMyPlaceSelected(false);
+        !walletSelected && setWalletSelected(true);
     }
     else if (currentBlock !== "bottom") {
         homeSelected && setHomeSelected(false);
         findSpotSelected && setFindSpotSelected(false);
-        addSpotSelected && setAddSpotSelected(false);
+        myPlaceSelected && setMyPlaceSelected(false);
         walletSelected && setWalletSelected(false);
     }
 
@@ -34,7 +52,7 @@ export default function bottomBar({ setScreen, setTitle, currentBlock, onClick }
                 setTitle("Home");
                 setHomeSelected(true);
                 findSpotSelected && setFindSpotSelected(false);
-                addSpotSelected && setAddSpotSelected(false);
+                myPlaceSelected && setMyPlaceSelected(false);
                 walletSelected && setWalletSelected(false);
                 break;
             }
@@ -43,14 +61,14 @@ export default function bottomBar({ setScreen, setTitle, currentBlock, onClick }
                 setTitle("Find Spot");
                 setFindSpotSelected(true);
                 homeSelected && setHomeSelected(false);
-                addSpotSelected && setAddSpotSelected(false);
+                myPlaceSelected && setMyPlaceSelected(false);
                 walletSelected && setWalletSelected(false);
                 break;
             }
             case 2: {
-                setScreen("AddSpot");
-                setTitle("Add Spot");
-                setAddSpotSelected(true);
+                setScreen("MyPlace");
+                setTitle("My Place");
+                setMyPlaceSelected(true);
                 homeSelected && setHomeSelected(false);
                 findSpotSelected && setFindSpotSelected(false);
                 walletSelected && setWalletSelected(false);
@@ -62,7 +80,7 @@ export default function bottomBar({ setScreen, setTitle, currentBlock, onClick }
                 setWalletSelected(true);
                 homeSelected && setHomeSelected(false);
                 findSpotSelected && setFindSpotSelected(false);
-                addSpotSelected && setAddSpotSelected(false);
+                myPlaceSelected && setMyPlaceSelected(false);
                 break;
             }
         }
@@ -115,17 +133,17 @@ export default function bottomBar({ setScreen, setTitle, currentBlock, onClick }
             </TouchableOpacity>
 
             <TouchableOpacity onPress={() => setSelected(2)} style={{ height: "100%", width: "20%", justifyContent: "space-evenly", alignItems: "center", }}>
-                {addSpotSelected ?
+                {myPlaceSelected ?
                     (
                         <View style={{ alignItems: "center", justifyContent: "center" }}>
-                            <Image style={{ aspectRatio: 1, flex: 0.85 }} source={require("../assets/bottom-bar-icons/addSpotSelected.png")} />
-                            <Text allowFontScaling={false} style={{ color: "#fff", fontSize: 14, }}>Add Spot</Text>
+                            <Image style={{ aspectRatio: 1, flex: 0.85 }} source={require("../assets/bottom-bar-icons/myPlaceSelected.png")} />
+                            <Text allowFontScaling={false} style={{ color: "#fff", fontSize: 14, }}>My Place</Text>
                         </View>
 
                     ) : (
                         <View style={{ alignItems: "center", justifyContent: "center" }}>
-                            <Image style={{ aspectRatio: 1, flex: 0.85 }} source={require("../assets/bottom-bar-icons/addSpot.png")} />
-                            <Text allowFontScaling={false} style={{ color: "#fff", fontSize: 14, }}>Add Spot</Text>
+                            <Image style={{ aspectRatio: 1, flex: 0.85 }} source={require("../assets/bottom-bar-icons/myPlace.png")} />
+                            <Text allowFontScaling={false} style={{ color: "#fff", fontSize: 14, }}>My Place</Text>
                         </View>
                     )
                 }

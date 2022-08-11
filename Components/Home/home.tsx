@@ -28,9 +28,10 @@ interface homeProps {
   onClickBackButton: (toScreen: string) => boolean;
   setScreen: React.Dispatch<React.SetStateAction<string>>;
   setTitle: React.Dispatch<React.SetStateAction<string>>;
+  setCurrentBlock: React.Dispatch<React.SetStateAction<string>>
 }
 
-export default function Home({ onClickBackButton, setScreen, setTitle }: homeProps) {
+export default function Home({ onClickBackButton, setScreen, setTitle, setCurrentBlock }: homeProps) {
   BackHandler.addEventListener("hardwareBackPress", () => onClickBackButton("Home"));
   const [loading, setLoading] = useState(true);
   const [bookingProgress, setBookingprogress] = useState('0');
@@ -80,23 +81,26 @@ export default function Home({ onClickBackButton, setScreen, setTitle }: homePro
             <TouchableOpacity style={styles.addSpotButton} onPress={() => {
               setTitle("Find Spot");
               setScreen("FindSpot");
+              setCurrentBlock("findSpot");
             }}>
               <Text style={styles.addSpotButtonText}>Find and Book a Spot</Text>
             </TouchableOpacity>
 
             <View style={styles.doubleButtonsContainer}>
+              <TouchableOpacity style={[styles.doubleButtons, styles.myApartmentButton]} onPress={() => {
+                setTitle("My place");
+                setScreen("MyPlace");
+                setCurrentBlock("myPlace");
+              }}>
+                <Text style={styles.addSpotButtonText}>My Place</Text>
+              </TouchableOpacity>
+
               <TouchableOpacity style={[styles.doubleButtons, styles.myWalletButton]} onPress={() => {
                 setTitle("Wallet");
                 setScreen("Wallet");
+                setCurrentBlock("wallet");
               }}>
                 <Text style={styles.addSpotButtonText}>Wallet</Text>
-              </TouchableOpacity>
-
-              <TouchableOpacity style={[styles.doubleButtons, styles.myVehiclesButton]} onPress={() => {
-                setTitle("My Vehicles");
-                setScreen("MyVehicles");
-              }}>
-                <Text style={styles.addSpotButtonText}>My Vehicles</Text>
               </TouchableOpacity>
             </View>
           </View>

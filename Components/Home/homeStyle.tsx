@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
     height: "12%",
-    width: "85%",
+    width: "90%",
     justifyContent: "center",
     alignItems: "center",
     alignSelf: "center",
@@ -58,27 +58,27 @@ const styles = StyleSheet.create({
     color: "#000",
     fontSize: 18,
     fontWeight: "400",
-    letterSpacing: 2,
+    letterSpacing: 1.5,
   },
   doubleButtonsContainer: {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
     height: "12%",
-    width: "85%",
+    width: "90%",
     alignSelf: "center",
   },
   doubleButtons: {
     backgroundColor: "#fff",
-    width: "49.35%",
+    width: "49.4%",
     height: "100%",
     justifyContent: "center",
     alignItems: "center",
   },
-  myWalletButton: {
+  myApartmentButton: {
     borderBottomLeftRadius: 20,
   },
-  myVehiclesButton: {
+  myWalletButton: {
     borderBottomRightRadius: 20,
   },
   seperator: {

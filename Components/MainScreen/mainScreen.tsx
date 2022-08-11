@@ -14,6 +14,7 @@ import SupportScreen from "../Support";
 import SettingsScreen from "../Settings";
 import showAlert from "../../Utils/alertBox";
 import styles from "./mainScreenStyle";
+import MyPlace from "../MyPlace";
 
 interface mainScreenProps {
     navigation: any,
@@ -51,9 +52,10 @@ export default function Home({ navigation }: mainScreenProps) {
             imageStyle={{ opacity: 0.5 }}
             blurRadius={1}
         >
-            {screen === "Home" && <HomeScreen onClickBackButton={onClickBackButton} setScreen={setScreen} setTitle={setTitle}/>}
+            {screen === "Home" && <HomeScreen onClickBackButton={onClickBackButton} setScreen={setScreen} setTitle={setTitle} setCurrentBlock={setCurrentBlock}/>}
             {screen === "FindSpot" && <FindSpotScreen onClickBackButton={onClickBackButton}/>}
-            {screen === "AddSpot" && <AddSpotScreen onClickBackButton={onClickBackButton}/>}
+            {/* {screen === "AddSpot" && <AddSpotScreen onClickBackButton={onClickBackButton}/>} */}
+            {screen === "MyPlace" && <MyPlace onClickBackButton={onClickBackButton}/>}
             {screen === "Wallet" && <WalletScreen onClickBackButton={onClickBackButton}/>}
             {screen === "MyVehicles" && <MyVehicleScreen onClickBackButton={onClickBackButton}/>}
             {screen === "FavoriteSpots" && <FavoriteSpotsScreen onClickBackButton={onClickBackButton}/>}
