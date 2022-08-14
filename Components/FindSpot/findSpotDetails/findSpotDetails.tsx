@@ -1,17 +1,11 @@
 import React, { useState } from "react";
 import {
   View,
-  Text,
-  Image,
-  TouchableOpacity,
-  ScrollView,
   BackHandler,
   ToastAndroid,
 } from "react-native";
-import showAlert from "../../../Utils/alertBox";
-import AddDateAndTime from "./addDateTime";
-import AddTheSpot from "./addTheSpot";
 import AddVehicleInfo from "./addVehicleInfo";
+import AddDateAndTime from "./addDateTime";``
 import Confirmation from "./confirmation";
 import styles from "./findSpotDetailsStyle";
 
@@ -35,6 +29,13 @@ interface spotItemType {
   isFavorite: boolean;
 }
 
+interface vehicleType {
+  vehiclePlateNumber: string;
+  vehicleName: string;
+  vehicleType: string;
+  phoneNumber: string;
+}
+
 interface findSpotDetailsProps {
   selectedSpot: spotItemType | undefined;
   setSelectedSpot: React.Dispatch<
@@ -50,17 +51,20 @@ export default function FindSpotDetails({
   setOpenSpotDetails,
   onClickConfirm,
 }: findSpotDetailsProps) {
-  const [progressTracker, setProgressTracker] = useState(0);
-
-  const [vehicleNumberToBook, setVehicleNumberToBook] = useState("");
-  const [phoneNumberToBook, setPhoneNumberToBook] = useState("");
-  const [vehicleTypeToBook, setVehicleTypeToBook] = useState("");
+  const [progressTracker, setProgressTracker] = useState(1);
 
   const [fromDateTime, setFromDateTime] = useState<Date>();
   const [toDateTime, setToDateTime] = useState<Date>();
 
+  const [vehiclesToBook, setVehiclesToBook] = useState<vehicleType[]>([{
+    vehiclePlateNumber: "",
+    vehicleName: "",
+    vehicleType: "",
+    phoneNumber: "",
+  }]);
+
   BackHandler.addEventListener("hardwareBackPress", () => {
-    if (progressTracker === 0) {
+    if (progressTracker === 1) {
       setOpenSpotDetails(false);
       setSelectedSpot(undefined);
     } else {
@@ -68,149 +72,17 @@ export default function FindSpotDetails({
       return true;
     }
   });
+
   return (
     <View style={styles.container}>
-      {progressTracker === 0 && (
-        <View style={styles.detailsContainer}>
-          <View style={styles.details}>
-            <ScrollView showsVerticalScrollIndicator={false}>
-              <View style={styles.spotNameAndAddressContainer}>
-                <Text allowFontScaling={false} style={styles.spotName}>
-                  {selectedSpot?.name}
-                </Text>
-                <Text allowFontScaling={false} style={styles.spotAddress}>
-                  {selectedSpot?.address}
-                </Text>
-              </View>
-              <View style={styles.seperator}></View>
-
-              <View style={styles.spotNotesContainer}>
-                <Text allowFontScaling={false} style={styles.spotNotes}>
-                  {selectedSpot?.extraNotes}
-                </Text>
-              </View>
-              <View style={styles.seperator}></View>
-
-              <View style={styles.spotCountContainer}>
-                <View style={styles.spotCountItem}>
-                  <View style={styles.spotCountBox}>
-                    <Text allowFontScaling={false} style={styles.spotCountText}>
-                      {selectedSpot?.spotsTotalCount}
-                    </Text>
-                  </View>
-                  <Text
-                    allowFontScaling={false}
-                    style={styles.spotCountHeadText}
-                  >
-                    Total Number of Spots
-                  </Text>
-                </View>
-
-                <View style={styles.spotCountItem}>
-                  <View style={[styles.spotCountBox, styles.availableBox]}>
-                    <Text
-                      allowFontScaling={false}
-                      style={styles.spotCountTextDark}
-                    >
-                      {selectedSpot?.spotsAvailableCount}
-                    </Text>
-                  </View>
-                  <Text
-                    allowFontScaling={false}
-                    style={styles.spotCountHeadText}
-                  >
-                    Available{"\n"}Spots
-                  </Text>
-                </View>
-
-                <View style={styles.spotCountItem}>
-                  <View style={[styles.spotCountBox, styles.consumedBox]}>
-                    <Text
-                      allowFontScaling={false}
-                      style={styles.spotCountTextDark}
-                    >
-                      {selectedSpot?.spotsConsumedCount}
-                    </Text>
-                  </View>
-                  <Text
-                    allowFontScaling={false}
-                    style={styles.spotCountHeadText}
-                  >
-                    Consumed Spots
-                  </Text>
-                </View>
-              </View>
-              <View style={styles.seperator}></View>
-
-              <View style={styles.costPlansContainer}>
-                <Text allowFontScaling={false} style={styles.costPlansHeader}>
-                  Available Cost Plans:
-                </Text>
-                <ScrollView
-                  showsVerticalScrollIndicator={true}
-                  persistentScrollbar={true}
-                >
-                  {selectedSpot?.cost.map((costItem) => (
-                    <Text
-                      allowFontScaling={false}
-                      style={styles.costPlansText}
-                    >{`₹ ${costItem.cost} / ${costItem.interval}`}</Text>
-                  ))}
-                </ScrollView>
-              </View>
-            </ScrollView>
-          </View>
-
-          <View style={styles.nextBackButtonContainer}>
-            <TouchableOpacity
-              style={styles.backButton}
-              onPress={() => {
-                setSelectedSpot(undefined);
-                setOpenSpotDetails(false);
-              }}
-            >
-              <Image
-                source={require("../../../assets/buttons/backButton.png")}
-                style={styles.backAndNextButtonIcon}
-              />
-              <Text allowFontScaling={false} style={styles.backButtonText}>
-                Back
-              </Text>
-            </TouchableOpacity>
-
-            <TouchableOpacity
-              style={styles.nextButton}
-              onPress={() => setProgressTracker(1)}
-            >
-              <Text allowFontScaling={false} style={styles.nextButtonText}>
-                Next
-              </Text>
-              <Image
-                source={require("../../../assets/buttons/nextButton.png")}
-                style={styles.backAndNextButtonIcon}
-              />
-            </TouchableOpacity>
-          </View>
-        </View>
-      )}
-
       {progressTracker === 1 && (
         <AddVehicleInfo
-          spotName={selectedSpot ? selectedSpot.name : ""}
-          spotsTotalCount={selectedSpot ? selectedSpot.spotsTotalCount : 0}
-          spotsAvailableCount={
-            selectedSpot ? selectedSpot.spotsAvailableCount : 0
-          }
-          spotsConsumedCount={
-            selectedSpot ? selectedSpot.spotsConsumedCount : 0
-          }
           setProgressTracker={setProgressTracker}
-          vehicleNumberToBook={vehicleNumberToBook}
-          setVehicleNumberToBook={setVehicleNumberToBook}
-          phoneNumberToBook={phoneNumberToBook}
-          setPhoneNumberToBook={setPhoneNumberToBook}
-          vehicleTypeToBook={vehicleTypeToBook}
-          setVehicleTypeToBook={setVehicleTypeToBook}
+          selectedSpot={selectedSpot}
+          setSelectedSpot={setSelectedSpot}
+          setOpenSpotDetails={setOpenSpotDetails}
+          setVehiclesToBook={setVehiclesToBook}
+          vehiclesToBook={vehiclesToBook}
         />
       )}
 
@@ -235,18 +107,13 @@ export default function FindSpotDetails({
       {progressTracker === 3 && (
         <Confirmation
           setProgressTracker={setProgressTracker}
-          spotName={selectedSpot?.name ?? ""}
-          spotAddress={selectedSpot?.address ?? ""}
-          vehicleNumber={vehicleNumberToBook}
-          vehicleType={vehicleTypeToBook}
-          ownersPhone={phoneNumberToBook}
+          selectedSpot={selectedSpot}
+          vehiclesToBook={vehiclesToBook}
           fromDateTime={fromDateTime ?? new Date()}
           toDateTime={toDateTime ?? new Date()}
           onClickConfirm={onClickConfirm}
         />
       )}
-
-      {progressTracker === 4}
     </View>
   );
 }

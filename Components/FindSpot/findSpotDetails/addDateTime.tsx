@@ -72,6 +72,7 @@ export default function AddDateAndTime({
                 onConfirm={handleConfirm}
                 onCancel={hideDatePicker}
             />
+
             <View style={styles.spotNameAndAddressContainer}>
                 <Text allowFontScaling={false} style={styles.spotName}>{spotName}</Text>
             </View>
@@ -81,14 +82,14 @@ export default function AddDateAndTime({
                     <View style={styles.spotCountBox}>
                         <Text allowFontScaling={false} style={styles.spotCountText}>{spotsTotalCount}</Text>
                     </View>
-                    <Text allowFontScaling={false} style={styles.spotCountHeadText}>Total Number of Spots</Text>
+                    <Text allowFontScaling={false} style={styles.spotCountHeadText}>Total Spots</Text>
                 </View>
 
                 <View style={styles.spotCountItem}>
                     <View style={[styles.spotCountBox, styles.availableBox]}>
                         <Text allowFontScaling={false} style={styles.spotCountTextDark}>{spotsAvailableCount}</Text>
                     </View>
-                    <Text allowFontScaling={false} style={styles.spotCountHeadText}>Available{'\n'}Spots</Text>
+                    <Text allowFontScaling={false} style={styles.spotCountHeadText}>Available Spots</Text>
                 </View>
 
                 <View style={styles.spotCountItem}>

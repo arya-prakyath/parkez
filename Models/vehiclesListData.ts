@@ -25,7 +25,7 @@ const vehiclesList: vehicleType[] = [
         phoneNumber: "7625419287",
     },
     {
-        vehicleName: "Friends's Car",
+        vehicleName: "Friend's Car",
         vehiclePlateNumber: "KA 23 HU 6752",
         vehicleType: "4 Wheeler",
         phoneNumber: "9087256425",

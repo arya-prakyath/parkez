@@ -5,13 +5,37 @@ import showAlert from "../../../Utils/alertBox";
 import getFomattedDateTime from "../../../Utils/dateTimeFormatter";
 import styles from "./findSpotDetailsStyle";
 
+interface spotCostType {
+    id: number;
+    cost: string;
+    interval: string;
+}
+
+interface spotItemType {
+    id: string;
+    name: string;
+    address: string;
+    cost: spotCostType[];
+    spotsTotalCount: number;
+    spotsAvailableCount: number;
+    spotsConsumedCount: number;
+    extraNotes?: string | undefined;
+    longitute: string;
+    latitude: string;
+    isFavorite: boolean;
+}
+
+interface vehicleType {
+    vehiclePlateNumber: string;
+    vehicleName: string;
+    vehicleType: string;
+    phoneNumber: string;
+}
+
 interface confirmationProps {
     setProgressTracker: React.Dispatch<React.SetStateAction<number>>;
-    spotName: string;
-    spotAddress: string;
-    vehicleNumber: string;
-    vehicleType: string;
-    ownersPhone: string;
+    selectedSpot: spotItemType | undefined;
+    vehiclesToBook: vehicleType[];
     fromDateTime: Date;
     toDateTime: Date;
     onClickConfirm: () => {};
@@ -19,11 +43,8 @@ interface confirmationProps {
 
 export default function Confirmation({
     setProgressTracker,
-    spotName,
-    spotAddress,
-    vehicleNumber,
-    vehicleType,
-    ownersPhone,
+    selectedSpot,
+    vehiclesToBook,
     fromDateTime,
     toDateTime,
     onClickConfirm,
@@ -36,30 +57,36 @@ export default function Confirmation({
                     <View style={styles.seperator}></View>
                     <View style={styles.confirmationItem}>
                         <Text allowFontScaling={false} style={styles.confirmationHead}>Spot Name</Text>
-                        <Text allowFontScaling={false} style={styles.confirmationData}>{spotName}</Text>
+                        <Text allowFontScaling={false} style={styles.confirmationData}>{selectedSpot?.name}</Text>
                     </View>
 
                     <View style={styles.confirmationItem}>
                         <Text allowFontScaling={false} style={styles.confirmationHead}>Spot Address</Text>
-                        <Text allowFontScaling={false} style={styles.confirmationData}>{spotAddress}</Text>
+                        <Text allowFontScaling={false} style={styles.confirmationData}>{selectedSpot?.address}</Text>
                     </View>
                     <View style={styles.seperator}></View>
 
-                    <View style={styles.confirmationItem}>
-                        <Text allowFontScaling={false} style={styles.confirmationHead}>Vehicle Plate Number</Text>
-                        <Text allowFontScaling={false} style={styles.confirmationData}>{vehicleNumber}</Text>
-                    </View>
+                    {vehiclesToBook.map((vehicles, index) => {
+                        return (
+                            <>
+                                <View style={styles.confirmationItem}>
+                                    <Text allowFontScaling={false} style={styles.confirmationHead}>Vehicle-{index+1} Details</Text>
+                                    <Text allowFontScaling={false} style={styles.confirmationData}>{vehicles.vehicleType}</Text>
+                                </View>
 
-                    <View style={styles.confirmationItem}>
-                        <Text allowFontScaling={false} style={styles.confirmationHead}>Vehicle Type</Text>
-                        <Text allowFontScaling={false} style={styles.confirmationData}>{vehicleType}</Text>
-                    </View>
+                                <View style={[styles.confirmationItem, styles.confirmationHeadRow]}>
+                                    {/* <Text allowFontScaling={false} style={styles.confirmationHead}>Vehicle Type -</Text> */}
+                                    <Text allowFontScaling={false} style={styles.confirmationData}>{vehicles.vehiclePlateNumber}</Text>
+                                </View>
 
-                    <View style={styles.confirmationItem}>
-                        <Text allowFontScaling={false} style={styles.confirmationHead}>Vehicle Owner's Phone</Text>
-                        <Text allowFontScaling={false} style={styles.confirmationData}>{ownersPhone.substring(0, 5)} {ownersPhone.substring(5,)}</Text>
-                    </View>
-                    <View style={styles.seperator}></View>
+                                <View style={[styles.confirmationItem, styles.confirmationHeadRow]}>
+                                    {/* <Text allowFontScaling={false} style={styles.confirmationHead}>Vehicle Owner's Phone -</Text> */}
+                                    <Text allowFontScaling={false} style={styles.confirmationData}>{vehicles.phoneNumber.substring(0, 5)} {vehicles.phoneNumber.substring(5,)}</Text>
+                                </View>
+                                <View style={styles.seperator}></View>
+                            </>
+                        )
+                    })}
 
                     <View style={styles.confirmationItem}>
                         <Text allowFontScaling={false} style={styles.confirmationHead}>Spot Entry On</Text>
@@ -85,11 +112,9 @@ export default function Confirmation({
 
                 <TouchableOpacity style={styles.nextButton} onPress={() => {
                     const spotDetails = {
-                        spotName: spotName,
-                        spotAddress: spotAddress,
-                        vehicleNumber: vehicleNumber,
-                        vehicleType: vehicleType,
-                        ownersPhone: ownersPhone,
+                        spotName: selectedSpot?.name,
+                        spotAddress: selectedSpot?.address,
+                        vehiclesToBook: vehiclesToBook,
                         fromDateTime: fromDateTime,
                         toDateTime: toDateTime,
                     };

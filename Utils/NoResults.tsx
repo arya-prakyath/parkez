@@ -2,7 +2,6 @@ import React from "react";
 import { View, Text, ToastAndroid } from "react-native";
 
 export default function NoResults() {
-    ToastAndroid.show("HERE", 100);
     return (
         <View style={{
             height: 100,

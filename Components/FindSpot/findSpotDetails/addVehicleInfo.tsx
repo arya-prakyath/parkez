@@ -1,13 +1,26 @@
-import React, { useState } from "react";
-import { TouchableOpacity, View, Image, Text, TextInput } from "react-native";
-import { Dropdown } from "react-native-element-dropdown";
-import vehiclesListData from "../../../Models/vehiclesListData";
-import vehicleTypesData from "../../../Models/vehicleTypesData";
+import React, { useRef, useState } from "react";
+import { TouchableOpacity, View, Image, Text, ScrollView, ToastAndroid, } from "react-native";
+import AddVehicleItem from "./addVehicleItem";
 import styles from "./findSpotDetailsStyle";
 
-interface vehicleTypesType {
-    label: string;
-    value: string;
+interface spotCostType {
+    id: number;
+    cost: string;
+    interval: string;
+}
+
+interface spotItemType {
+    id: string;
+    name: string;
+    address: string;
+    cost: spotCostType[];
+    spotsTotalCount: number;
+    spotsAvailableCount: number;
+    spotsConsumedCount: number;
+    extraNotes?: string | undefined;
+    longitute: string;
+    latitude: string;
+    isFavorite: boolean;
 }
 
 interface vehicleType {
@@ -18,176 +31,164 @@ interface vehicleType {
 }
 
 interface addVehicleInfoProps {
-    spotName: string;
-    spotsTotalCount: number;
-    spotsAvailableCount: number;
-    spotsConsumedCount: number;
     setProgressTracker: React.Dispatch<React.SetStateAction<number>>;
-    vehicleNumberToBook: string;
-    setVehicleNumberToBook: React.Dispatch<React.SetStateAction<string>>;
-    phoneNumberToBook: string;
-    setPhoneNumberToBook: React.Dispatch<React.SetStateAction<string>>;
-    vehicleTypeToBook: string;
-    setVehicleTypeToBook: React.Dispatch<React.SetStateAction<string>>;
+    selectedSpot: spotItemType | undefined;
+    setSelectedSpot: React.Dispatch<React.SetStateAction<spotItemType | undefined>>;
+    setOpenSpotDetails: React.Dispatch<React.SetStateAction<boolean>>;
+    setVehiclesToBook: React.Dispatch<React.SetStateAction<vehicleType[]>>;
+    vehiclesToBook: vehicleType[];
 }
 
 export default function AddVehicleInfo({
-    spotName,
-    spotsTotalCount,
-    spotsAvailableCount,
-    spotsConsumedCount,
+    selectedSpot,
     setProgressTracker,
-    vehicleNumberToBook,
-    setVehicleNumberToBook,
-    phoneNumberToBook,
-    setPhoneNumberToBook,
-    vehicleTypeToBook,
-    setVehicleTypeToBook,
+    setSelectedSpot,
+    setOpenSpotDetails,
+    setVehiclesToBook,
+    vehiclesToBook,
 }: addVehicleInfoProps) {
-    const [isFocus, setIsFocus] = useState(false);
-    const [isFocusChooseVehicle, setIsFocusChooseVehicle] = useState(false);
-    const [selectedVehicle, setSelectedVehicle] = useState<string>();
-    const vehicleTypes: vehicleTypesType[] = vehicleTypesData;
-    const vehiclesList: vehicleType[] = vehiclesListData;
+    const scrollBar = useRef();
+    const [vehicleItemsCount, setVehicleItemsCount] = useState(1);
 
-    const [validation, setValidation] = useState(false);
+    const removeVehicle = (index: number) => {
+        const listLength = vehiclesToBook.length;
 
-
-    let vehiclesListLabelsAndValues: { label: string, value: vehicleType }[] = [];
-    vehiclesList.map(item => {
-        vehiclesListLabelsAndValues.push({ label: item.vehicleName, value: item });
-    })
-
-    const validate = () => {
-        if (vehicleTypeToBook && vehicleNumberToBook && phoneNumberToBook) {
-            if (!vehicleTypeToBook)
-                return false;
-            if (!vehicleNumberToBook.match("^[A-Z]{2}[ -][0-9]{1,2}(?: [A-Z])?(?: [A-Z]*)? [0-9]{4}$"))
-                return false;
-            if (phoneNumberToBook.length !== 10)
-                return false;
-            if (phoneNumberToBook.match("^[0-1]+$"))
-                return false;
-            return true;
+        if (listLength === 1) {
+            setVehicleItemsCount(1);
+            return;
         }
-        return false;
+
+        for (let i = index; i < listLength - 1; i++) {
+            vehiclesToBook[i] = vehiclesToBook[i + 1];
+        }
+        vehiclesToBook.splice(listLength - 1, 1);
+        setVehicleItemsCount(vehicleItemsCount - 1);
+        setVehiclesToBook(vehiclesToBook);
+    }
+
+    for (let i = 0; i < vehicleItemsCount; i++) {
+        if (typeof vehiclesToBook[i] === "undefined") {
+            vehiclesToBook.push({
+                vehicleType: "",
+                phoneNumber: "",
+                vehicleName: "",
+                vehiclePlateNumber: "",
+            })
+        }
+    }
+
+    let vehicleItems = [];
+    for (let i = 0; i < vehicleItemsCount; i++) {
+        vehicleItems.push(
+            <>
+                <AddVehicleItem index={i}
+                    setVehiclesToBook={setVehiclesToBook}
+                    vehiclesToBook={vehiclesToBook}
+                    onClickRemove={(index: number) => removeVehicle(index)}
+                />
+                <View style={styles.seperatorThick}></View>
+            </>
+        );
     }
 
     return (
         <View style={styles.detailsContainer}>
             <View style={styles.spotNameAndAddressContainer}>
-                <Text allowFontScaling={false} style={styles.spotName}>{spotName}</Text>
+                <View style={styles.spotNameAndCostContainer}>
+                    <Text allowFontScaling={false} style={styles.spotName}>
+                        {selectedSpot?.name}
+                    </Text>
+                    <Text allowFontScaling={false} style={styles.spotCost}>
+                        {`₹ ${selectedSpot?.cost[0].cost} / ${selectedSpot?.cost[0].interval}`}
+                    </Text>
+                </View>
+                <Text allowFontScaling={false} style={styles.spotAddress} lineBreakMode="tail">
+                    {selectedSpot?.address}
+                </Text>
             </View>
+            <View style={styles.seperator}></View>
+
+            {/* <View style={styles.spotNotesContainer}>
+                <Text allowFontScaling={false} style={styles.spotNotes}>
+                    {selectedSpot?.extraNotes}
+                </Text>
+            </View>
+            <View style={styles.seperator}></View> */}
 
             <View style={styles.spotCountContainer}>
                 <View style={styles.spotCountItem}>
                     <View style={styles.spotCountBox}>
-                        <Text allowFontScaling={false} style={styles.spotCountText}>{spotsTotalCount}</Text>
+                        <Text allowFontScaling={false} style={styles.spotCountText}>
+                            {selectedSpot?.spotsTotalCount}
+                        </Text>
                     </View>
-                    <Text allowFontScaling={false} style={styles.spotCountHeadText}>Total Number of Spots</Text>
+                    <Text
+                        allowFontScaling={false}
+                        style={styles.spotCountHeadText}
+                    >
+                        Total Spots
+                    </Text>
                 </View>
 
                 <View style={styles.spotCountItem}>
                     <View style={[styles.spotCountBox, styles.availableBox]}>
-                        <Text allowFontScaling={false} style={styles.spotCountTextDark}>{spotsAvailableCount}</Text>
+                        <Text
+                            allowFontScaling={false}
+                            style={styles.spotCountTextDark}
+                        >
+                            {selectedSpot?.spotsAvailableCount}
+                        </Text>
                     </View>
-                    <Text allowFontScaling={false} style={styles.spotCountHeadText}>Available{'\n'}Spots</Text>
+                    <Text
+                        allowFontScaling={false}
+                        style={styles.spotCountHeadText}
+                    >
+                        Available Spots
+                    </Text>
                 </View>
 
                 <View style={styles.spotCountItem}>
                     <View style={[styles.spotCountBox, styles.consumedBox]}>
-                        <Text allowFontScaling={false} style={styles.spotCountTextDark}>{spotsConsumedCount}</Text>
+                        <Text
+                            allowFontScaling={false}
+                            style={styles.spotCountTextDark}
+                        >
+                            {selectedSpot?.spotsConsumedCount}
+                        </Text>
                     </View>
-                    <Text allowFontScaling={false} style={styles.spotCountHeadText}>Consumed Spots</Text>
+                    <Text
+                        allowFontScaling={false}
+                        style={styles.spotCountHeadText}
+                    >
+                        Consumed Spots
+                    </Text>
                 </View>
             </View>
             <View style={styles.seperator}></View>
 
+            <Text allowFontScaling={false} style={styles.vehicleInfoHeader}>Enter Vehicle Details:</Text>
+            <View style={styles.vehicleListContainer}>
+                <ScrollView showsVerticalScrollIndicator={true} persistentScrollbar={true} style={{ margin: 1 }}>
+                    {vehicleItems}
+                </ScrollView>
 
-            <View style={styles.vehicleInfoContainer}>
-                <Text allowFontScaling={false} style={styles.vehicleInfoHeader}>Enter Vehicle Details:</Text>
-
-                <View style={styles.vehicleInfoItem}>
-                    <Dropdown
-                        style={[styles.dropdown, isFocus && { borderColor: 'lightblue' }]}
-                        placeholderStyle={styles.placeholderStyle}
-                        selectedTextStyle={styles.selectedTextStyle}
-                        iconStyle={styles.iconStyle}
-                        data={vehicleTypes}
-                        maxHeight={250}
-                        labelField="label"
-                        valueField="value"
-                        dropdownPosition="bottom"
-                        placeholder={vehicleTypeToBook.length !== 0 ? vehicleTypeToBook : 'Select Vehicle Type'}
-                        value={vehicleTypeToBook}
-                        onFocus={() => setIsFocus(true)}
-                        onBlur={() => setIsFocus(false)}
-                        onChange={item => {
-                            setVehicleTypeToBook(item.label);
-                            setIsFocus(false);
-                        }}
-                    />
-                </View>
-
-                <View style={styles.vehicleInfoItem}>
-                    <TextInput allowFontScaling={false}
-                        style={styles.vehicleInfoData}
-                        placeholder="Enter Vehicle Plate Number"
-                        placeholderTextColor={"#888"}
-                        onChangeText={(value) => setVehicleNumberToBook(value)}
-                        value={vehicleNumberToBook}
-                        autoCorrect={false}
-                        maxLength={13}
-                    />
-                </View>
-
-
-                <View style={styles.vehicleInfoItem}>
-                    <TextInput allowFontScaling={false}
-                        style={styles.vehicleInfoData}
-                        placeholder="Enter Phone Number"
-                        placeholderTextColor={"#888"}
-                        maxLength={10}
-                        keyboardType="number-pad"
-                        value={phoneNumberToBook}
-                        onChangeText={(value) => setPhoneNumberToBook(value)}
-                    />
-                </View>
+                <TouchableOpacity style={styles.addVehiclesButtonContainer} onPress={() => {
+                    if (vehicleItemsCount === 3)
+                        ToastAndroid.showWithGravity("You can add maximum 3 vehicles", ToastAndroid.SHORT, ToastAndroid.CENTER);
+                    else
+                        setVehicleItemsCount(vehicleItemsCount + 1);
+                }}>
+                    <Text style={styles.addVehicleButton}>Add Vehicle</Text>
+                </TouchableOpacity>
             </View>
 
-            <View style={styles.halfSeperatorContainer}>
-                <View style={[styles.seperator, styles.halfSeperator]}></View>
-                <Text allowFontScaling={false} style={styles.halfSeperatorText}>OR</Text>
-                <View style={[styles.seperator, styles.halfSeperator]}></View>
-            </View>
-
-            <View style={styles.vehicleInfoContainer}>
-                <Dropdown
-                    style={[styles.dropdown, isFocusChooseVehicle && { borderColor: 'lightblue' }]}
-                    placeholderStyle={styles.placeholderStyle}
-                    selectedTextStyle={styles.selectedTextStyle}
-                    iconStyle={styles.iconStyle}
-                    data={vehiclesListLabelsAndValues}
-                    maxHeight={250}
-                    labelField="label"
-                    valueField="value"
-                    dropdownPosition="top"
-                    placeholder={selectedVehicle ?? 'Select Saved Vehicle'}
-                    value={selectedVehicle}
-                    onFocus={() => setIsFocusChooseVehicle(true)}
-                    onBlur={() => setIsFocusChooseVehicle(false)}
-                    onChange={item => {
-                        setSelectedVehicle(item.value.vehicleName);
-                        setVehicleNumberToBook(item.value.vehiclePlateNumber);
-                        setVehicleTypeToBook(item.value.vehicleType);
-                        setPhoneNumberToBook(item.value.phoneNumber);
-                        setIsFocusChooseVehicle(false);
-                    }}
-                />
-            </View>
 
             <View style={styles.nextBackButtonContainer}>
-                <TouchableOpacity style={styles.backButton} onPress={() => setProgressTracker(0)}>
+                <TouchableOpacity style={styles.backButton}
+                    onPress={() => {
+                        setSelectedSpot(undefined);
+                        setOpenSpotDetails(false);
+                    }}>
                     <Image
                         source={require("../../../assets/buttons/backButton.png")}
                         style={styles.backAndNextButtonIcon}
@@ -195,26 +196,39 @@ export default function AddVehicleInfo({
                     <Text allowFontScaling={false} style={styles.backButtonText}>Back</Text>
                 </TouchableOpacity>
 
-                {validate() ?
-                    (
-                        <TouchableOpacity style={styles.nextButton} onPress={() => setProgressTracker(2)}>
-                            <Text allowFontScaling={false} style={styles.nextButtonText}>Next</Text>
-                            <Image
-                                source={require("../../../assets/buttons/nextButton.png")}
-                                style={styles.backAndNextButtonIcon}
-                            />
-                        </TouchableOpacity>
-                    ) : (
-                        <TouchableOpacity style={[styles.nextButton, styles.disabled]} disabled={true}>
-                            <Text allowFontScaling={false} style={styles.nextButtonText}>Next</Text>
-                            <Image
-                                source={require("../../../assets/buttons/nextButton.png")}
-                                style={styles.backAndNextButtonIcon}
-                            />
-                        </TouchableOpacity>
-                    )
-                }
+                <TouchableOpacity style={styles.nextButton} onPress={() => {
+                    let err = false;
+                    vehiclesToBook.map((vehicle, index) => {
+                        if (!err) {
+                            if (vehicle.vehicleType === "" && vehicle.vehiclePlateNumber === "" && vehicle.phoneNumber === ""){
+                                ToastAndroid.showWithGravity(`Please enter Vehicle-${index + 1} details`, ToastAndroid.SHORT, ToastAndroid.CENTER);
+                                err = true;
+                            }
+                            else if (vehicle.vehicleType === "") {
+                                ToastAndroid.showWithGravity(`Please specify the Type of Vehicle-${index + 1}`, ToastAndroid.SHORT, ToastAndroid.CENTER);
+                                err = true;
+                            }
+                            else if (!vehicle.vehiclePlateNumber.match("^[A-Za-z]{2}[ -][0-9]{1,2}(?: [A-Za-z])?(?: [A-Za-z]*)? [0-9]{4}$")) {
+                                ToastAndroid.showWithGravity(`Please enter a valid Plate Number for Vehicle-${index + 1}`, ToastAndroid.SHORT, ToastAndroid.CENTER);
+                                err = true;
+                            }
+                            else if (vehicle.phoneNumber.length !== 10) {
+                                ToastAndroid.showWithGravity(`Please enter a valid Phone Number for Vehicle-${index + 1}`, ToastAndroid.SHORT, ToastAndroid.CENTER);
+                                err = true;
+                            }
+                        }
+                    })
+
+                    if (!err)
+                        setProgressTracker(2)
+                }}>
+                    <Text allowFontScaling={false} style={styles.nextButtonText}>Next</Text>
+                    <Image
+                        source={require("../../../assets/buttons/nextButton.png")}
+                        style={styles.backAndNextButtonIcon}
+                    />
+                </TouchableOpacity>
             </View >
-        </View>
+        </View >
     )
 }
