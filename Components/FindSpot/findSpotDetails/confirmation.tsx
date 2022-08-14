@@ -70,18 +70,28 @@ export default function Confirmation({
                         return (
                             <>
                                 <View style={styles.confirmationItem}>
-                                    <Text allowFontScaling={false} style={styles.confirmationHead}>Vehicle-{index+1} Details</Text>
-                                    <Text allowFontScaling={false} style={styles.confirmationData}>{vehicles.vehicleType}</Text>
+                                    <Text allowFontScaling={false} style={styles.confirmationHead}>Vehicle-{index + 1} Details</Text>
+                                </View>
+
+                                <View style={styles.confirmationItem}>
+                                    <Text allowFontScaling={false} style={styles.confirmationData}>
+                                        <Text allowFontScaling={false} style={styles.confirmationSubHead} >Type - </Text>
+                                        {vehicles.vehicleType}
+                                    </Text>
                                 </View>
 
                                 <View style={[styles.confirmationItem, styles.confirmationHeadRow]}>
-                                    {/* <Text allowFontScaling={false} style={styles.confirmationHead}>Vehicle Type -</Text> */}
-                                    <Text allowFontScaling={false} style={styles.confirmationData}>{vehicles.vehiclePlateNumber}</Text>
+                                    <Text allowFontScaling={false} style={styles.confirmationData}>
+                                        <Text allowFontScaling={false} style={styles.confirmationSubHead} >Plate - </Text>
+                                        {vehicles.vehiclePlateNumber}
+                                    </Text>
                                 </View>
 
                                 <View style={[styles.confirmationItem, styles.confirmationHeadRow]}>
-                                    {/* <Text allowFontScaling={false} style={styles.confirmationHead}>Vehicle Owner's Phone -</Text> */}
-                                    <Text allowFontScaling={false} style={styles.confirmationData}>{vehicles.phoneNumber.substring(0, 5)} {vehicles.phoneNumber.substring(5,)}</Text>
+                                    <Text allowFontScaling={false} style={styles.confirmationData}>
+                                        <Text allowFontScaling={false} style={styles.confirmationSubHead} >Phone - </Text>
+                                        {vehicles.phoneNumber.substring(0, 5)} {vehicles.phoneNumber.substring(5,)}
+                                    </Text>
                                 </View>
                                 <View style={styles.seperator}></View>
                             </>
@@ -120,12 +130,7 @@ export default function Confirmation({
                     };
                     setCache("bookingProgressCache", '1');
                     setCache("bookedSpot", JSON.stringify(spotDetails));
-                    showAlert({
-                        title: "Booking Successful !",
-                        message: `The selected spot is booked for you\n\nFrom - ${getFomattedDateTime(fromDateTime.toString())}\n\nTo - ${getFomattedDateTime(toDateTime.toString())}\n\nGoto home page to generate the QR code for verification on arrival.`,
-                        buttonText: "Goto Home",
-                        onPressButton: () => { onClickConfirm() }
-                    })
+                    onClickConfirm();
                 }}>
                     <Text allowFontScaling={false} style={styles.nextButtonText}>Book</Text>
                     <Image

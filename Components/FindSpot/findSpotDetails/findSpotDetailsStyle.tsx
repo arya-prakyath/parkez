@@ -356,17 +356,24 @@ const styles = StyleSheet.create({
     color: "#fff",
     fontSize: 15,
     fontWeight: "200",
-    letterSpacing: 0.5,
+    letterSpacing: 2,
     fontStyle: "italic",
     marginBottom: 1.5,
   },
   confirmationHeadRow: {
     flexDirection: "row",
   },
+  confirmationSubHead: {
+    color: "#fff",
+    fontSize: 14,
+    fontWeight: "300",
+    letterSpacing: 1.5,
+  },
   confirmationData: {
     color: "#fff",
     fontSize: 15,
-    fontWeight: "400",
+    fontWeight: "300",
+    letterSpacing: 1,
   },
 
   nextBackButtonContainer: {
