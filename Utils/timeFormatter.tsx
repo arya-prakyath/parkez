@@ -10,15 +10,15 @@ const getFormattedTime = (time: string | undefined) => {
     
         if (hour === 0) {
             hour = 12;
-            return `${hour} : ${min} AM`;
+            return `${hour}:${min} AM`;
         } else if (hour === 12) {
-            return `${hour} : ${min} PM`;
+            return `${hour}:${min} PM`;
         } else if (hour > 12) {
             hour = hour - 12
-            return (hour < 10) ? `0${hour} : ${min} PM` : `${hour} : ${min} PM`;
+            return (hour < 10) ? `0${hour}:${min} PM` : `${hour}:${min} PM`;
         }
         else {
-            return (hour < 10) ? `0${hour} : ${min} AM` : `${hour} : ${min} AM`;
+            return (hour < 10) ? `0${hour}:${min} AM` : `${hour}:${min} AM`;
         }
     }
 }

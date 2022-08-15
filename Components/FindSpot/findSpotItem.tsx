@@ -13,6 +13,7 @@ interface spotItemType {
     name: string;
     address: string;
     cost: spotCostType[];
+    contact: string;
     spotsTotalCount: number;
     spotsAvailableCount: number;
     spotsConsumedCount: number;

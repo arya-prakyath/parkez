@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, TouchableOpacity, Image, ScrollView } from "react-native";
+import { View, Text, TouchableOpacity, Image, ScrollView, ToastAndroid } from "react-native";
 import { setCache } from "../../../Models/getSetCache";
 import showAlert from "../../../Utils/alertBox";
 import getFomattedDateTime from "../../../Utils/dateTimeFormatter";
@@ -16,6 +16,7 @@ interface spotItemType {
     name: string;
     address: string;
     cost: spotCostType[];
+    contact: string;
     spotsTotalCount: number;
     spotsAvailableCount: number;
     spotsConsumedCount: number;
@@ -124,9 +125,13 @@ export default function Confirmation({
                     const spotDetails = {
                         spotName: selectedSpot?.name,
                         spotAddress: selectedSpot?.address,
+                        spotContact: selectedSpot?.contact,
                         vehiclesToBook: vehiclesToBook,
                         fromDateTime: fromDateTime,
                         toDateTime: toDateTime,
+                        payment: false,
+                        duration: "",
+                        cost: "",
                     };
                     setCache("bookingProgressCache", '1');
                     setCache("bookedSpot", JSON.stringify(spotDetails));

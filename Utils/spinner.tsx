@@ -1,9 +1,16 @@
 import React from "react";
 import { ActivityIndicator } from "react-native";
 
-const Spinner = () => {
+interface spinnerProps {
+    size?: "small" | "large";
+}
+
+const Spinner = ({ size }: spinnerProps) => {
+    if (!size)
+        size = "large";
+
     return (
-        <ActivityIndicator size="large" color="#fff" style={{alignSelf: "center", marginTop: 50,}}/>
+        <ActivityIndicator size={size} color="#fff" style={{ alignSelf: "center", marginTop: 50, }} />
     )
 }
 

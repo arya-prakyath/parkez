@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
   addSpotContainer: {
     backgroundColor: "rgba(0, 0, 0, 0.8)",
     width: "90%",
-    maxHeight: "80%",
+    maxHeight: "90%",
     borderColor: "#555",
     borderWidth: 1,
     borderRadius: 50,
@@ -84,10 +84,10 @@ const styles = StyleSheet.create({
   seperator: {
     borderBottomColor: "#fff",
     borderBottomWidth: 1,
-    marginVertical: 10,
+    marginVertical: 5,
   },
   bookedContainer: {
-    minHeight: "70%",
+    minHeight: "65%",
     maxHeight: "85%",
     width: "95%",
     backgroundColor: "rgba(0, 0, 0, 0.8)",
@@ -98,11 +98,17 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius: 50,
     borderBottomRightRadius: 0,
     borderRadius: 50,
-    padding: 25,
+    padding: 20,
   },
   bookedHeader: {
     color: "#fff",
     fontSize: 18,
+    fontWeight: "300",
+    letterSpacing: 1,
+  },
+  bookedHeaderLg: {
+    color: "#fff",
+    fontSize: 22,
     fontWeight: "300",
     letterSpacing: 1,
   },
@@ -111,37 +117,80 @@ const styles = StyleSheet.create({
   },
 
   bookedNameAndAddressContainer: {
-    marginHorizontal: 10,
     justifyContent: "center",
   },
   bookedName: {
     color: "#fff",
-    fontSize: 16,
-    fontWeight: "400",
+    fontSize: 15,
+    fontWeight: "300",
     letterSpacing: 1,
   },
   bookedAddress: {
     color: "#fff",
-    fontSize: 15,
+    fontSize: 13,
     fontWeight: "200",
-    fontStyle: "italic",
   },
   bookedItemContainer: {
-    marginHorizontal: 10,
     justifyContent: "center",
   },
   bookedItemHead: {
     color: "#fff",
-    fontSize: 15,
+    fontSize: 14,
     fontWeight: "200",
-    fontStyle: "italic",
   },
   bookedItemData: {
+    color: "#fff",
+    fontSize: 14,
+    fontWeight: "300",
+    marginBottom: 3,
+    letterSpacing: 1,
+  },
+  bookedItemHeadLg: {
+    color: "#fff",
+    fontSize: 15,
+    fontWeight: "300",
+  },
+  bookedItemDataLg: {
     color: "#fff",
     fontSize: 16,
     fontWeight: "400",
     marginBottom: 3,
     letterSpacing: 1,
+  },
+
+  timerContainer: {
+    height: 50,
+    marginVertical: 5,
+  },
+  timerHeader: {
+    color: "#fff",
+    fontSize: 20,
+    fontWeight: "200",
+  },
+  timer: {
+    color: "#fff",
+    fontSize: 22,
+    fontWeight: "300",
+  },
+
+  paymentButtonContainer: {
+    height: 200,
+    width: "100%",
+    justifyContent: "space-evenly",
+    alignItems: "center",
+  },
+  paymentButton: {
+    height: 35,
+    width: "98%",
+    backgroundColor: "#fff",
+    borderRadius: 25,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  paymentButtonText: {
+    textAlign: "center",
+    color: "#000",
+    fontSize: 18,
   },
 
   proceedButtonContainer: {
@@ -171,19 +220,50 @@ const styles = StyleSheet.create({
     flex: 0.18,
     aspectRatio: 1,
   },
+  exitButton: {
+    backgroundColor: "#fff",
+    width: "95%",
+    height: "120%",
+    flexDirection: "row",
+    marginHorizontal: 25,
+    borderRadius: 50,
+    alignItems: "center",
+    justifyContent: "center",
+    marginBottom: 50,
+  },
+  exitButtonText: {
+    color: "#000",
+    fontSize: 25,
+    letterSpacing: 5,
+    fontWeight: "300",
+  },
+  exitButtonLogo: {
+    alignSelf: "center",
+    marginLeft: 15,
+    flex: 0.18,
+    aspectRatio: 1,
+  },
 
+  qrCodeHeader: {
+    color: "#fff",
+    fontSize: 15,
+    fontWeight: "300",
+    textAlign: "center",
+    letterSpacing: 1,
+    marginBottom: 5,
+  },
   qrCodeContainer: {
     backgroundColor: "#fff",
     borderTopLeftRadius: 0,
-    borderTopRightRadius: 50,
-    borderBottomLeftRadius: 50,
+    borderTopRightRadius: 30,
+    borderBottomLeftRadius: 30,
     borderBottomRightRadius: 0,
     alignSelf: "center",
-    height: 295,
-    width: 285,
+    height: 200,
+    width: 200,
     justifyContent: "center",
     alignItems: "center",
-    margin: 20,
+    margin: 3,
   },
 
 
