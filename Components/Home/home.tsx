@@ -95,7 +95,7 @@ export default function Home({ onClickBackButton, setScreen, setTitle, setCurren
 
     if (bookedSpot && qrIndex === 2) {
       let value = getQrValue(1);
-      value += new Date(bookedSpot.spotEntryTime) + '|';
+      value += '|' + new Date(bookedSpot.spotEntryTime) + '|';
       value += new Date(bookedSpot.spotExitTime) + '|';
       value += bookedSpot.cost + "|";
       value += bookedSpot.duration;

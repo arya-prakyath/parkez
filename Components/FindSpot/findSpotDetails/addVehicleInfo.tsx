@@ -37,6 +37,8 @@ interface addVehicleInfoProps {
     setSelectedSpot: React.Dispatch<React.SetStateAction<spotItemType | undefined>>;
     setOpenSpotDetails: React.Dispatch<React.SetStateAction<boolean>>;
     setVehiclesToBook: React.Dispatch<React.SetStateAction<vehicleType[]>>;
+    setVehicleItemsCount: React.Dispatch<React.SetStateAction<number>>;
+    vehicleItemsCount: number;
     vehiclesToBook: vehicleType[];
 }
 
@@ -47,10 +49,10 @@ export default function AddVehicleInfo({
     setOpenSpotDetails,
     setVehiclesToBook,
     vehiclesToBook,
+    setVehicleItemsCount,
+    vehicleItemsCount,
 }: addVehicleInfoProps) {
     const scrollBar = useRef();
-    const [vehicleItemsCount, setVehicleItemsCount] = useState(1);
-
     const removeVehicle = (index: number) => {
         const listLength = vehiclesToBook.length;
 
@@ -201,7 +203,7 @@ export default function AddVehicleInfo({
                     let err = false;
                     vehiclesToBook.map((vehicle, index) => {
                         if (!err) {
-                            if (vehicle.vehicleType === "" && vehicle.vehiclePlateNumber === "" && vehicle.phoneNumber === ""){
+                            if (vehicle.vehicleType === "" && vehicle.vehiclePlateNumber === "" && vehicle.phoneNumber === "") {
                                 ToastAndroid.showWithGravity(`Please enter Vehicle-${index + 1} details`, ToastAndroid.SHORT, ToastAndroid.CENTER);
                                 err = true;
                             }

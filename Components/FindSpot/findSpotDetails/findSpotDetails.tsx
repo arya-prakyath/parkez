@@ -5,7 +5,7 @@ import {
   ToastAndroid,
 } from "react-native";
 import AddVehicleInfo from "./addVehicleInfo";
-import AddDateAndTime from "./addDateTime";``
+import AddDateAndTime from "./addDateTime"; ``
 import Confirmation from "./confirmation";
 import styles from "./findSpotDetailsStyle";
 
@@ -54,15 +54,17 @@ export default function FindSpotDetails({
 }: findSpotDetailsProps) {
   const [progressTracker, setProgressTracker] = useState(1);
 
-  const [fromDateTime, setFromDateTime] = useState<Date>();
-  const [toDateTime, setToDateTime] = useState<Date>();
-
+  const [vehicleItemsCount, setVehicleItemsCount] = useState(1);
   const [vehiclesToBook, setVehiclesToBook] = useState<vehicleType[]>([{
     vehiclePlateNumber: "",
     vehicleName: "",
     vehicleType: "",
     phoneNumber: "",
   }]);
+
+  const [fromDateTime, setFromDateTime] = useState<Date>();
+  const [toDateTime, setToDateTime] = useState<Date>();
+
 
   BackHandler.addEventListener("hardwareBackPress", () => {
     if (progressTracker === 1) {
@@ -83,6 +85,8 @@ export default function FindSpotDetails({
           setSelectedSpot={setSelectedSpot}
           setOpenSpotDetails={setOpenSpotDetails}
           setVehiclesToBook={setVehiclesToBook}
+          setVehicleItemsCount={setVehicleItemsCount}
+          vehicleItemsCount={vehicleItemsCount}
           vehiclesToBook={vehiclesToBook}
         />
       )}
