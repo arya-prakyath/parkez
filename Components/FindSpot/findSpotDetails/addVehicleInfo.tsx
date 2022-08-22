@@ -52,7 +52,6 @@ export default function AddVehicleInfo({
     setVehicleItemsCount,
     vehicleItemsCount,
 }: addVehicleInfoProps) {
-    const scrollBar = useRef();
     const removeVehicle = (index: number) => {
         const listLength = vehiclesToBook.length;
 
