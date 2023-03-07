@@ -37,16 +37,16 @@ export default function Login({ navigation, carPosition, textOpacity }: loginPro
     }, []);
 
     const generateOtp = () => {
-        if (phoneList.includes(phone)) {
-            setCache("phoneCache", phone);
-            setOtpGenerated(true);
-            const otp = Math.floor(Math.random() * 9000) + 1000;
-            setGeneratedOtp(otp);
-            showAlert({ title: "OTP", message: `Use the OTP ${otp} to verify and login`, buttonText: "Ok", onPressButton: () => { } })
-        }
-        else {
-            setWrongPhone(true);
-        }
+        // if (phoneList.includes(phone)) {
+        setCache("phoneCache", phone);
+        setOtpGenerated(true);
+        const otp = Math.floor(Math.random() * 9000) + 1000;
+        setGeneratedOtp(otp);
+        showAlert({ title: "OTP", message: `Use the OTP ${otp} to verify and login`, buttonText: "Ok", onPressButton: () => { } })
+        // }
+        // else {
+        // setWrongPhone(true);
+        // }
     }
 
     const verifyOtp = () => {
